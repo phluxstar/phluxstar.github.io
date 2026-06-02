@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<title>&#128203; Rental Tracker &mdash; Home Sweet Home 2</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f4f8; color: #1a202c; }
+  header { background: linear-gradient(135deg, #1a3a6b 0%, #2c5282 100%); color: white; padding: 22px 24px 18px; }
+  header h1 { font-size: 26px; font-weight: 800; }
+  header p { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+  .hbadge { background: rgba(255,255,255,0.18); border-radius: 20px; padding: 4px 14px; font-size: 12px; }
+  nav { background: #2c5282; padding: 0 24px; display: flex; }
+  nav a { color: rgba(255,255,255,0.75); text-decoration: none; padding: 12px 18px; font-size: 13px; font-weight: 500; border-bottom: 3px solid transparent; display: block; }
+  nav a:hover { color: white; }
+  nav a.active { color: white; border-bottom-color: #63b3ed; }
+  main { max-width: 900px; margin: 0 auto; padding: 24px 16px 40px; }
+  .section-title { font-size: 18px; font-weight: 700; color: #2d3748; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat-card { background: white; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #e2e8f0; }
+  .stat-num { font-size: 28px; font-weight: 800; color: #2c5282; }
+  .stat-label { font-size: 12px; color: #718096; margin-top: 2px; }
+  .prop-block { background: white; border-radius: 12px; padding: 18px; margin-bottom: 14px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .prop-block.alert { border-color: #fc8181; border-width: 2px; }
+  .prop-block h3 { font-size: 15px; font-weight: 700; color: #2c5282; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .prop-meta { font-size: 12px; color: #718096; margin-bottom: 10px; }
+  .badge { padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+  .badge-new { background: #fed7d7; color: #c53030; }
+  .badge-ok { background: #c6f6d5; color: #276749; }
+  .badge-none { background: #edf2f7; color: #718096; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+  th { background: #edf2f7; text-align: left; padding: 6px 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: #4a5568; }
+  td { padding: 7px 10px; border-bottom: 1px solid #f0f4f8; }
+  tr:last-child td { border-bottom: none; }
+  .rent-in { color: #276749; font-weight: 700; }
+  .rent-near { color: #c05621; font-weight: 700; }
+  .rent-over { color: #9b2c2c; font-weight: 700; }
+  .rent-call { color: #2c5282; font-weight: 700; }
+  .no-units { color: #a0aec0; font-style: italic; font-size: 13px; padding: 8px 0; }
+  .note-box { background: #fffbeb; border: 1px solid #f6e05e; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #744210; margin-top: 10px; }
+  .nearby-table td:first-child { font-weight: 600; }
+  .sb { padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; }
+  .sb-in { background: #c6f6d5; color: #276749; }
+  .sb-call { background: #bee3f8; color: #2c5282; }
+  .sb-over { background: #fed7d7; color: #c53030; }
+  .json-block { background: #1a202c; color: #68d391; font-family: 'Courier New', monospace; font-size: 11px; padding: 16px; border-radius: 10px; overflow-x: auto; margin-top: 10px; line-height: 1.6; }
+  footer { text-align: center; font-size: 12px; color: #a0aec0; padding: 20px 16px; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+  @media (max-width: 600px) { .stat-row { grid-template-columns: repeat(2,1fr); } nav a { padding: 10px 12px; font-size: 12px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>&#128203; Rental Tracker &amp; Data</h1>
+  <p>Full tracking data for all monitored properties</p>
+  <div class="header-meta">
+    <span class="hbadge">Last checked: June 1, 2026 &bull; 1:10 PM PT</span>
+    <span class="hbadge">Checks: 3&times; daily (8am &bull; 1pm &bull; 6pm)</span>
+    <a href="index.html" style="background:rgba(255,255,255,0.25);color:white;text-decoration:none;border-radius:20px;padding:4px 14px;font-size:12px;">&larr; Back to Dashboard</a>
+  </div>
+</header>
+<nav>
+  <a href="index.html">&#127968; Dashboard</a>
+  <a href="tracker.html" class="active">&#128202; Tracker &amp; Data</a>
+  <a href="compare.html">&#128203; Compare &amp; Rank</a>
+  <a href="finder.html">&#10024; Finder</a>
+</nav>
+
+<main>
+
+  <!-- STATS -->
+  <div class="section-title">&#128200; Summary</div>
+  <div class="stat-row" id="statRow"></div>
+
+  <!-- TOUR LIST -->
+  <div class="section-title">&#128197; Tours Booked &mdash; Friday, June 5, 2026</div>
+  <div class="prop-block" style="border-left:5px solid #6b46c1;">
+    <table>
+      <thead><tr><th>Time</th><th>Address</th><th>Agent / Note</th></tr></thead>
+      <tbody id="tourBody"></tbody>
+    </table>
+  </div>
+
+  <!-- PRIORITY PROPERTIES -->
+  <div class="section-title">&#11088; Priority Property Tracking</div>
+  <div id="priorityWrap"></div>
+
+  <!-- NEARBY FINDS -->
+  <div class="section-title">&#128205; Nearby Finds Tracker</div>
+  <p style="font-size:13px;color:#718096;margin-bottom:12px;">Properties within ~3 miles of CS Arts (1401 Highland Ave, Duarte) and Old Town Monrovia. Updated June 1, 2026.</p>
+
+  <div class="prop-block">
+    <h3>Apartment Complexes</h3>
+    <table>
+      <thead><tr><th>Name</th><th>Address</th><th>3BR Rent</th><th>Distance</th><th>Special</th><th>Phone</th></tr></thead>
+      <tbody id="complexBody"></tbody>
+    </table>
+  </div>
+
+  <div class="prop-block">
+    <h3>Individual Rentals &mdash; In Budget &#9989;</h3>
+    <table class="nearby-table">
+      <thead><tr><th>Address</th><th>Type</th><th>Beds/Bath</th><th>Sq Ft</th><th>Rent</th><th>Budget</th><th>Phone</th></tr></thead>
+      <tbody id="inBudgetBody"></tbody>
+    </table>
+  </div>
+
+  <div class="prop-block">
+    <h3>Booked Tour Listings &amp; Reference (Over / Under Budget)</h3>
+    <table class="nearby-table">
+      <thead><tr><th>Address</th><th>Type</th><th>Beds/Bath</th><th>Sq Ft</th><th>Rent</th><th>Budget</th><th>Phone / Note</th></tr></thead>
+      <tbody id="refBody"></tbody>
+    </table>
+  </div>
+
+  <!-- RAW DATA -->
+  <div class="section-title">&#128190; Raw Tracker Data (window.RENTAL_DATA)</div>
+  <p style="font-size:13px;color:#718096;margin-bottom:8px;">Live snapshot of the single source of truth (site_data.js). Updated automatically with each daily check.</p>
+  <div class="json-block" id="rawJson"></div>
+
+</main>
+
+<script src="site_data.js"></script>
+<script>
+(function () {
+  var D = window.RENTAL_DATA;
+  var EM = '—'; // em dash
+
+  function rentClass(status) {
+    return status === 'in' ? 'rent-in'
+      : status === 'under' ? 'rent-near'
+      : status === 'call' ? 'rent-call'
+      : 'rent-over';
+  }
+  function budgetBadge(status) {
+    if (status === 'in') return '<span class="sb sb-in">&#9989;</span>';
+    if (status === 'under') return '<span class="sb sb-call">Under</span>';
+    if (status === 'call') return '<span class="sb sb-call">Call</span>';
+    return '<span class="sb sb-over">&#9888; Over</span>';
+  }
+  function listingById(id) { return D.listings.filter(function (l) { return l.id === id; })[0]; }
+  function tourBadge(tourDate) {
+    return tourDate ? ' <span class="badge" style="background:#e9d8fd;color:#553c9a;">&#128197; ' + tourDate + '</span>' : '';
+  }
+  function shortAddr(l) {
+    // "1700 Fasana Rd, Duarte, CA 91010" -> "1700 Fasana Rd, Duarte"
+    var parts = (l.address || '').split(',');
+    return parts.length >= 2 ? (parts[0].trim() + ', ' + parts[1].trim()) : (l.address || EM);
+  }
+
+  // ---- STATS ----
+  var s = D.stats;
+  document.getElementById('statRow').innerHTML =
+    '<div class="stat-card"><div class="stat-num">' + s.priorityProperties + '</div><div class="stat-label">Priority Properties</div></div>' +
+    '<div class="stat-card"><div class="stat-num">' + s.esperanza3br + '</div><div class="stat-label">Esperanza 3BR Units</div></div>' +
+    '<div class="stat-card"><div class="stat-num">' + s.nearbyFinds + '</div><div class="stat-label">Nearby Finds</div></div>' +
+    '<div class="stat-card"><div class="stat-num">' + s.inBudgetCount + '</div><div class="stat-label">In Budget ($3K&ndash;$4.3K)</div></div>' +
+    '<div class="stat-card" style="border-color:#9f7aea;"><div class="stat-num" style="color:#6b46c1;">' + s.toursBooked + '</div><div class="stat-label">Tours Booked Fri 6/5</div></div>';
+
+  // ---- TOURS ----
+  document.getElementById('tourBody').innerHTML = D.tours.map(function (t) {
+    var note;
+    if (t.agent) {
+      note = 'Agent: ' + t.agent + (t.agentPhone ? ' &mdash; ' + t.agentPhone : '');
+    } else if (t.agentPhone) {
+      note = t.agentPhone;
+    } else if (t.note) {
+      note = '&#9888; ' + t.note;
+    } else {
+      note = EM;
+    }
+    return '<tr><td><strong>' + t.time + '</strong></td><td>' + t.address + '</td><td>' + note + '</td></tr>';
+  }).join('');
+
+  // ---- PRIORITY PROPERTIES ----
+  document.getElementById('priorityWrap').innerHTML = D.priorityProperties.map(function (p, idx) {
+    var head, body, meta, borderStyle = '';
+    var tourPill = p.tourBooked ? ' <span class="badge" style="background:#e9d8fd;color:#553c9a;">&#128197; Tour Fri 3PM</span>' : '';
+    var metaBits = [p.address, p.phone];
+    if (p.email) metaBits.push(p.email);
+    if (p.specials) metaBits.push('Special: ' + p.specials);
+    if (p.firstTracked) metaBits.push('First tracked: ' + p.firstTracked);
+    meta = metaBits.join(' &bull; ');
+
+    if (p.id === 'esperanza') {
+      borderStyle = ' style="border-left:5px solid #6b46c1;"';
+      head = '1. ' + p.name + ' <span class="badge badge-ok">&#9989; Tracking</span>' + tourPill;
+      var rows = p.units.map(function (u) {
+        var cls = rentClass(u.budgetStatus);
+        var nb = u.isNew ? ' <span class="badge badge-new">NEW</span>' : '';
+        return '<tr><td>' + u.unit + nb + '</td><td>' + u.plan + '</td><td>' + u.beds + '/' + (u.baths != null ? u.baths : EM) + '</td><td>' +
+          (u.sqft != null ? u.sqft.toLocaleString() : EM) + '</td><td class="' + cls + '">' + u.rent + '</td><td>' + u.available + '</td><td>May 28</td><td>Jun 1</td></tr>';
+      }).join('');
+      body = '<strong style="font-size:12px;color:#4a5568;">Known 3BR Units:</strong>' +
+        '<table><thead><tr><th>Unit</th><th>Plan</th><th>Bd/Ba</th><th>Sq Ft</th><th>Rent</th><th>Available</th><th>First Seen</th><th>Last Seen</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+        '<div class="prop-meta" style="margin-top:8px;margin-bottom:0;">2BR+Loft: <em>None detected</em> &bull; Units 407 &amp; 507 in budget at $4,100; unit 229 at $3,950 (Oct 7).</div>' +
+        '<div class="note-box" style="margin-top:8px;">Sources: Apartments.com &bull; Zillow &bull; Direct portal (React SPA &mdash; not parseable via fetch)</div>';
+    } else if (p.id === 'solana') {
+      head = '2. ' + p.name + ' <span class="badge badge-none">No 3BR available</span>';
+      var prows = (p.plans || []).map(function (pl) {
+        return '<tr><td>' + pl.plan + '</td><td>' + pl.beds + 'BD / ' + pl.baths + 'BA</td><td>' + pl.sqft.toLocaleString() + '</td><td class="rent-call">' + pl.rent + '</td><td>' + pl.available + '</td><td>Jun 1</td></tr>';
+      }).join('');
+      body = '<strong style="font-size:12px;color:#4a5568;">3BR Floor Plans:</strong>' +
+        '<table><thead><tr><th>Plan</th><th>Bd/Ba</th><th>Sq Ft</th><th>Rent</th><th>Available</th><th>Last Seen</th></tr></thead><tbody>' + prows + '</tbody></table>' +
+        '<div class="note-box" style="margin-top:8px;">' + p.note + '</div>';
+    } else { // avalon
+      head = '3. ' + p.name + ' <span class="badge badge-ok">&#9989; Tracking</span>';
+      var arows = p.units.map(function (u) {
+        return '<tr style="background:#fff5f0;"><td>' + u.unit + '</td><td>' + u.plan + '</td><td>' + u.beds + ' / ' + (u.baths != null ? u.baths : EM) + '</td><td class="rent-over">' + u.rent + '</td><td>' + u.available + '</td><td>' + budgetBadge(u.budgetStatus) + '</td><td>Jun 1</td></tr>';
+      }).join('');
+      body = '<strong style="font-size:12px;color:#4a5568;">Known 3BR Units (current search results):</strong>' +
+        '<table><thead><tr><th>Unit</th><th>Plan</th><th>Bd/Ba</th><th>Rent</th><th>Available</th><th>Budget</th><th>Last Seen</th></tr></thead><tbody>' + arows + '</tbody></table>' +
+        '<div class="note-box" style="margin-top:8px;">' + p.note + '</div>';
+    }
+    return '<div class="prop-block"' + borderStyle + '><h3>' + head + '</h3><div class="prop-meta">' + meta + '</div>' + body + '</div>';
+  }).join('');
+
+  // ---- NEARBY: Apartment complexes ----
+  document.getElementById('complexBody').innerHTML = D.listings.filter(function (l) {
+    return l.complex;
+  }).map(function (l) {
+    return '<tr><td>' + l.name + '</td><td>' + shortAddr(l) + '</td><td class="rent-call">Call for Rent</td><td>' +
+      (l.distance || EM) + '</td><td>' + (l.special || EM) + '</td><td>' + (l.phone || EM) + '</td></tr>';
+  }).join('');
+
+  // ---- NEARBY: Individual rentals in budget (3BR, in budget, not complex/priority/tour-only) ----
+  var inBudget = D.listings.filter(function (l) {
+    return l.tag === 'nearby' && !l.complex && l.budgetStatus === 'in' && l.beds === 3;
+  }).sort(function (a, b) { return (a.rentNum || 0) - (b.rentNum || 0); });
+  document.getElementById('inBudgetBody').innerHTML = inBudget.map(function (l) {
+    var typeShort = l.type === 'Apartment' ? 'Apt' : l.type;
+    var rowStyle = l.tourDate ? ' style="background:#faf5ff;"' : '';
+    return '<tr' + rowStyle + '><td>' + shortAddr(l) + tourBadge(l.tourDate) + '</td><td>' + typeShort + '</td><td>' +
+      (l.bedsLabel || EM) + '</td><td>' + (l.sqft != null ? l.sqft.toLocaleString() : EM) + '</td><td class="rent-in">' +
+      (l.rent || EM) + '</td><td>' + budgetBadge('in') + '</td><td>' + (l.phone || EM) + '</td></tr>';
+  }).join('');
+
+  // ---- REFERENCE: booked-tour listings + over/under budget ----
+  var refIds = ['norumbega-361', 'royaloaks-1032', 'walnut-417', 'junipero-1014', 'spruce-2911',
+    'santaanita-503-house', 'santaanita-503-townhome', 'woodland-18', 'norumbega-1070'];
+  document.getElementById('refBody').innerHTML = refIds.map(function (id) {
+    var l = listingById(id);
+    if (!l) return '';
+    var typeShort = l.type === 'Apartment' ? 'Apt' : (l.type || EM);
+    var rowStyle = l.tourDate ? ' style="background:#faf5ff;"' : '';
+    var cls = rentClass(l.budgetStatus);
+    var badge = l.tourDate ? (l.budgetStatus === 'under' ? '<span class="sb sb-in">&#9989;</span>' : '<span class="sb sb-in">&#9989; verify</span>') : budgetBadge(l.budgetStatus);
+    if (id === 'walnut-417') badge = '<span class="sb sb-in">&#9989;</span>';
+    return '<tr' + rowStyle + '><td>' + shortAddr(l) + tourBadge(l.tourDate) + '</td><td>' + typeShort + '</td><td>' +
+      (l.bedsLabel || EM) + '</td><td>' + (l.sqft != null ? l.sqft.toLocaleString() : EM) + '</td><td class="' + cls + '">' +
+      (l.rent || EM) + '</td><td>' + badge + '</td><td>' + (l.notes || l.phone || EM) + '</td></tr>';
+  }).join('');
+
+  // ---- RAW DATA (rendered from the live single source of truth) ----
+  var raw = {
+    last_checked: D.meta.lastCheckedISO,
+    user_budget: D.meta.budgetLabel,
+    priority_order: D.priorityProperties.map(function (p) { return p.id; }),
+    priority_properties: D.priorityProperties.map(function (p) {
+      return { id: p.id, address: p.address, phone: p.phone, special: p.specials,
+        units: (p.units || []).map(function (u) { return { unit: u.unit, rent: u.rent, available: u.available }; }),
+        plans: p.plans ? p.plans.map(function (pl) { return { plan: pl.plan, rent: pl.rent, available: pl.available }; }) : undefined,
+        tour_booked: p.tourBooked || undefined };
+    }),
+    tours_booked_2026_06_05: D.tours.map(function (t) {
+      return { time: t.time, address: t.address, agent: t.agent || undefined, note: t.note || undefined };
+    }),
+    nearby_finds_count: D.stats.nearbyFinds,
+    in_budget_count: D.stats.inBudgetCount,
+    tours_booked: D.stats.toursBooked
+  };
+  document.getElementById('rawJson').textContent = JSON.stringify(raw, null, 2);
+})();
+</script>
+
+<footer>
+  Checked 3&times; daily (8am &bull; 1pm &bull; 6pm PT) &bull; CS Arts: 1401 Highland Ave, Duarte, CA 91010 &bull; Budget: $3,000&ndash;$4,300/mo<br>
+  <a href="index.html" style="color:#2c5282;">&larr; Back to Dashboard</a>
+</footer>
+
+</body>
+</html>

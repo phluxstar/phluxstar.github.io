@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rental Watch Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         background: #f4f6f8; color: #1c2733; line-height: 1.5; padding: 16px; }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  header { background: linear-gradient(135deg, #2c5f8a, #1b3a52); color: #fff; border-radius: 14px;
+           padding: 22px 24px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,.12); }
+  header h1 { font-size: 1.5rem; margin-bottom: 4px; }
+  header .sub { opacity: .85; font-size: .9rem; }
+  .nochange { background: #e7f4ea; border: 1px solid #b6dcc0; color: #1f6b39; border-radius: 10px;
+              padding: 12px 16px; margin-bottom: 18px; font-size: .92rem; }
+  h2.section { font-size: 1.05rem; margin: 22px 0 10px; color: #2c5f8a; letter-spacing: .02em;
+               text-transform: uppercase; }
+  .card { background: #fff; border-radius: 12px; padding: 18px 20px; margin-bottom: 14px;
+          box-shadow: 0 1px 5px rgba(0,0,0,.07); }
+  .card.priority { border-left: 5px solid #2c5f8a; }
+  .card h3 { font-size: 1.12rem; margin-bottom: 2px; }
+  .card .meta { color: #5a6b7b; font-size: .85rem; margin-bottom: 12px; }
+  .card .meta a { color: #2c5f8a; text-decoration: none; }
+  .badge { display: inline-block; font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px;
+           vertical-align: middle; margin-left: 6px; }
+  .badge.top { background: #ffe7b3; color: #8a5a00; }
+  table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #eef1f4; }
+  th { font-size: .72rem; text-transform: uppercase; letter-spacing: .03em; color: #7a8a99; }
+  tr.in-budget   { background: #eef9f0; }
+  tr.slight-over { background: #fef9e7; }
+  tr.well-over   { background: #fdefe6; }
+  .pill { font-size: .72rem; font-weight: 700; padding: 2px 7px; border-radius: 5px; white-space: nowrap; }
+  .pill.ok   { background: #cdeccf; color: #1f6b39; }
+  .pill.warn { background: #fae6b0; color: #8a6500; }
+  .pill.over { background: #f6ccb6; color: #a23b12; }
+  .none { color: #8a98a6; font-style: italic; font-size: .9rem; }
+  .nearby-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .nf { background: #fff; border-radius: 10px; padding: 13px 15px; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+        border-left: 4px solid #b6c4d0; font-size: .85rem; }
+  .nf.budget { border-left-color: #4caf72; }
+  .nf.overb  { border-left-color: #e08b5a; }
+  .nf h4 { font-size: .95rem; margin-bottom: 3px; }
+  .nf .addr { color: #6a7a89; font-size: .78rem; margin-bottom: 6px; }
+  .nf .rent { font-weight: 700; font-size: 1rem; }
+  .nf .dist { color: #2c5f8a; font-size: .76rem; }
+  .nf a { color: #2c5f8a; text-decoration: none; font-size: .76rem; }
+  footer { text-align: center; color: #7a8a99; font-size: .8rem; margin: 26px 0 10px; }
+  .legend { font-size: .76rem; color: #6a7a89; margin: 6px 0 14px; }
+  .legend span { display: inline-block; margin-right: 14px; }
+  .sw { display: inline-block; width: 11px; height: 11px; border-radius: 3px; vertical-align: middle; margin-right: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>&#127968; Rental Watch Dashboard</h1>
+    <div class="sub">Last updated: Tuesday, June 2, 2026 &middot; 10:14 AM PT</div>
+  </header>
+
+  <div class="nochange">
+    &#9989; <strong>No new listings this check.</strong> All tracked units and nearby finds are unchanged since the last snapshot &mdash; no email alert was sent.
+  </div>
+
+  <div class="legend">
+    <span><span class="sw" style="background:#cdeccf"></span>In budget ($3K&ndash;$4.3K)</span>
+    <span><span class="sw" style="background:#fae6b0"></span>Slightly over ($4.3K&ndash;$5K)</span>
+    <span><span class="sw" style="background:#f6ccb6"></span>Well over ($5K+)</span>
+  </div>
+
+  <h2 class="section">Priority Properties</h2>
+
+  <!-- ESPERANZA -->
+  <div class="card priority">
+    <h3>Esperanza at Duarte Station <span class="badge top">TOP PICK</span></h3>
+    <div class="meta">1700 Fasana Rd, Duarte, CA 91010 &middot; (626) 361-4825 &middot;
+      <a href="https://www.apartments.com/esperanza-at-duarte-station-duarte-ca/4hjhepj/" target="_blank">View listing</a>
+      &middot; Special: 2 Months Free</div>
+    <table>
+      <thead><tr><th>Unit</th><th>Plan</th><th>Bed/Bath</th><th>Sq Ft</th><th>Rent</th><th>Available</th><th>Budget</th></tr></thead>
+      <tbody>
+        <tr class="in-budget"><td>407</td><td>Three Bedroom D1</td><td>3 / 3</td><td>1,174</td><td>$4,100</td><td>Now</td><td><span class="pill ok">In budget</span></td></tr>
+        <tr class="in-budget"><td>507</td><td>Three Bedroom D1</td><td>3 / 3</td><td>1,174</td><td>$4,100</td><td>Now</td><td><span class="pill ok">In budget</span></td></tr>
+        <tr class="in-budget"><td>229</td><td>Three Bedroom D2</td><td>3 / 2</td><td>1,098</td><td>$3,950</td><td>Oct 7</td><td><span class="pill ok">In budget</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SOLANA -->
+  <div class="card priority">
+    <h3>Solana at Duarte Station</h3>
+    <div class="meta">1750 Fasana Rd, Duarte, CA 91010 &middot; (949) 490-6590 &middot;
+      <a href="https://www.apartments.com/solana-at-duarte-station-duarte-ca/75x9h5w/" target="_blank">View listing</a>
+      &middot; Special: 8 Weeks Free</div>
+    <p class="none">No 3BR units currently available. Floor plans C1 (1,899 sq ft) and C1-M (2,237 sq ft) show &ldquo;Available Soon / Call for Rent.&rdquo;</p>
+  </div>
+
+  <!-- AVALON -->
+  <div class="card priority">
+    <h3>Avalon Monrovia</h3>
+    <div class="meta">825 S Myrtle Ave, Monrovia, CA 91016 &middot; (855) 572-9173 &middot;
+      <a href="https://www.apartments.com/avalon-monrovia-monrovia-ca/y1zwvrv/" target="_blank">View listing</a>
+      &middot; In Old Town Monrovia</div>
+    <table>
+      <thead><tr><th>Unit</th><th>Plan</th><th>Bed/Bath</th><th>Sq Ft</th><th>Rent</th><th>Available</th><th>Budget</th></tr></thead>
+      <tbody>
+        <tr class="well-over"><td>SI-FL4</td><td>3BR Signature / Fl 4</td><td>3 / &mdash;</td><td>&mdash;</td><td>$5,200</td><td>Now</td><td><span class="pill over">Over budget</span></td></tr>
+        <tr class="well-over"><td>SI-FL1</td><td>3BR Signature / Fl 1</td><td>3 / &mdash;</td><td>&mdash;</td><td>$5,910</td><td>Now</td><td><span class="pill over">Over budget</span></td></tr>
+      </tbody>
+    </table>
+    <div class="meta" style="margin-top:8px;margin-bottom:0;">Both 3BR units are premium/furnished and above budget. No in-budget 3BR currently listed.</div>
+  </div>
+
+  <h2 class="section">Nearby Finds &middot; 3BR near CS Arts / Old Town Monrovia</h2>
+  <div class="nearby-grid">
+
+    <div class="nf budget"><h4>2423 S Myrtle Ave</h4><div class="addr">Monrovia &middot; 3BR/2BA &middot; 1,200 sqft</div><div class="rent">$3,280/mo</div><div class="dist">~1 mi &middot; same street as CS Arts</div><a href="https://www.apartments.com/2423-s-myrtle-ave-monrovia-ca/jfsc556/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>727 W Hillcrest Blvd</h4><div class="addr">Monrovia &middot; 3BR house</div><div class="rent">$3,018/mo</div><div class="dist">Monrovia</div><a href="https://www.apartments.com/727-w-hillcrest-blvd-monrovia-ca/w5gedel/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>708 W Duarte Rd</h4><div class="addr">Monrovia &middot; 3BR/3BA &middot; 1,720 sqft</div><div class="rent">$3,395/mo</div><div class="dist">Monrovia</div><a href="https://www.apartments.com/708-w-duarte-rd-monrovia-ca/k82c1n8/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>908 W Foothill Blvd Unit C</h4><div class="addr">Monrovia &middot; 3BR/2.5BA &middot; 1,268 sqft</div><div class="rent">$3,500/mo</div><div class="dist">Monrovia &middot; 12-mo lease</div><a href="https://www.apartments.com/908-w-foothill-blvd-monrovia-ca-unit-c/rhvl550/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>1516 Encino Ave</h4><div class="addr">Monrovia &middot; 3BR/2.5BA &middot; 1,662 sqft</div><div class="rent">$3,775/mo</div><div class="dist">Monrovia</div><a href="https://www.apartments.com/1516-encino-ave-monrovia-ca/2fn6x69/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>232 May Ave</h4><div class="addr">Monrovia &middot; 3BR/2BA &middot; 1,484 sqft</div><div class="rent">$3,800/mo</div><div class="dist">Monrovia</div><a href="https://www.apartments.com/232-may-ave-monrovia-ca/k2sk34b/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>1907 Graydon Ave</h4><div class="addr">Monrovia &middot; 3BR/2BA &middot; 1,235 sqft</div><div class="rent">$4,200/mo</div><div class="dist">Monrovia</div><a href="https://www.apartments.com/1907-graydon-ave-monrovia-ca/z13zs6w/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>1676 3rd St</h4><div class="addr">Duarte &middot; 3BR house</div><div class="rent">$3,950/mo</div><div class="dist">Near Esperanza &amp; Solana</div><a href="https://www.apartments.com/unit-duarte-ca/zn6krdx/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>The Monroe</h4><div class="addr">127 W Pomona St, Monrovia &middot; Studio&ndash;3BR</div><div class="rent">$2,434&ndash;$5,409/mo</div><div class="dist">~0.3 mi &middot; Old Town &middot; 2 Mo Free</div><a href="https://www.apartments.com/the-monroe-monrovia-ca/ngbxn5m/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>Alexan Marmont</h4><div class="addr">1625 S Magnolia Ave, Monrovia &middot; Studio&ndash;3BR</div><div class="rent">$2,376&ndash;$5,243/mo</div><div class="dist">~0.5 mi &middot; 2 Mo Free</div><a href="https://www.apartments.com/alexan-marmont-monrovia-ca/35espcg/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>402 California St Unit B</h4><div class="addr">Arcadia &middot; 3BR/3BA &middot; 1,390 sqft</div><div class="rent">$3,595/mo</div><div class="dist">~2 mi</div><a href="https://www.apartments.com/402-california-st-arcadia-ca-unit-b/bpxzp88/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>601 Camino Grove Ave</h4><div class="addr">Arcadia &middot; 3BR/2BA &middot; 1,496 sqft</div><div class="rent">$3,295/mo</div><div class="dist">~2 mi</div><a href="https://www.apartments.com/601-camino-grove-ave-arcadia-ca/z5vrjfz/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>605 S 2nd Ave Unit A</h4><div class="addr">Arcadia &middot; 3BR/2.5BA &middot; 1,400 sqft</div><div class="rent">$3,200/mo</div><div class="dist">~2 mi</div><a href="https://www.apartments.com/605-s-2nd-ave-arcadia-ca-unit-a/xcyx4hp/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>909 N Santa Anita Ave Unit Main</h4><div class="addr">Arcadia &middot; 3BR/1BA &middot; 1,021 sqft</div><div class="rent">$3,400/mo</div><div class="dist">~2.5 mi &middot; 12-mo lease</div><a href="https://www.apartments.com/909-n-santa-anita-ave-arcadia-ca-unit-main/7p8d27y/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>2558 S 10th Ave</h4><div class="addr">Arcadia &middot; 3BR/2BA &middot; 1,200 sqft</div><div class="rent">$4,000/mo</div><div class="dist">~2 mi</div><a href="https://www.apartments.com/2558-s-10th-ave-arcadia-ca/f33l00t/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>2018 S 2nd Ave</h4><div class="addr">Arcadia &middot; 3BR/2BA &middot; 1,700 sqft</div><div class="rent">$4,200/mo</div><div class="dist">~2 mi</div><a href="https://www.apartments.com/2018-s-2nd-ave-arcadia-ca/vf5eyhg/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf budget"><h4>2319 El Capitan Ave</h4><div class="addr">Arcadia &middot; 3BR/2BA &middot; 1,881 sqft</div><div class="rent">$4,300/mo</div><div class="dist">~2 mi &middot; budget ceiling</div><a href="https://www.apartments.com/2319-el-capitan-ave-arcadia-ca/mpmyfck/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf overb"><h4>1014 Junipero Dr</h4><div class="addr">Duarte &middot; 3BR/2BA &middot; 1,178 sqft</div><div class="rent">$2,950/mo</div><div class="dist">~2.5 mi &middot; just under min</div><a href="https://www.apartments.com/1014-junipero-dr-duarte-ca/yhxq7jr/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf overb"><h4>2911 Spruce Ct</h4><div class="addr">Arcadia &middot; 3BR/2.5BA &middot; 2,200 sqft</div><div class="rent">$4,350/mo</div><div class="dist">~2 mi &middot; $50 over</div><a href="https://www.apartments.com/2911-spruce-ct-arcadia-ca/cqltwed/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf overb"><h4>503 N Santa Anita Ave</h4><div class="addr">Arcadia &middot; 3BR/3BA &middot; 1,960 sqft</div><div class="rent">$4,500/mo</div><div class="dist">~2 mi &middot; $200 over</div><a href="https://www.apartments.com/503-n-santa-anita-ave-arcadia-ca/g6wextz/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf overb"><h4>503 N Santa Anita Ave (Townhome)</h4><div class="addr">Arcadia &middot; 3BR/2.5BA &middot; 1,892 sqft</div><div class="rent">$4,550/mo</div><div class="dist">~2 mi &middot; $250 over</div><a href="https://www.apartments.com/503-n-santa-anita-ave-arcadia-ca/rxp6g61/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf overb"><h4>18 Woodland Ln</h4><div class="addr">Arcadia &middot; 3BR/2BA &middot; 2,418 sqft</div><div class="rent">$6,600/mo</div><div class="dist">~2.5 mi &middot; well over</div><a href="https://www.apartments.com/18-woodland-ln-arcadia-ca/rd9eqs3/" target="_blank">View &rarr;</a></div>
+
+    <div class="nf overb"><h4>1070 Norumbega Dr</h4><div class="addr">Monrovia &middot; 3BR/3BA &middot; 2,231 sqft</div><div class="rent">$7,500/mo</div><div class="dist">~2 mi &middot; well over</div><a href="https://www.apartments.com/1070-norumbega-dr-monrovia-ca/telpzw8/" target="_blank">View &rarr;</a></div>
+
+  </div>
+
+  <footer>
+    Checked 3&times; daily (8am, 1pm, 6pm) &middot; Next check: today at 1:00 PM PT<br>
+    Sources: Apartments.com (Esperanza, Solana, Avalon + Monrovia/Duarte 3BR searches)
+  </footer>
+
+</div>
+</body>
+</html>
