@@ -21,8 +21,8 @@
   // META
   // -------------------------------------------------------------------
   var meta = {
-    lastChecked: "June 2, 2026 · 11:20 AM PT",
-    lastCheckedISO: "2026-06-02T11:20:00",
+    lastChecked: "June 2, 2026 · 12:20 PM PT",
+    lastCheckedISO: "2026-06-02T12:20:00",
     budgetMin: 3000,
     budgetMax: 4300,
     budgetLabel: "$3,000–$4,300/mo",
