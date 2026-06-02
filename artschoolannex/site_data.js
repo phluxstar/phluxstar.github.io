@@ -195,6 +195,16 @@
       note: "Added to Family calendar — verify details at tour"
     },
     {
+      time: "2:00 PM",
+      address: "Solana at Duarte Station — 1750 Fasana Rd, Duarte",
+      type: null, beds: "3BR", sqft: null,
+      rent: null, rentNum: null, inBudget: null,
+      agent: null, agentPhone: "(949) 490-6590",
+      listingId: "solana",
+      isNew: true, isPriority: true,
+      note: "Priority property — bring photo ID"
+    },
+    {
       time: "3:00–4:00 PM",
       address: "Esperanza at Duarte Station — 1700 Fasana Rd, Duarte",
       type: null, beds: null, sqft: null,
@@ -303,8 +313,8 @@
       distance: "~0.7 mi", distLabel: "0.7 mi", phone: "(949) 490-6590",
       url: "https://www.apartments.com/solana-at-duarte-station-duarte-ca/75x9h5w/",
       special: "8 Weeks Free on Base Rent", freeMonths: 2, tag: "priority",
-      tourTime: null, tourDate: null,
-      notes: "No 3BR available (Jun 1) — plans C1/C1-M show 'Available Soon.' Monitoring daily.",
+      tourTime: "2:00 PM", tourDate: "Tour Fri 6/5 · 2 PM (photo ID)",
+      notes: "Tour booked Fri 6/5 2PM. Plans C1/C1-M show 'Available Soon.' Monitoring daily.",
       img: "https://images1.apartments.com/i2/d-AWQMJo80zNTDOLIMTSB2lEFO9hxkHZQn0iy5QtnYI/116/solana-at-duarte-station-duarte-ca-building-photo.jpg",
       hasGym: true, availText: "No 3BR — Monitoring", availType: "watch", amenities: 80,
       cs_min: 4, cs_mi: "0.7 mi", hh_min: 95, plan: 'Plans C1/C1-M — "Available Soon"', isNew: false
