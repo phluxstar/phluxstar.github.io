@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<title>&#128506; Tour Route &amp; Drive Times &mdash; Art School Annex</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f4f8; color: #1a202c; }
+  header { background: linear-gradient(135deg, #1a3a6b 0%, #2c5282 100%); color: white; padding: 22px 24px 18px; }
+  header h1 { font-size: 26px; font-weight: 800; }
+  header p { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+  .hbadge { background: rgba(255,255,255,0.18); border-radius: 20px; padding: 4px 14px; font-size: 12px; }
+  nav { background: #2c5282; padding: 0 24px; display: flex; flex-wrap: wrap; }
+  nav a { color: rgba(255,255,255,0.75); text-decoration: none; padding: 12px 18px; font-size: 13px; font-weight: 500; border-bottom: 3px solid transparent; display: block; }
+  nav a:hover { color: white; }
+  nav a.active { color: white; border-bottom-color: #63b3ed; }
+  main { max-width: 980px; margin: 0 auto; padding: 24px 16px 40px; }
+  .section-title { font-size: 18px; font-weight: 700; color: #2d3748; margin: 24px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .stat-card { background: white; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #e2e8f0; }
+  .stat-num { font-size: 26px; font-weight: 800; color: #2c5282; }
+  .stat-label { font-size: 12px; color: #718096; margin-top: 2px; }
+  #map { height: 500px; width: 100%; border-radius: 12px; border: 1px solid #cbd5e0; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .map-wrap { position: relative; }
+  .gmaps-btn { display:inline-block; margin-top:12px; background:#2c5282; color:white; text-decoration:none; padding:9px 16px; border-radius:8px; font-size:13px; font-weight:600; }
+  .gmaps-btn:hover { background:#2b6cb0; }
+  .pin { background:#2c5282; color:#fff; width:26px; height:26px; border-radius:50% 50% 50% 0; transform:rotate(-45deg); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 5px rgba(0,0,0,0.4); border:2px solid #fff; }
+  .pin.prio { background:#9b2c2c; }
+  .pin span { transform:rotate(45deg); font-size:13px; font-weight:800; }
+  .leg-lbl { background:rgba(255,255,255,0.92); border:1px solid #90cdf4; color:#2c5282; font-size:11px; font-weight:700; padding:1px 6px; border-radius:10px; white-space:nowrap; box-shadow:0 1px 2px rgba(0,0,0,0.15); }
+  .pop { font-size:12px; line-height:1.45; max-width:200px; }
+  .pop img { width:100%; height:96px; object-fit:cover; border-radius:6px; margin-bottom:6px; display:block; }
+  .pop b { color:#2c5282; }
+  .pop a { color:#2b6cb0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; background:white; border-radius:10px; overflow:hidden; border:1px solid #e2e8f0; }
+  th { background: #edf2f7; text-align: left; padding: 9px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: #4a5568; }
+  td { padding: 9px 12px; border-bottom: 1px solid #f0f4f8; }
+  tr:last-child td { border-bottom: none; }
+  .stop-row td { background:#f7fafc; font-weight:600; }
+  .leg-row td { color:#4a5568; }
+  .ok { color:#276749; font-weight:700; }
+  .tight { color:#c05621; font-weight:700; }
+  .bad { color:#9b2c2c; font-weight:700; }
+  .num-badge { display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%; background:#2c5282; color:white; font-size:11px; font-weight:700; margin-right:7px; }
+  .num-badge.prio { background:#9b2c2c; }
+  .note-box { background: #ebf8ff; border: 1px solid #90cdf4; border-radius: 8px; padding: 11px 14px; font-size: 13px; color: #2a4365; margin: 14px 0; }
+  .legend { font-size:12px; color:#718096; margin-top:8px; }
+  footer { text-align: center; font-size: 12px; color: #a0aec0; padding: 20px 16px; border-top: 1px solid #e2e8f0; margin-top: 18px; }
+  @media (max-width: 600px) { .stat-row { grid-template-columns: repeat(2,1fr); } nav a { padding: 10px 12px; font-size: 12px; } #map { height: 380px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>&#128506; Tour Route &amp; Drive Times</h1>
+  <p>Friday, June 5, 2026 &mdash; 9 stops, ordered by tour time</p>
+  <div class="header-meta">
+    <span class="hbadge" id="hb-driving">Driving: &mdash;</span>
+    <span class="hbadge" id="hb-distance">Distance: &mdash;</span>
+    <a href="index.html" style="background:rgba(255,255,255,0.25);color:white;text-decoration:none;border-radius:20px;padding:4px 14px;font-size:12px;">&larr; Back to Dashboard</a>
+  </div>
+</header>
+<nav>
+  <a href="index.html">&#127968; Dashboard</a>
+  <a href="tracker.html">&#128202; Tracker &amp; Data</a>
+  <a href="compare.html">&#128203; Compare &amp; Rank</a>
+  <a href="finder.html">&#10024; Finder</a>
+  <a href="route.html" class="active">&#128506; Route Map</a>
+</nav>
+
+<main>
+
+  <div class="stat-row" id="statRow"></div>
+
+  <div class="section-title">&#128205; Route Map</div>
+  <div class="map-wrap">
+    <div id="map"></div>
+  </div>
+  <a class="gmaps-btn" id="gmapsBtn" href="#" target="_blank" rel="noopener">&#128663; Open full route in Google Maps</a>
+  <div class="legend">Numbered pins = tour order. Blue line = drive between stops; the label on each line is the typical drive time. Click a pin for the photo &amp; listing.</div>
+
+  <div class="note-box" id="homeNote"></div>
+
+  <div class="section-title">&#9201;&#65039; Schedule &amp; Drive-Time Check</div>
+  <table id="schedTable">
+    <thead><tr><th>Stop / Leg</th><th>Time</th><th>Drive</th><th>Buffer after drive</th><th>Status</th></tr></thead>
+    <tbody id="schedBody"></tbody>
+  </table>
+  <div class="legend" id="srcNote" style="margin-top:10px;"></div>
+
+</main>
+
+<footer>Art School Annex &mdash; rental search. Map data &copy; OpenStreetMap contributors.</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="site_data.js?v=20260603-3"></script>
+<script>
+(function () {
+  var D = window.RENTAL_DATA;
+  var tours = D.tours;
+  var route = D.route;
+
+  // ---- time parsing (handles "3:00–4:00 PM" ranges -> start) ----
+  function parseStart(s) {
+    var ampm = /PM/i.test(s) ? 'PM' : (/AM/i.test(s) ? 'AM' : '');
+    var first = s.split(/[–-]/)[0];                 // before en-dash/hyphen
+    var m = first.match(/(\d{1,2}):(\d{2})/);
+    if (!m) return null;
+    var h = parseInt(m[1],10), min = parseInt(m[2],10);
+    if (ampm === 'PM' && h !== 12) h += 12;
+    if (ampm === 'AM' && h === 12) h = 0;
+    return h*60 + min;
+  }
+  function fmtMin(x){ var r = Math.round(x); return r + (r===1?' min':' min'); }
+
+  // ---- map ----
+  var pts = tours.map(function(t){ return [t.lat, t.lng]; });
+  var map = L.map('map', { scrollWheelZoom: false });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+
+  // route line
+  L.polyline(pts, { color:'#2c5282', weight:4, opacity:0.7, dashArray:'2,8' }).addTo(map);
+
+  // numbered markers + popups
+  tours.forEach(function(t, i){
+    var prio = t.isPriority ? ' prio' : '';
+    var icon = L.divIcon({ className:'', html:'<div class="pin'+prio+'"><span>'+(i+1)+'</span></div>', iconSize:[26,26], iconAnchor:[13,26], popupAnchor:[0,-26] });
+    var pop = '<div class="pop">' +
+      (t.img ? '<img src="'+t.img+'" alt="" onerror="this.style.display=\'none\'">' : '') +
+      '<b>'+(i+1)+'. '+t.time+'</b><br>'+ t.address +
+      (t.url ? '<br><a href="'+t.url+'" target="_blank" rel="noopener">View listing &rarr;</a>' : '') +
+      '</div>';
+    L.marker([t.lat, t.lng], { icon:icon }).addTo(map).bindPopup(pop);
+  });
+
+  // drive-time labels at segment midpoints
+  route.legs.forEach(function(lg){
+    var a = tours[lg.from], b = tours[lg.to];
+    if (!a || !b) return;
+    var mid = [(a.lat+b.lat)/2, (a.lng+b.lng)/2];
+    var lbl = L.divIcon({ className:'', html:'<div class="leg-lbl">'+fmtMin(lg.min)+'</div>', iconSize:[1,1] });
+    L.marker(mid, { icon:lbl, interactive:false }).addTo(map);
+  });
+
+  map.fitBounds(L.latLngBounds(pts).pad(0.18));
+
+  // ---- header + stat cards ----
+  document.getElementById('hb-driving').textContent = 'Driving: ~' + Math.round(route.totalMin) + ' min total';
+  document.getElementById('hb-distance').textContent = 'Distance: ~' + route.totalMiles.toFixed(1) + ' mi';
+  var firstT = tours[0].time, lastT = tours[tours.length-1].time;
+  document.getElementById('statRow').innerHTML =
+    '<div class="stat-card"><div class="stat-num">'+tours.length+'</div><div class="stat-label">Tour Stops</div></div>' +
+    '<div class="stat-card"><div class="stat-num">~'+Math.round(route.totalMin)+'</div><div class="stat-label">Min Driving (total)</div></div>' +
+    '<div class="stat-card"><div class="stat-num">~'+route.totalMiles.toFixed(0)+'</div><div class="stat-label">Miles (total)</div></div>' +
+    '<div class="stat-card"><div class="stat-num" style="font-size:18px;padding-top:6px;">'+firstT+'<br>&ndash; '+lastT+'</div><div class="stat-label">Day Window</div></div>';
+
+  document.getElementById('homeNote').innerHTML = '&#127968; <b>Before you start:</b> ' + route.homeNote;
+  document.getElementById('srcNote').textContent = 'Drive times: ' + route.source + '. Add a few minutes of buffer for parking and traffic.';
+
+  // ---- google maps full-route link ----
+  var gurl = 'https://www.google.com/maps/dir/' + tours.map(function(t){ return t.lat+','+t.lng; }).join('/');
+  document.getElementById('gmapsBtn').href = gurl;
+
+  // ---- schedule table (interleaved stops + legs) ----
+  var legByFrom = {};
+  route.legs.forEach(function(lg){ legByFrom[lg.from] = lg; });
+  var rows = '';
+  tours.forEach(function(t, i){
+    var prio = t.isPriority ? ' prio' : '';
+    rows += '<tr class="stop-row"><td><span class="num-badge'+prio+'">'+(i+1)+'</span>'+t.address+'</td>'+
+            '<td>'+t.time+'</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>';
+    var lg = legByFrom[i];
+    if (lg) {
+      var next = tours[i+1];
+      var gap = parseStart(next.time) - parseStart(t.time);   // minutes between scheduled starts
+      var buffer = gap - lg.min;                               // time left after driving
+      var cls, txt;
+      if (gap == null || isNaN(gap)) { cls='ok'; txt='&mdash;'; }
+      else if (buffer >= 35) { cls='ok'; txt='&#9989; Plenty (' + Math.round(buffer) + ' min spare)'; }
+      else if (buffer >= 15) { cls='tight'; txt='&#9888; Doable (' + Math.round(buffer) + ' min spare)'; }
+      else if (buffer >= 0)  { cls='tight'; txt='&#9888; Tight (' + Math.round(buffer) + ' min spare)'; }
+      else { cls='bad'; txt='&#10060; Not enough time'; }
+      var bufShow = (gap!=null && !isNaN(gap)) ? (Math.round(buffer)+' min (gap '+gap+')') : '&mdash;';
+      rows += '<tr class="leg-row"><td style="padding-left:30px;">&#8627; drive to next stop ('+lg.miles.toFixed(1)+' mi)</td>'+
+              '<td>&mdash;</td><td>'+fmtMin(lg.min)+'</td><td>'+bufShow+'</td><td class="'+cls+'">'+txt+'</td></tr>';
+    }
+  });
+  document.getElementById('schedBody').innerHTML = rows;
+})();
+</script>
+</body>
+</html>

@@ -160,6 +160,7 @@
     {
       time: "9:00 AM",
       address: "Avalon Monrovia — 825 S Myrtle Ave, Monrovia",
+      lat: 34.143519, lng: -118.001032,
       type: "Apt", beds: null, sqft: null,
       rent: null, rentNum: null, inBudget: null,
       agent: null, agentPhone: "(626) 314-7707",
@@ -172,6 +173,7 @@
     {
       time: "10:00 AM",
       address: "361 Norumbega Dr, Monrovia",
+      lat: 34.158080, lng: -117.989723,
       type: "House", beds: "3BR 2BA", sqft: 1350,
       rent: "~$4,100/mo", rentNum: 4100, inBudget: true,
       agent: "Apple Zhou", agentPhone: "(626) 400-8880",
@@ -183,6 +185,7 @@
     {
       time: "11:00 AM",
       address: "1032 Royal Oaks Dr #C, Duarte",
+      lat: 34.143129, lng: -117.982713,
       type: null, beds: null, sqft: null,
       rent: null, rentNum: null, inBudget: null,
       agent: "Margarit Torgomyan", agentPhone: "(626) 808-8055",
@@ -194,6 +197,7 @@
     {
       time: "12:00 PM",
       address: "417 E. Walnut Ave #A, Monrovia",
+      lat: 34.143767, lng: -117.997966,
       type: "Apt", beds: "2BR 1BA", sqft: 900,
       rent: "$2,995/mo", rentNum: 2995, inBudget: true,
       agent: "Sonia Lang", agentPhone: null,
@@ -205,6 +209,7 @@
     {
       time: "1:00 PM",
       address: "716 Gladys Ave, Monrovia",
+      lat: 34.144700, lng: -117.992796,
       type: "House", beds: null, sqft: null,
       rent: null, rentNum: null, inBudget: null,
       agent: null, agentPhone: null,
@@ -217,6 +222,7 @@
     {
       time: "2:00 PM",
       address: "Solana at Duarte Station — 1750 Fasana Rd, Duarte",
+      lat: 34.134231, lng: -117.969948,
       type: null, beds: "3BR", sqft: null,
       rent: null, rentNum: null, inBudget: null,
       agent: null, agentPhone: "(949) 490-6590",
@@ -229,6 +235,7 @@
     {
       time: "3:00–4:00 PM",
       address: "Esperanza at Duarte Station — 1700 Fasana Rd, Duarte",
+      lat: 34.133700, lng: -117.969300,
       type: null, beds: null, sqft: null,
       rent: null, rentNum: null, inBudget: null,
       agent: null, agentPhone: null,
@@ -241,6 +248,7 @@
     {
       time: "4:00–5:00 PM",
       address: "1676 3rd St, Duarte",
+      lat: 34.140830, lng: -117.969698,
       type: "House", beds: "3BR", sqft: null,
       rent: "$3,950/mo", rentNum: 3950, inBudget: true,
       agent: null, agentPhone: "(626) 606-2146",
@@ -252,6 +260,7 @@
     {
       time: "5:30 PM",
       address: "304 W Lime Ave, Monrovia",
+      lat: 34.147927, lng: -118.005568,
       type: null, beds: null, sqft: null,
       rent: null, rentNum: null, inBudget: null,
       agent: "Jay Hu", agentPhone: null,
@@ -821,12 +830,35 @@
   };
 
   // -------------------------------------------------------------------
+  // ROUTE — driving legs between consecutive tour stops (in tour order).
+  // Times/distances from OSRM driving profile (typical free-flow), captured
+  // 2026-06-03. from/to are indexes into the tours[] array above.
+  // -------------------------------------------------------------------
+  var route = {
+    source: "OSRM driving (typical, no live traffic) · captured Jun 3, 2026",
+    homeNote: "Home (Hollywood Hills) → Avalon ≈ 40–45 min / ~30 mi — leave by ~8:05 AM for the 9:00 tour.",
+    totalMin: 32.2,
+    totalMiles: 10.23,
+    legs: [
+      { from: 0, to: 1, min: 4.9, miles: 1.73 },
+      { from: 1, to: 2, min: 5.3, miles: 1.49 },
+      { from: 2, to: 3, min: 3.0, miles: 0.92 },
+      { from: 3, to: 4, min: 1.9, miles: 0.47 },
+      { from: 4, to: 5, min: 6.4, miles: 2.00 },
+      { from: 5, to: 6, min: 0.4, miles: 0.10 },
+      { from: 6, to: 7, min: 2.9, miles: 0.83 },
+      { from: 7, to: 8, min: 7.6, miles: 2.80 }
+    ]
+  };
+
+  // -------------------------------------------------------------------
   window.RENTAL_DATA = {
     meta: meta,
     priorityProperties: priorityProperties,
     tours: tours,
     listings: listings,
     stats: stats,
+    route: route,
     classify: classify
   };
 })();
