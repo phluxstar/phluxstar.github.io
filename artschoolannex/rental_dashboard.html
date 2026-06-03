@@ -3,122 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>New Chapter — Rental Watch Dashboard</title>
+<title>Rental Watch — CS Arts / Old Town Monrovia</title>
 <style>
-  :root{--bg:#0d1117;--card:#161b22;--line:#2d333b;--ink:#e6edf3;--mut:#8b949e;
-    --green:#1f6f43;--greenbg:#0f2f1e;--yellow:#7a6512;--yellowbg:#2e2706;
-    --orange:#8a4b14;--orangebg:#2e1a08;--blue:#1f6feb;--accent:#58a6ff;}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.5;padding:0 0 48px}
-  .wrap{max-width:920px;margin:0 auto;padding:0 16px}
-  header{background:linear-gradient(135deg,#0f1f3d,#1a3060);padding:28px 0 22px;border-bottom:1px solid var(--line)}
-  h1{margin:0 0 4px;font-size:1.5rem}
-  .sub{color:#a9c4ef;font-size:.92rem}
-  .stamp{margin-top:10px;font-size:.82rem;color:#cdd9ee}
-  .pill{display:inline-block;background:#10243f;border:1px solid #25497d;color:#aecbff;
-    border-radius:999px;padding:2px 10px;font-size:.74rem;margin-right:6px;margin-bottom:4px}
-  h2{font-size:1.05rem;margin:30px 0 6px;border-left:3px solid var(--accent);padding-left:9px}
-  .note{color:var(--mut);font-size:.84rem;margin:0 0 12px}
-  .prop{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 16px 6px;margin-bottom:16px}
-  .prop h3{margin:0 0 2px;font-size:1.05rem}
-  .prop .addr{color:var(--mut);font-size:.82rem;margin-bottom:10px}
-  .top{border-color:#3a5a9a;box-shadow:0 0 0 1px #24406e inset}
-  .tag{font-size:.68rem;background:#3a2d05;color:#f5d76e;border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:middle}
-  table{width:100%;border-collapse:collapse;font-size:.86rem;margin-bottom:8px}
-  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
-  th{color:var(--mut);font-weight:600;font-size:.74rem;text-transform:uppercase;letter-spacing:.03em}
-  .chip{display:inline-block;border-radius:6px;padding:1px 8px;font-size:.74rem;font-weight:600;white-space:nowrap}
-  .ingreen{background:var(--greenbg);color:#56d364;border:1px solid var(--green)}
-  .inyellow{background:var(--yellowbg);color:#e3b341;border:1px solid var(--yellow)}
-  .inorange{background:var(--orangebg);color:#e09b54;border:1px solid var(--orange)}
-  .empty{color:var(--mut);font-style:italic;padding:6px 2px 12px}
-  .nb{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .nb .l{font-size:.9rem}
-  .nb .a{color:var(--mut);font-size:.78rem}
-  .nb .r{text-align:right;white-space:nowrap}
-  a{color:var(--accent);text-decoration:none}
-  footer{margin-top:32px;color:var(--mut);font-size:.8rem;border-top:1px solid var(--line);padding-top:14px}
-  .ok{color:#56d364}
+  :root{--in:#1b7f4b;--in-bg:#e7f6ee;--yellow:#9a6a00;--yellow-bg:#fff5db;--orange:#a13b00;--orange-bg:#ffe9db;--ink:#1a2233;--muted:#5a6577;--line:#e4e8ef;--card:#fff;--bg:#f4f6fa;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;}
+  .wrap{max-width:920px;margin:0 auto;padding:20px 16px 60px;}
+  header{background:linear-gradient(135deg,#0f1f3d,#1a3060);color:#fff;border-radius:16px;padding:24px 22px;margin-bottom:22px;}
+  header h1{margin:0 0 4px;font-size:1.5rem;}
+  header p{margin:2px 0;font-size:.9rem;opacity:.9;}
+  .stamp{display:inline-block;margin-top:10px;background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:.82rem;}
+  .nochange{background:#eef3f9;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:24px;font-size:.92rem;color:var(--muted);}
+  h2{font-size:1.12rem;margin:30px 0 12px;display:flex;align-items:center;gap:8px;}
+  .prop{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 1px 3px rgba(20,30,60,.05);}
+  .prop.top{border-color:#c9d6f0;box-shadow:0 2px 10px rgba(26,48,96,.1);}
+  .prop h3{margin:0 0 2px;font-size:1.1rem;}
+  .prop .addr{color:var(--muted);font-size:.85rem;margin-bottom:10px;}
+  .badge{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:20px;vertical-align:middle;margin-left:6px;}
+  .badge.top{background:#1a3060;color:#fff;}
+  .badge.special{background:#e7f6ee;color:var(--in);}
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:.9rem;}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);}
+  th{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
+  tr:last-child td{border-bottom:none;}
+  .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.78rem;font-weight:600;}
+  .pill.in{background:var(--in-bg);color:var(--in);}
+  .pill.yellow{background:var(--yellow-bg);color:var(--yellow);}
+  .pill.orange{background:var(--orange-bg);color:var(--orange);}
+  .empty{color:var(--muted);font-style:italic;font-size:.9rem;padding:6px 2px;}
+  .nearby{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+  .nearby .nm{font-weight:600;font-size:.92rem;}
+  .nearby .meta{color:var(--muted);font-size:.8rem;}
+  footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;text-align:center;}
+  a{color:#1a3060;}
 </style>
 </head>
 <body>
-<header><div class="wrap">
-  <h1>🏠 New Chapter — Rental Watch</h1>
-  <div class="sub">3BR &amp; 2BR+loft near CS Arts High / Old Town Monrovia · Budget $3,000–$4,300/mo</div>
-  <div class="stamp">
-    <span class="pill">Last checked: Jun 2, 2026 · 6:11 PM PT</span>
-    <span class="pill">Next: Jun 3 · 8:00 AM PT</span>
-    <span class="pill ok">✓ No new listings this run</span>
-  </div>
-</div></header>
-
 <div class="wrap">
+  <header>
+    <h1>🏠 Rental Watch — Second Residence</h1>
+    <p>Near CS Arts High School &amp; Old Town Monrovia</p>
+    <p>Budget target: <strong>$3,000–$4,300/mo</strong> · 3BR or 2BR+loft</p>
+    <span class="stamp">Last checked: June 3, 2026 · 8:11 AM PT</span>
+  </header>
 
-  <h2>Priority Properties</h2>
-  <p class="note">Green = in budget ($3,000–$4,300) · Yellow = $4,300–$5,000 · Orange = $5,000+</p>
+  <div class="nochange">
+    <strong>No new listings this run.</strong> All three priority communities are unchanged since the last check, and every in-range nearby 3BR was already on the watchlist. No alert email sent.
+  </div>
+
+  <h2>⭐ Priority Properties</h2>
 
   <div class="prop top">
-    <h3>✨ Esperanza at Duarte Station <span class="tag">TOP PRIORITY</span></h3>
-    <div class="addr">1700 Fasana Rd, Duarte, CA 91010 · (626) 361-4825 · Special: 2 Months Free</div>
+    <h3>Esperanza at Duarte Station <span class="badge top">Top Priority</span><span class="badge special">2 Months Free</span></h3>
+    <div class="addr">1700 Fasana Rd, Duarte, CA 91010 · (626) 361-4825</div>
     <table>
-      <thead><tr><th>Unit</th><th>Plan</th><th>Bed/Bath</th><th>Sq Ft</th><th>Rent</th><th>Available</th><th>Budget</th></tr></thead>
+      <thead><tr><th>Unit</th><th>Plan</th><th>Bd/Ba</th><th>Sq Ft</th><th>Rent</th><th>Available</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td>407</td><td>Three Bedroom D1</td><td>3 / 3</td><td>1,174</td><td>$4,100</td><td>Now</td><td><span class="chip ingreen">In budget</span></td></tr>
-        <tr><td>507</td><td>Three Bedroom D1</td><td>3 / 3</td><td>1,174</td><td>$4,100</td><td>Now</td><td><span class="chip ingreen">In budget</span></td></tr>
-        <tr><td>229</td><td>Three Bedroom D2</td><td>3 / 2</td><td>1,098</td><td>$3,950</td><td>Oct 7</td><td><span class="chip ingreen">In budget</span></td></tr>
+        <tr><td>407</td><td>Three Bedroom D1</td><td>3/3</td><td>1,174</td><td>$4,100/mo</td><td>Now</td><td><span class="pill in">In budget</span></td></tr>
+        <tr><td>507</td><td>Three Bedroom D1</td><td>3/3</td><td>1,174</td><td>$4,100/mo</td><td>Now</td><td><span class="pill in">In budget</span></td></tr>
+        <tr><td>229</td><td>Three Bedroom D2</td><td>3/2</td><td>1,098</td><td>$3,950/mo</td><td>Oct 7</td><td><span class="pill in">In budget</span></td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="prop">
-    <h3>🌿 Solana at Duarte Station</h3>
-    <div class="addr">1750 Fasana Rd, Duarte, CA 91010 · (949) 490-6590 · Special: 2 Months Free</div>
-    <div class="empty">No 3BR units currently available. Floor plans C1 (3BD/3BA, 1,899 sqft) and C1-M (3BD/3BA, 2,237 sqft) listed as “Available Soon — Call for Rent.”</div>
+    <h3>Solana at Duarte Station <span class="badge special">8 Weeks Free</span></h3>
+    <div class="addr">1750 Fasana Rd, Duarte, CA 91010 · (949) 490-6590</div>
+    <div class="empty">No 3BR units currently available. Plans C1 (1,899 sqft) &amp; C1-M (2,237 sqft) show "Available Soon / Call for Rent" — monitoring.</div>
   </div>
 
   <div class="prop">
-    <h3>🏙️ Avalon Monrovia</h3>
-    <div class="addr">825 S Myrtle Ave, Monrovia, CA 91016 · (855) 572-9173 · Old Town Monrovia</div>
+    <h3>Avalon Monrovia</h3>
+    <div class="addr">825 S Myrtle Ave, Monrovia, CA 91016 · (855) 572-9173</div>
     <table>
-      <thead><tr><th>Unit</th><th>Plan</th><th>Bed</th><th>Rent</th><th>Available</th><th>Budget</th></tr></thead>
+      <thead><tr><th>Unit</th><th>Plan</th><th>Bd</th><th>Rent</th><th>Available</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td>SI-FL4</td><td>3BR Signature / Fl 4</td><td>3</td><td>$5,200</td><td>Now</td><td><span class="chip inorange">Over budget</span></td></tr>
-        <tr><td>SI-FL1</td><td>3BR Signature / Fl 1</td><td>3</td><td>$5,910</td><td>Now</td><td><span class="chip inorange">Over budget</span></td></tr>
+        <tr><td>SI-FL4</td><td>3BR Signature / Fl 4</td><td>3</td><td>$5,200/mo</td><td>Now</td><td><span class="pill orange">Over budget</span></td></tr>
+        <tr><td>SI-FL1</td><td>3BR Signature / Fl 1</td><td>3</td><td>$5,910/mo</td><td>Now</td><td><span class="pill orange">Over budget</span></td></tr>
       </tbody>
     </table>
   </div>
 
-  <h2>Nearby Finds — In Budget, within ~3 mi of CS Arts</h2>
-  <p class="note">Tracked from the broader Monrovia / Duarte / Arcadia 3BR search. No new entries this run.</p>
+  <h2>📍 Nearby Finds <span style="font-weight:400;font-size:.85rem;color:var(--muted)">(within ~3 mi of CS Arts)</span></h2>
 
-  <div class="nb"><div><div class="l">The Monroe <span class="a">— Old Town, ~0.3 mi</span></div><div class="a">127 W Pomona St, Monrovia · Studio–3BR · 2 Months Free</div></div><div class="r"><span class="chip ingreen">3BR call for rent</span></div></div>
-  <div class="nb"><div><div class="l">Alexan Marmont <span class="a">— ~0.5 mi</span></div><div class="a">1625 S Magnolia Ave, Monrovia · Studio–3BR · 2 Months Free</div></div><div class="r"><span class="chip ingreen">3BR call for rent</span></div></div>
-  <div class="nb"><div><div class="l">727 W Hillcrest Blvd <span class="a">— house</span></div><div class="a">Monrovia · 3BR</div></div><div class="r">$3,018 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">2423 S Myrtle Ave <span class="a">— on Myrtle, ~1 mi</span></div><div class="a">Monrovia · 3BR / 2BA · 1,200 sqft</div></div><div class="r">$3,280 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">708 W Duarte Rd <span class="a">— house</span></div><div class="a">Monrovia · 3BR / 3BA · 1,720 sqft</div></div><div class="r">$3,395 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">908 W Foothill Blvd Unit C <span class="a">— apt</span></div><div class="a">Monrovia · 3BR / 2.5BA · 1,268 sqft · 12-mo lease</div></div><div class="r">$3,500 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">1516 Encino Ave <span class="a">— house</span></div><div class="a">Monrovia · 3BR / 2.5BA · 1,662 sqft</div></div><div class="r">$3,775 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">232 May Ave <span class="a">— apt</span></div><div class="a">Monrovia · 3BR / 2BA · 1,484 sqft</div></div><div class="r">$3,800 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">1907 Graydon Ave <span class="a">— house</span></div><div class="a">Monrovia · 3BR / 2BA · 1,235 sqft</div></div><div class="r">$4,200 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">1676 3rd St <span class="a">— house, near Esperanza/Solana</span></div><div class="a">Duarte · 3BR</div></div><div class="r">$3,950 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">605 S 2nd Ave Unit A <span class="a">— ~2 mi</span></div><div class="a">Arcadia · 3BR / 2.5BA · 1,400 sqft</div></div><div class="r">$3,200 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">601 Camino Grove Ave <span class="a">— ~2 mi</span></div><div class="a">Arcadia · 3BR / 2BA · 1,496 sqft</div></div><div class="r">$3,295 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">909 N Santa Anita Ave Unit Main <span class="a">— ~2.5 mi</span></div><div class="a">Arcadia · 3BR / 1BA · 1,021 sqft · 12-mo lease</div></div><div class="r">$3,400 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">402 California St Unit B <span class="a">— ~2 mi</span></div><div class="a">Arcadia · 3BR / 3BA · 1,390 sqft · condo</div></div><div class="r">$3,595 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">2558 S 10th Ave <span class="a">— ~2 mi</span></div><div class="a">Arcadia · 3BR / 2BA · 1,200 sqft</div></div><div class="r">$4,000 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">2018 S 2nd Ave <span class="a">— ~2 mi</span></div><div class="a">Arcadia · 3BR · 1,700 sqft · 12-mo lease</div></div><div class="r">$4,200 <span class="chip ingreen">In budget</span></div></div>
-  <div class="nb"><div><div class="l">2319 El Capitan Ave <span class="a">— ~2 mi · at ceiling</span></div><div class="a">Arcadia · 3BR / 2BA · 1,881 sqft</div></div><div class="r">$4,300 <span class="chip ingreen">In budget</span></div></div>
-
-  <p class="note">Just outside budget (worth a call): 1014 Junipero Dr, Duarte — 3BR/2BA, 1,178 sqft — $2,950 (under min) · 2911 Spruce Ct, Arcadia — 3BR/2.5BA, 2,200 sqft — $4,350 · 503 N Santa Anita Ave, Arcadia — $4,500 (house) / $4,550 (townhome).</p>
+  <div class="nearby"><div><span class="nm">The Monroe</span><div class="meta">127 W Pomona St, Monrovia · ~0.3 mi · Studio–3BR · 3BR call-for-rent · 2 Months Free</div></div><span class="pill in">Old Town</span></div>
+  <div class="nearby"><div><span class="nm">Alexan Marmont</span><div class="meta">1625 S Magnolia Ave, Monrovia · ~0.5 mi · Studio–3BR · 3BR call-for-rent · 2 Months Free</div></div><span class="pill in">Old Town</span></div>
+  <div class="nearby"><div><span class="nm">727 W Hillcrest Blvd</span><div class="meta">Monrovia · house · 3BR</div></div><span class="pill in">$3,018</span></div>
+  <div class="nearby"><div><span class="nm">605 S 2nd Ave Unit A</span><div class="meta">Arcadia · ~2 mi · 3BR / 2.5BA · 1,400 sqft</div></div><span class="pill in">$3,200</span></div>
+  <div class="nearby"><div><span class="nm">2423 S Myrtle Ave</span><div class="meta">Monrovia · ~1 mi · 3BR / 2BA · 1,200 sqft (same street as CS Arts)</div></div><span class="pill in">$3,280</span></div>
+  <div class="nearby"><div><span class="nm">601 Camino Grove Ave</span><div class="meta">Arcadia · ~2 mi · 3BR / 2BA · 1,496 sqft</div></div><span class="pill in">$3,295</span></div>
+  <div class="nearby"><div><span class="nm">708 W Duarte Rd</span><div class="meta">Monrovia · 3BR / 3BA · 1,720 sqft</div></div><span class="pill in">$3,395</span></div>
+  <div class="nearby"><div><span class="nm">909 N Santa Anita Ave Unit Main</span><div class="meta">Arcadia · ~2.5 mi · 3BR / 1BA · 1,021 sqft · 12-mo lease</div></div><span class="pill in">$3,400</span></div>
+  <div class="nearby"><div><span class="nm">908 W Foothill Blvd Unit C</span><div class="meta">Monrovia · 3BR / 2.5BA · 1,268 sqft · 12-mo lease</div></div><span class="pill in">$3,500</span></div>
+  <div class="nearby"><div><span class="nm">402 California St Unit B</span><div class="meta">Arcadia · ~2 mi · condo · 3BR / 3BA · 1,390 sqft</div></div><span class="pill in">$3,595</span></div>
+  <div class="nearby"><div><span class="nm">1516 Encino Ave</span><div class="meta">Monrovia · house · 3BR / 2.5BA · 1,662 sqft</div></div><span class="pill in">$3,775</span></div>
+  <div class="nearby"><div><span class="nm">232 May Ave</span><div class="meta">Monrovia · 3BR / 2BA · 1,484 sqft</div></div><span class="pill in">$3,800</span></div>
+  <div class="nearby"><div><span class="nm">1676 3rd St</span><div class="meta">Duarte · house · 3BR (near Esperanza/Solana)</div></div><span class="pill in">$3,950</span></div>
+  <div class="nearby"><div><span class="nm">2558 S 10th Ave</span><div class="meta">Arcadia · ~2 mi · 3BR / 2BA · 1,200 sqft</div></div><span class="pill in">$4,000</span></div>
+  <div class="nearby"><div><span class="nm">1907 Graydon Ave</span><div class="meta">Monrovia · house · 3BR / 2BA · 1,235 sqft</div></div><span class="pill in">$4,200</span></div>
+  <div class="nearby"><div><span class="nm">2018 S 2nd Ave</span><div class="meta">Arcadia · ~2 mi · house · 3BR / 2BA · 1,700 sqft</div></div><span class="pill in">$4,200</span></div>
+  <div class="nearby"><div><span class="nm">2319 El Capitan Ave</span><div class="meta">Arcadia · ~2 mi · 3BR / 2BA · 1,881 sqft</div></div><span class="pill in">$4,300</span></div>
+  <div class="nearby"><div><span class="nm">2911 Spruce Ct</span><div class="meta">Arcadia · ~2 mi · 3BR / 2.5BA · 2,200 sqft</div></div><span class="pill yellow">$4,350</span></div>
+  <div class="nearby"><div><span class="nm">503 N Santa Anita Ave (house)</span><div class="meta">Arcadia · ~2 mi · 3BR / 3BA · 1,960 sqft</div></div><span class="pill yellow">$4,500</span></div>
+  <div class="nearby"><div><span class="nm">503 N Santa Anita Ave (townhome)</span><div class="meta">Arcadia · ~2 mi · 3BR / 2.5BA · 1,892 sqft</div></div><span class="pill yellow">$4,550</span></div>
 
   <footer>
-    Automated rental watch · runs 3× daily (8 AM · 1 PM · 6 PM PT). Email alerts fire only when a genuinely new
-    listing appears versus the prior snapshot. This 6 PM run found no new units or nearby listings, so no alert was sent.
-    Next check: Wednesday, June 3, 2026 at 8:00 AM PT.
+    Checked automatically 3× daily (8am · 1pm · 6pm PT). Next run: <strong>Wednesday, June 3, 2026 at 1:00 PM PT</strong>.<br>
+    Green = in budget ($3K–$4.3K) · Yellow = $4.3K–$5K · Orange = $5K+. You'll get an email/text only when something new appears.
   </footer>
-
 </div>
 </body>
 </html>
