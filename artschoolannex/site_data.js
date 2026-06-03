@@ -8,7 +8,7 @@
    file:// locally AND on Netlify with no CORS issues.
 
    Data freshness: priorityProperties + listings reflect the FRESHEST
-   data available — rental_tracker.json (6:10 PM check) +
+   data available — rental_tracker.json (Jun 2 6:11 PM check) +
    rental_dashboard.html (6pm check). Stale esperanza units (211, old 229
    price) from tracker.html have been discarded in favor of the fresh
    407 / 507 / 229 ($3,950, Oct 7) data.
@@ -21,8 +21,8 @@
   // META
   // -------------------------------------------------------------------
   var meta = {
-    lastChecked: "June 2, 2026 · 1:11 PM PT",
-    lastCheckedISO: "2026-06-02T13:11:00",
+    lastChecked: "June 2, 2026 · 6:11 PM PT",
+    lastCheckedISO: "2026-06-02T18:11:00",
     budgetMin: 3000,
     budgetMax: 4300,
     budgetLabel: "$3,000–$4,300/mo",
@@ -31,7 +31,7 @@
     homeAddress: "8932 Hollywood Hills Rd, Los Angeles, CA 90046",
     gymSave: GYM_SAVE,
     checkSchedule: "3× daily (8am · 1pm · 6pm PT)",
-    nextCheck: "Tuesday, June 2, 2026 at 6:00 PM PT"
+    nextCheck: "Wednesday, June 3, 2026 at 8:00 AM PT"
   };
 
   // -------------------------------------------------------------------
