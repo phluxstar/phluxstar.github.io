@@ -164,6 +164,8 @@
       rent: null, rentNum: null, inBudget: null,
       agent: null, agentPhone: "(626) 314-7707",
       listingId: "avalon",
+      img: "https://images1.apartments.com/i2/-qmPg6QCj97GtkoAlDAP5n5cyNFdCUy25gJS5twFQyI/116/avalon-monrovia-monrovia-ca-avalon-monrovia-pool-and-sundeck.jpg",
+      url: "https://www.apartments.com/avalon-monrovia-monrovia-ca/y1zwvrv/",
       isNew: true, isPriority: true,
       note: "Community tour — bring photo ID. Office at Myrtle & Chestnut; park on street."
     },
@@ -174,6 +176,8 @@
       rent: "~$4,100/mo", rentNum: 4100, inBudget: true,
       agent: "Apple Zhou", agentPhone: "(626) 400-8880",
       listingId: "norumbega-361",
+      img: "https://photos.zillowstatic.com/fp/9ae9f53c029499241e51aa9ce00dffd5-cc_ft_1536.jpg",
+      url: "https://www.zillow.com/homedetails/361-Norumbega-Dr-Monrovia-CA-91016/21583767_zpid/",
       note: "price varies by source, confirm at tour"
     },
     {
@@ -183,6 +187,8 @@
       rent: null, rentNum: null, inBudget: null,
       agent: "Margarit Torgomyan", agentPhone: "(626) 808-8055",
       listingId: "royaloaks-1032",
+      img: "https://photos.zillowstatic.com/fp/c612e94a8d9a3059e5f00dffea8698e5-cc_ft_1536.jpg",
+      url: "https://www.zillow.com/homedetails/1032-Royal-Oaks-Dr-UNIT-C-Monrovia-CA-91016/21588723_zpid/",
       note: "verify details at tour"
     },
     {
@@ -192,6 +198,8 @@
       rent: "$2,995/mo", rentNum: 2995, inBudget: true,
       agent: "Sonia Lang", agentPhone: null,
       listingId: "walnut-417",
+      img: "https://photos.zillowstatic.com/fp/549b2408db686232c0d12f3a8466eca0-cc_ft_1536.jpg",
+      url: "https://www.zillow.com/homedetails/417-E-Walnut-Ave-Monrovia-CA-91016/21583040_zpid/",
       note: "2BR (under $3K)"
     },
     {
@@ -201,6 +209,8 @@
       rent: null, rentNum: null, inBudget: null,
       agent: null, agentPhone: null,
       listingId: "gladys-716",
+      img: "https://photos.zillowstatic.com/fp/f0c5cf21d060ef85f3d5a41d879a1691-cc_ft_1536.jpg",
+      url: "https://www.zillow.com/homedetails/716-Gladys-Ave-Monrovia-CA-91016/462799403_zpid/",
       isNew: true,
       note: "Added to Family calendar — verify details at tour"
     },
@@ -211,6 +221,8 @@
       rent: null, rentNum: null, inBudget: null,
       agent: null, agentPhone: "(949) 490-6590",
       listingId: "solana",
+      img: "https://images1.apartments.com/i2/d-AWQMJo80zNTDOLIMTSB2lEFO9hxkHZQn0iy5QtnYI/116/solana-at-duarte-station-duarte-ca-building-photo.jpg",
+      url: "https://www.apartments.com/solana-at-duarte-station-duarte-ca/75x9h5w/",
       isNew: true, isPriority: true,
       note: "Priority property — bring photo ID"
     },
@@ -221,6 +233,8 @@
       rent: null, rentNum: null, inBudget: null,
       agent: null, agentPhone: null,
       listingId: "esperanza",
+      img: "https://images1.apartments.com/i2/QpYE8_WDPqlhQLAP7hQF5E07_vqZv9oxQGcetqn7qE0/116/esperanza-at-duarte-station-duarte-ca-building-photo.jpg",
+      url: "https://www.apartments.com/esperanza-at-duarte-station-duarte-ca/4hjhepj/",
       isPriority: true,
       note: "Bring photo ID"
     },
@@ -231,6 +245,8 @@
       rent: "$3,950/mo", rentNum: 3950, inBudget: true,
       agent: null, agentPhone: "(626) 606-2146",
       listingId: "duarte-1676",
+      img: "https://photos.zillowstatic.com/fp/0beb329dbf8a3719a056ee6cd8ca88e0-cc_ft_1536.jpg",
+      url: "https://www.zillow.com/homedetails/1676-3rd-St-Duarte-CA-91010/306335509_zpid/",
       note: null
     },
     {
@@ -240,6 +256,8 @@
       rent: null, rentNum: null, inBudget: null,
       agent: "Jay Hu", agentPhone: null,
       listingId: null,
+      img: "https://photos.zillowstatic.com/fp/97278e19e896131f64f5c5e8562854a5-cc_ft_1536.jpg",
+      url: "https://www.zillow.com/homedetails/304-W-Lime-Ave-Monrovia-CA-91016/2079654800_zpid/",
       note: "verify details at tour"
     }
   ];

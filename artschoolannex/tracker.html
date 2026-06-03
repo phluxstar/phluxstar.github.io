@@ -79,7 +79,7 @@
   <div class="section-title">&#128197; Tours Booked &mdash; Friday, June 5, 2026</div>
   <div class="prop-block" style="border-left:5px solid #6b46c1;">
     <table>
-      <thead><tr><th>Time</th><th>Address</th><th>Agent / Note</th></tr></thead>
+      <thead><tr><th>Photo</th><th>Time</th><th>Address</th><th>Agent / Note</th></tr></thead>
       <tbody id="tourBody"></tbody>
     </table>
   </div>
@@ -172,7 +172,13 @@
     } else {
       note = EM;
     }
-    return '<tr><td><strong>' + t.time + '</strong></td><td>' + t.address + '</td><td>' + note + '</td></tr>';
+    var photo = t.img
+      ? '<a href="' + (t.url || '#') + '" target="_blank" rel="noopener"><img src="' + t.img + '" alt="" loading="lazy" style="width:96px;height:64px;object-fit:cover;border-radius:6px;display:block;" onerror="this.style.display=\'none\';this.parentNode.textContent=\'' + EM + '\';"></a>'
+      : EM;
+    var addrCell = t.url
+      ? '<a href="' + t.url + '" target="_blank" rel="noopener" style="color:#2b6cb0;text-decoration:none;font-weight:600;">' + t.address + '</a>'
+      : t.address;
+    return '<tr><td>' + photo + '</td><td><strong>' + t.time + '</strong></td><td>' + addrCell + '</td><td>' + note + '</td></tr>';
   }).join('');
 
   // ---- PRIORITY PROPERTIES ----
