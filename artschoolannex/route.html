@@ -85,9 +85,9 @@
 
   <div class="note-box" id="homeNote"></div>
 
-  <div class="section-title">&#9201;&#65039; Schedule &amp; Drive-Time Check</div>
+  <div class="section-title">&#9201;&#65039; When to Leave Each Stop</div>
   <table id="schedTable">
-    <thead><tr><th>Stop / Leg</th><th>Time</th><th>Drive</th><th>Buffer after drive</th><th>Status</th></tr></thead>
+    <thead><tr><th>Stop</th><th>Tour time</th><th>Min drive to next</th><th>Leave this stop by</th></tr></thead>
     <tbody id="schedBody"></tbody>
   </table>
   <div class="legend" id="srcNote" style="margin-top:10px;"></div>
@@ -116,6 +116,11 @@
     return h*60 + min;
   }
   function fmtMin(x){ var r = Math.round(x); return r + (r===1?' min':' min'); }
+  function fmtClock(mins){
+    var h = Math.floor(mins/60), m = ((mins%60)+60)%60;
+    var ap = h>=12 ? 'PM':'AM'; var hh = h%12; if (hh===0) hh=12;
+    return hh + ':' + (m<10?'0':'') + m + ' ' + ap;
+  }
 
   // ---- map ----
   var pts = tours.map(function(t){ return [t.lat, t.lng]; });
@@ -161,35 +166,30 @@
     '<div class="stat-card"><div class="stat-num" style="font-size:18px;padding-top:6px;">'+firstT+'<br>&ndash; '+lastT+'</div><div class="stat-label">Day Window</div></div>';
 
   document.getElementById('homeNote').innerHTML = '&#127968; <b>Before you start:</b> ' + route.homeNote;
-  document.getElementById('srcNote').textContent = 'Drive times: ' + route.source + '. Add a few minutes of buffer for parking and traffic.';
+  document.getElementById('srcNote').innerHTML = '&quot;Min drive&quot; is the shortest typical driving time to the next stop. &quot;Leave by&quot; = the next tour&rsquo;s start time minus that drive (rounded up) &mdash; the latest you can leave and still arrive on time. Pad a few minutes for parking. Source: ' + route.source + '.';
 
   // ---- google maps full-route link ----
   var gurl = 'https://www.google.com/maps/dir/' + tours.map(function(t){ return t.lat+','+t.lng; }).join('/');
   document.getElementById('gmapsBtn').href = gurl;
 
-  // ---- schedule table (interleaved stops + legs) ----
+  // ---- "leave by" table: minimum drive to next stop + latest departure time ----
   var legByFrom = {};
   route.legs.forEach(function(lg){ legByFrom[lg.from] = lg; });
   var rows = '';
   tours.forEach(function(t, i){
     var prio = t.isPriority ? ' prio' : '';
-    rows += '<tr class="stop-row"><td><span class="num-badge'+prio+'">'+(i+1)+'</span>'+t.address+'</td>'+
-            '<td>'+t.time+'</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>';
     var lg = legByFrom[i];
+    var driveCell = '&mdash;';
+    var leaveCell = '<span class="ok">Last stop &mdash; head home</span>';
     if (lg) {
+      var driveMin = Math.max(1, Math.ceil(lg.min));            // minimum minutes needed (rounded up)
       var next = tours[i+1];
-      var gap = parseStart(next.time) - parseStart(t.time);   // minutes between scheduled starts
-      var buffer = gap - lg.min;                               // time left after driving
-      var cls, txt;
-      if (gap == null || isNaN(gap)) { cls='ok'; txt='&mdash;'; }
-      else if (buffer >= 35) { cls='ok'; txt='&#9989; Plenty (' + Math.round(buffer) + ' min spare)'; }
-      else if (buffer >= 15) { cls='tight'; txt='&#9888; Doable (' + Math.round(buffer) + ' min spare)'; }
-      else if (buffer >= 0)  { cls='tight'; txt='&#9888; Tight (' + Math.round(buffer) + ' min spare)'; }
-      else { cls='bad'; txt='&#10060; Not enough time'; }
-      var bufShow = (gap!=null && !isNaN(gap)) ? (Math.round(buffer)+' min (gap '+gap+')') : '&mdash;';
-      rows += '<tr class="leg-row"><td style="padding-left:30px;">&#8627; drive to next stop ('+lg.miles.toFixed(1)+' mi)</td>'+
-              '<td>&mdash;</td><td>'+fmtMin(lg.min)+'</td><td>'+bufShow+'</td><td class="'+cls+'">'+txt+'</td></tr>';
+      var leaveBy = parseStart(next.time) - driveMin;           // latest departure to arrive on time
+      driveCell = '<b>' + driveMin + ' min</b> <span style="color:#a0aec0;">(' + lg.miles.toFixed(1) + ' mi)</span>';
+      leaveCell = '<b style="color:#9b2c2c;">' + fmtClock(leaveBy) + '</b> <span style="color:#a0aec0;">(to make ' + next.time + ')</span>';
     }
+    rows += '<tr><td><span class="num-badge'+prio+'">'+(i+1)+'</span>'+t.address+'</td>'+
+            '<td>'+t.time+'</td><td>'+driveCell+'</td><td>'+leaveCell+'</td></tr>';
   });
   document.getElementById('schedBody').innerHTML = rows;
 })();
