@@ -130,7 +130,7 @@
         apartments: "https://www.apartments.com/avalon-monrovia-monrovia-ca/y1zwvrv/",
         zillow: "https://www.zillow.com/apartments/monrovia-ca/avalon-monrovia/9V4Lzh/"
       },
-      tourBooked: null,
+      tourBooked: "Fri 6/5 · 9:00 AM",
       display: {
         emoji: "🏙️",
         bg: "linear-gradient(145deg,#1a3a5c 0%,#2c5f8a 100%)",
@@ -157,6 +157,16 @@
   // TOURS — booked for Friday, June 5, 2026 (time order)
   // -------------------------------------------------------------------
   var tours = [
+    {
+      time: "9:00 AM",
+      address: "Avalon Monrovia — 825 S Myrtle Ave, Monrovia",
+      type: "Apt", beds: null, sqft: null,
+      rent: null, rentNum: null, inBudget: null,
+      agent: null, agentPhone: "(626) 314-7707",
+      listingId: "avalon",
+      isNew: true, isPriority: true,
+      note: "Community tour — bring photo ID. Office at Myrtle & Chestnut; park on street."
+    },
     {
       time: "10:00 AM",
       address: "361 Norumbega Dr, Monrovia",
@@ -328,8 +338,8 @@
       distance: "~2.7 mi", distLabel: "2.7 mi", phone: "(626) 415-0730",
       url: "https://www.avaloncommunities.com/california/monrovia-apartments/avalon-monrovia/",
       special: null, freeMonths: 0, tag: "priority",
-      tourTime: null, tourDate: null,
-      notes: "Above budget — Old Town Monrovia location is ideal. Likely premium/furnished Signature unit.",
+      tourTime: "9:00 AM", tourDate: "Tour Fri 6/5 · 9 AM (photo ID)",
+      notes: "Tour booked Fri 6/5 9AM · Above budget — Old Town Monrovia location is ideal. Likely premium/furnished Signature unit.",
       img: "https://images1.apartments.com/i2/-qmPg6QCj97GtkoAlDAP5n5cyNFdCUy25gJS5twFQyI/116/avalon-monrovia-monrovia-ca-avalon-monrovia-pool-and-sundeck.jpg",
       hasGym: true, availText: "Over budget", availType: "now", amenities: 90,
       cs_min: 9, cs_mi: "2.7 mi", hh_min: 85, plan: "SI-FL4 · also SI-FL1 $5,910", isNew: false
@@ -342,8 +352,8 @@
       distance: "~2.7 mi", distLabel: "2.7 mi", phone: "(626) 415-0547",
       url: "https://www.avaloncommunities.com/california/monrovia-apartments/avalon-monrovia/",
       special: null, freeMonths: 0, tag: "priority",
-      tourTime: null, tourDate: null,
-      notes: "Above budget. Likely premium/furnished Signature unit.",
+      tourTime: "9:00 AM", tourDate: "Tour Fri 6/5 · 9 AM (photo ID)",
+      notes: "Tour booked Fri 6/5 9AM · Above budget. Likely premium/furnished Signature unit.",
       img: "https://images1.apartments.com/i2/-qmPg6QCj97GtkoAlDAP5n5cyNFdCUy25gJS5twFQyI/116/avalon-monrovia-monrovia-ca-avalon-monrovia-pool-and-sundeck.jpg",
       hasGym: true, availText: "Over budget", availType: "now", amenities: 90,
       cs_min: 9, cs_mi: "2.7 mi", hh_min: 85, plan: "SI-FL1 Signature", isNew: false
