@@ -21,8 +21,8 @@
   // META
   // -------------------------------------------------------------------
   var meta = {
-    lastChecked: "June 3, 2026 · 8:11 AM PT",
-    lastCheckedISO: "2026-06-03T08:11:00",
+    lastChecked: "June 4, 2026 · 1:03 PM PT",
+    lastCheckedISO: "2026-06-04T13:03:00",
     budgetMin: 3000,
     budgetMax: 4300,
     budgetLabel: "$3,000–$4,300/mo",
@@ -31,7 +31,7 @@
     homeAddress: "8932 Hollywood Hills Rd, Los Angeles, CA 90046",
     gymSave: GYM_SAVE,
     checkSchedule: "3× daily (8am · 1pm · 6pm PT)",
-    nextCheck: "Wednesday, June 3, 2026 at 1:00 PM PT"
+    nextCheck: "Thursday, June 4, 2026 at 6:00 PM PT"
   };
 
   // -------------------------------------------------------------------
