@@ -285,7 +285,7 @@ nav a:hover{color:#fff}
   <section>
     <div class="section-head">📋 Need-to-Know Facts</div>
     <div class="note-box" style="line-height:1.9">
-      <strong>🗓️ Tours booked — Friday, June 5:</strong> <span id="facts-tours"></span><br>
+      <strong>🗓️ Tours booked:</strong> <span id="facts-tours"></span><br>
       <strong>📍 CS Arts distance:</strong> Esperanza &amp; Solana are about 0.7 miles from school — your student could bike or walk. Avalon is a ~9 min drive via the 210.<br>
       <strong>🚂 Metro bonus:</strong> Both Duarte Station properties are 0.4 mi from the Gold Line — ideal if you want a car-free commute day for the kids.<br>
       <strong>🏠 From Hollywood Hills:</strong> All properties are roughly the same distance (~30 mi via I-5 → I-210). Factor 40–55 min for peak traffic, 35 min off-peak.<br>
@@ -302,7 +302,7 @@ nav a:hover{color:#fff}
   <div style="margin-top:6px;opacity:.5">Built for Phlux · New Chapter Search · 2026</div>
 </footer>
 
-<script src="site_data.js?v=20260603-3"></script>
+<script src="site_data.js?v=20260604-1"></script>
 <script>
 // Derive the dashboard `props` array from the single source of truth.
 // Each priority community → one dashboard card.
@@ -526,10 +526,19 @@ function updateLabels(){
 function renderFactsTours(){
   const el = document.getElementById('facts-tours');
   if(!el) return;
-  el.innerHTML = window.RENTAL_DATA.tours.map(t=>{
-    const who = t.agent ? ` (${t.agent})` : (t.note ? ` (${t.note})` : '');
-    return `${t.time} ${t.address}${who}`;
-  }).join(' · ');
+  const groups = {}, order = [];
+  window.RENTAL_DATA.tours.forEach(t=>{
+    const day = t.day || 'Friday, June 5';
+    if(!(day in groups)){ groups[day] = []; order.push(day); }
+    groups[day].push(t);
+  });
+  el.innerHTML = order.map(day=>{
+    const items = groups[day].map(t=>{
+      const who = t.agent ? ` (${t.agent})` : (t.note ? ` (${t.note})` : '');
+      return `${t.time} ${t.address}${who}`;
+    }).join(' · ');
+    return `<br><strong>${day}:</strong> ${items}`;
+  }).join('');
 }
 
 function go(){

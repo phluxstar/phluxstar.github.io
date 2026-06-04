@@ -154,7 +154,11 @@
   ];
 
   // -------------------------------------------------------------------
-  // TOURS — booked for Friday, June 5, 2026 (time order)
+  // TOURS — Friday, June 5 (the 9-stop route) + Saturday, June 6 open
+  // houses. Each tour carries an optional `day`/`dayShort`; tours with NO
+  // day field are the original Friday 6/5 stops (default). Saturday tours
+  // are appended at the END so route.legs indexes (Friday 0–8) stay valid;
+  // route.html filters to Friday only.
   // -------------------------------------------------------------------
   var tours = [
     {
@@ -268,6 +272,35 @@
       img: "https://photos.zillowstatic.com/fp/97278e19e896131f64f5c5e8562854a5-cc_ft_1536.jpg",
       url: "https://www.zillow.com/homedetails/304-W-Lime-Ave-Monrovia-CA-91016/2079654800_zpid/",
       note: "verify details at tour"
+    },
+    // ===== SATURDAY, JUNE 6 — open houses (NOT part of the Fri route) =====
+    {
+      time: "11:00 AM–1:00 PM",
+      day: "Saturday, June 6", dayShort: "Sat 6/6",
+      address: "303 S Alta Vista Ave, Monrovia",
+      lat: null, lng: null,
+      type: "Apt", beds: "3BR 2.5BA", sqft: 1475,
+      rent: "$3,350/mo", rentNum: 3350, inBudget: true,
+      agent: null, agentPhone: null,
+      listingId: "zillow-alta-vista-303",
+      img: "https://photos.zillowstatic.com/fp/8370dd1134ddab9e04f30b021d643d22-p_f.jpg",
+      url: "https://www.zillow.com/homedetails/303-S-Alta-Vista-Ave-Monrovia-CA-91016/446762845_zpid/",
+      isNew: true,
+      note: "Open house — Sat 11 AM–1 PM"
+    },
+    {
+      time: "12:00–3:00 PM",
+      day: "Saturday, June 6", dayShort: "Sat 6/6",
+      address: "134 Peppertree Ln, Monrovia",
+      lat: null, lng: null,
+      type: "Townhouse", beds: "3BR 3BA", sqft: 1440,
+      rent: "$3,485/mo", rentNum: 3485, inBudget: true,
+      agent: null, agentPhone: null,
+      listingId: "zillow-peppertree",
+      img: "https://photos.zillowstatic.com/fp/90b504d1df3697860611d2b89022ddfb-p_f.jpg",
+      url: "https://www.zillow.com/homedetails/134-Peppertree-Ln-Monrovia-CA-91016/54669236_zpid/",
+      isNew: true,
+      note: "Open house — Sat 12–3 PM"
     }
   ];
 
@@ -407,7 +440,7 @@
       distance: "~2.6 mi", distLabel: "~2.6 mi", phone: "Zillow",
       url: "https://www.zillow.com/homedetails/303-S-Alta-Vista-Ave-Monrovia-CA-91016/446762845_zpid/",
       special: null, freeMonths: 0, tag: "zillow",
-      tourTime: null, tourDate: null, notes: "",
+      tourTime: "11:00 AM–1:00 PM", tourDate: "Open House Sat 6/6 · 11 AM–1 PM", notes: "Open house Saturday 6/6, 11 AM–1 PM",
       img: "https://photos.zillowstatic.com/fp/8370dd1134ddab9e04f30b021d643d22-p_f.jpg",
       hasGym: false, availText: "Available", availType: "now", amenities: 40,
       cs_min: 11, cs_mi: "2.6 mi", hh_min: 85, plan: "Apartment for rent", isNew: false
@@ -420,7 +453,7 @@
       distance: "~2.6 mi", distLabel: "~2.6 mi", phone: "Zillow",
       url: "https://www.zillow.com/homedetails/134-Peppertree-Ln-Monrovia-CA-91016/54669236_zpid/",
       special: null, freeMonths: 0, tag: "zillow",
-      tourTime: null, tourDate: null, notes: "",
+      tourTime: "12:00–3:00 PM", tourDate: "Open House Sat 6/6 · 12–3 PM", notes: "Open house Saturday 6/6, 12–3 PM",
       img: "https://photos.zillowstatic.com/fp/90b504d1df3697860611d2b89022ddfb-p_f.jpg",
       hasGym: false, availText: "Available", availType: "now", amenities: 50,
       cs_min: 11, cs_mi: "2.6 mi", hh_min: 85, plan: "Townhouse for rent", isNew: false
@@ -821,12 +854,17 @@
     return l.rentNum != null && l.rentNum >= meta.budgetMin && l.rentNum <= BUDGET_MAX;
   }).length;
 
+  var friToursBooked = tours.filter(function (t) { return !t.day || t.day.indexOf("Friday") === 0; }).length;
+  var satToursBooked = tours.filter(function (t) { return t.day && t.day.indexOf("Saturday") === 0; }).length;
+
   var stats = {
     priorityProperties: priorityProperties.length, // 3
     esperanza3br: esperanza3br,                     // 3
     nearbyFinds: nearbyFinds,
     inBudgetCount: inBudgetCount,
-    toursBooked: tours.length                        // 5
+    toursBooked: tours.length,
+    friToursBooked: friToursBooked,                  // 9
+    satToursBooked: satToursBooked                   // 2
   };
 
   // -------------------------------------------------------------------

@@ -97,11 +97,13 @@
 <footer>Art School Annex &mdash; rental search. Map data &copy; OpenStreetMap contributors.</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="site_data.js?v=20260603-3"></script>
+<script src="site_data.js?v=20260604-1"></script>
 <script>
 (function () {
   var D = window.RENTAL_DATA;
-  var tours = D.tours;
+  // Route map covers the Friday 6/5 driving route only. Saturday 6/6 open
+  // houses live in D.tours too, so filter them out here.
+  var tours = D.tours.filter(function (t) { return t.dayShort !== 'Sat 6/6'; });
   var route = D.route;
 
   // ---- time parsing (handles "3:00–4:00 PM" ranges -> start) ----

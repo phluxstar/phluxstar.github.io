@@ -77,7 +77,7 @@
   <div class="stat-row" id="statRow"></div>
 
   <!-- TOUR LIST -->
-  <div class="section-title">&#128197; Tours Booked &mdash; Friday, June 5, 2026</div>
+  <div class="section-title">&#128197; Tour Schedule &mdash; by Day</div>
   <div class="prop-block" style="border-left:5px solid #6b46c1;">
     <table>
       <thead><tr><th>Photo</th><th>Time</th><th>Address</th><th>Agent / Note</th></tr></thead>
@@ -127,7 +127,7 @@
 
 </main>
 
-<script src="site_data.js?v=20260603-3"></script>
+<script src="site_data.js?v=20260604-1"></script>
 <script>
 (function () {
   var D = window.RENTAL_DATA;
@@ -162,28 +162,44 @@
     '<div class="stat-card"><div class="stat-num">' + s.esperanza3br + '</div><div class="stat-label">Esperanza 3BR Units</div></div>' +
     '<div class="stat-card"><div class="stat-num">' + s.nearbyFinds + '</div><div class="stat-label">Nearby Finds</div></div>' +
     '<div class="stat-card"><div class="stat-num">' + s.inBudgetCount + '</div><div class="stat-label">In Budget ($3K&ndash;$4.3K)</div></div>' +
-    '<div class="stat-card" style="border-color:#9f7aea;"><div class="stat-num" style="color:#6b46c1;">' + s.toursBooked + '</div><div class="stat-label">Tours Booked Fri 6/5</div></div>';
+    '<div class="stat-card" style="border-color:#9f7aea;"><div class="stat-num" style="color:#6b46c1;">' + s.friToursBooked + '</div><div class="stat-label">Tours Booked Fri 6/5</div></div>' +
+    '<div class="stat-card" style="border-color:#ed8936;"><div class="stat-num" style="color:#c05621;">' + s.satToursBooked + '</div><div class="stat-label">Open Houses Sat 6/6</div></div>';
 
   // ---- TOURS ----
-  document.getElementById('tourBody').innerHTML = D.tours.map(function (t) {
-    var note;
-    if (t.agent) {
-      note = 'Agent: ' + t.agent + (t.agentPhone ? ' &mdash; ' + t.agentPhone : '');
-    } else if (t.agentPhone) {
-      note = t.agentPhone;
-    } else if (t.note) {
-      note = '&#9888; ' + t.note;
-    } else {
-      note = EM;
+  (function () {
+    function tourRow(t) {
+      var note;
+      if (t.agent) {
+        note = 'Agent: ' + t.agent + (t.agentPhone ? ' &mdash; ' + t.agentPhone : '');
+      } else if (t.agentPhone) {
+        note = t.agentPhone;
+      } else if (t.note) {
+        note = '&#9888; ' + t.note;
+      } else {
+        note = EM;
+      }
+      var photo = t.img
+        ? '<a href="' + (t.url || '#') + '" target="_blank" rel="noopener"><img src="' + t.img + '" alt="" loading="lazy" style="width:96px;height:64px;object-fit:cover;border-radius:6px;display:block;" onerror="this.style.display=\'none\';this.parentNode.textContent=\'' + EM + '\';"></a>'
+        : EM;
+      var addrCell = t.url
+        ? '<a href="' + t.url + '" target="_blank" rel="noopener" style="color:#2b6cb0;text-decoration:none;font-weight:600;">' + t.address + '</a>'
+        : t.address;
+      return '<tr><td>' + photo + '</td><td><strong>' + t.time + '</strong></td><td>' + addrCell + '</td><td>' + note + '</td></tr>';
     }
-    var photo = t.img
-      ? '<a href="' + (t.url || '#') + '" target="_blank" rel="noopener"><img src="' + t.img + '" alt="" loading="lazy" style="width:96px;height:64px;object-fit:cover;border-radius:6px;display:block;" onerror="this.style.display=\'none\';this.parentNode.textContent=\'' + EM + '\';"></a>'
-      : EM;
-    var addrCell = t.url
-      ? '<a href="' + t.url + '" target="_blank" rel="noopener" style="color:#2b6cb0;text-decoration:none;font-weight:600;">' + t.address + '</a>'
-      : t.address;
-    return '<tr><td>' + photo + '</td><td><strong>' + t.time + '</strong></td><td>' + addrCell + '</td><td>' + note + '</td></tr>';
-  }).join('');
+    var groups = {}, order = [];
+    D.tours.forEach(function (t) {
+      var day = t.day || 'Friday, June 5, 2026';
+      if (!(day in groups)) { groups[day] = []; order.push(day); }
+      groups[day].push(t);
+    });
+    document.getElementById('tourBody').innerHTML = order.map(function (day) {
+      var isSat = day.indexOf('Saturday') === 0;
+      var bg = isSat ? '#c05621' : '#6b46c1';
+      var label = isSat ? '&#128197; ' + day + ' &mdash; Open Houses' : '&#128197; ' + day + ' &mdash; Tour Route';
+      var header = '<tr><td colspan="4" style="background:' + bg + ';color:#fff;font-weight:700;padding:8px 10px;">' + label + '</td></tr>';
+      return header + groups[day].map(tourRow).join('');
+    }).join('');
+  })();
 
   // ---- PRIORITY PROPERTIES ----
   document.getElementById('priorityWrap').innerHTML = D.priorityProperties.map(function (p, idx) {
@@ -275,8 +291,8 @@
         plans: p.plans ? p.plans.map(function (pl) { return { plan: pl.plan, rent: pl.rent, available: pl.available }; }) : undefined,
         tour_booked: p.tourBooked || undefined };
     }),
-    tours_booked_2026_06_05: D.tours.map(function (t) {
-      return { time: t.time, address: t.address, agent: t.agent || undefined, note: t.note || undefined };
+    tour_schedule: D.tours.map(function (t) {
+      return { day: t.day || 'Friday, June 5, 2026', time: t.time, address: t.address, agent: t.agent || undefined, note: t.note || undefined };
     }),
     nearby_finds_count: D.stats.nearbyFinds,
     in_budget_count: D.stats.inBudgetCount,
