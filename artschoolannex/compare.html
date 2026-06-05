@@ -152,6 +152,7 @@ footer { text-align: center; font-size: 12px; color: #a0aec0; padding: 20px 12px
       <thead>
         <tr>
           <th class="rank-cell" onclick="sortTable('rank')">Rank <span class="sort-icon">&#8597;</span></th>
+          <th class="toured-cell">Toured &#10003;</th>
           <th class="photo-cell">Photo</th>
           <th onclick="sortTable('name')">Property <span class="sort-icon">&#8597;</span></th>
           <th onclick="sortTable('type')">Type <span class="sort-icon">&#8597;</span></th>
@@ -163,7 +164,6 @@ footer { text-align: center; font-size: 12px; color: #a0aec0; padding: 20px 12px
           <th onclick="sortTable('commute_cs')" style="white-space:nowrap;">&#127891; CS Arts<br><span style="font-weight:400;font-size:10px;">7:30am / 4:30pm</span></th>
           <th onclick="sortTable('commute_hh')" style="white-space:nowrap;">&#127968; Hollywood Hills<br><span style="font-weight:400;font-size:10px;">7:30am / 4:30pm</span></th>
           <th class="status-cell">Status</th>
-          <th class="toured-cell">Toured &#10003;</th>
           <th class="notes-cell">Notes</th>
         </tr>
       </thead>
@@ -347,6 +347,10 @@ function renderTable() {
         <input type="number" class="rank-input" id="rank_${p.id}" min="1" max="99"
           value="${u.rank || ''}" placeholder="?" onchange="autoSave('${p.id}')">
       </td>
+      <td class="toured-cell">
+        <input type="checkbox" class="toured-cb" id="toured_${p.id}"
+          ${u.toured ? 'checked' : ''} onchange="onTouredChange('${p.id}')">
+      </td>
       <td class="photo-cell"><a href="${p.link}" target="_blank">${imgHtml}</a></td>
       <td class="name-cell">
         <div class="prop-name"><a href="${p.link}" target="_blank" style="color:inherit;text-decoration:none;">${p.name}</a></div>
@@ -380,10 +384,6 @@ function renderTable() {
           <option value="applied" ${u.status==='applied'?'selected':''}>&#128196; Applied</option>
           <option value="pass" ${u.status==='pass'?'selected':''}>&#10060; Pass</option>
         </select>
-      </td>
-      <td class="toured-cell">
-        <input type="checkbox" class="toured-cb" id="toured_${p.id}"
-          ${u.toured ? 'checked' : ''} onchange="onTouredChange('${p.id}')">
       </td>
       <td class="notes-cell">
         <textarea class="notes-input" id="notes_${p.id}" placeholder="Add notes…"
