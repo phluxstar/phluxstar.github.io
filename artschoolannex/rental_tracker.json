@@ -12,8 +12,8 @@
       "zillow_url": "https://www.zillow.com/apartments/duarte-ca/esperanza-at-duarte-station/CkBB3B/",
       "last_known_3br": [
         {
-          "unit": "407",
           "plan": "Three Bedroom D1",
+          "level": "floorplan",
           "beds": 3,
           "baths": 3,
           "sqft": 1174,
@@ -24,22 +24,7 @@
           ],
           "first_seen": "2026-06-01",
           "last_seen": "2026-06-05",
-          "notes": "NEW 2026-06-01 6pm check. In budget. Email alert sent."
-        },
-        {
-          "unit": "507",
-          "plan": "Three Bedroom D1",
-          "beds": 3,
-          "baths": 3,
-          "sqft": 1174,
-          "rent": "$4,100/mo",
-          "available": "Now",
-          "sources": [
-            "apartments.com"
-          ],
-          "first_seen": "2026-06-01",
-          "last_seen": "2026-06-05",
-          "notes": "NEW 2026-06-01 6pm check. In budget. Email alert sent."
+          "notes": "Floor-plan level. apartments.com shows D1 available Now at $4,100; its specific unit numbers (407/507) are synthetic \u2014 not tracked individually."
         },
         {
           "unit": "229",
@@ -54,11 +39,14 @@
           ],
           "first_seen": "2026-05-28",
           "last_seen": "2026-06-05",
-          "notes": "Price dropped from $4,183 to $3,950; availability moved from Now to Oct 7."
+          "notes": "Retained per PHLUX."
         }
       ],
       "last_known_2br_loft": [],
-      "notes": "6pm check 2026-06-01 (apartments.com property page, unit-level): D1 plan now has TWO available units 407 & 507 at $4,100/mo, available Now, both in budget \u2014 NEW, email sent. Unit 229 (D2) still listed but price dropped to $3,950 and availability moved to Oct 7. Previously-tracked Unit 211 ($4,478, D1, Jul 28) is GONE. Special: 2 Months Free."
+      "notes": "Esperanza tracked at FLOOR-PLAN level as of 2026-06-05. Synthetic apartments.com unit numbers 407 & 507 removed (confirmed nonexistent by PHLUX). D1 plan ($4,100, Now) + unit 229 (D2, $3,950, Oct 7) retained. 6pm check 2026-06-01 (apartments.com property page, unit-level): D1 plan now has TWO available units 407 & 507 at $4,100/mo, available Now, both in budget \u2014 NEW, email sent. Unit 229 (D2) still listed but price dropped to $3,950 and availability moved to Oct 7. Previously-tracked Unit 211 ($4,478, D1, Jul 28) is GONE. Special: 2 Months Free.",
+      "tracking_mode": "floorplan_only",
+      "suppress_synthetic_unit_numbers": true,
+      "agent_instruction": "PHLUX confirmed 2026-06-05 that apartments.com's auto-generated Esperanza unit numbers (e.g. 407, 507) are SYNTHETIC and do NOT exist at the property. Track Esperanza 3BR at the FLOOR-PLAN level (D1, D2). Do NOT re-add or email apartments.com's invented unit numbers. Only alert on a genuinely new FLOOR PLAN, or a real unit number sourced from the Holland Residential leasing portal. Unit 229 (D2) was explicitly retained by PHLUX."
     },
     "solana": {
       "name": "Solana at Duarte Station",

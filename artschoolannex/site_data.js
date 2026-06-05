@@ -59,22 +59,21 @@
         emoji: "✨",
         bg: "linear-gradient(145deg,#0f1f3d 0%,#1a3060 100%)",
         price3: 4100,
-        unitsLabel: "3BR · 1,098–1,174 sqft · units 407, 507 & 229",
+        unitsLabel: "3BR · 1,098–1,174 sqft · D1 plan + unit 229",
         warning: null,
         amenities: { gym: true, pool: true, rooftop: true, spa: true, pets: true, cowork: true, ev: false, bark: false },
         commCS: "~3 min · 0.7 mi", commHome: "~40–50 min · 31 mi",
         commCSMin: 3, commHomeMin: 45,
-        cardNotes: ["Units 407 & 507: $4,100/mo · Now", "Unit 229: $3,950/mo · Oct 7", "Rooftop pool + private cabanas", "0.4 mi to Metro Gold Line"],
+        cardNotes: ["3BR D1 plan: $4,100/mo · Now", "Unit 229 (D2): $3,950/mo · Oct 7", "Rooftop pool + private cabanas", "0.4 mi to Metro Gold Line"],
         scores: { p: 65, c: 98, h: 70, a: 95 },
         mapCS: "https://www.google.com/maps/dir/1700+Fasana+Rd,+Duarte,+CA+91010/1401+Highland+Ave,+Duarte,+CA+91010",
         mapHome: "https://www.google.com/maps/dir/8932+Hollywood+Hills+Rd,+Los+Angeles,+CA/1700+Fasana+Rd,+Duarte,+CA+91010"
       },
       units: [
-        { unit: "407", plan: "Three Bedroom D1", beds: 3, baths: 3, sqft: 1174, rent: "$4,100/mo", rentNum: 4100, available: "Now", isNew: false, inBudget: true, budgetStatus: "in" },
-        { unit: "507", plan: "Three Bedroom D1", beds: 3, baths: 3, sqft: 1174, rent: "$4,100/mo", rentNum: 4100, available: "Now", isNew: false, inBudget: true, budgetStatus: "in" },
+        { unit: "D1 plan", plan: "Three Bedroom D1", beds: 3, baths: 3, sqft: 1174, rent: "$4,100/mo", rentNum: 4100, available: "Now", isNew: false, inBudget: true, budgetStatus: "in" },
         { unit: "229", plan: "Three Bedroom D2", beds: 3, baths: 2, sqft: 1098, rent: "$3,950/mo", rentNum: 3950, available: "Oct 7", isNew: false, inBudget: true, budgetStatus: "in" }
       ],
-      note: "6pm check 2026-06-01: D1 plan now has TWO available units 407 & 507 at $4,100/mo, available Now, both in budget. Unit 229 dropped to $3,950, now Oct 7. Previously-tracked Unit 211 is gone."
+      note: "Esperanza 3BR tracked at floor-plan level. apartments.com lists the D1 plan (3BR/3BA, 1,174 sqft) at $4,100/mo available Now; the specific 'unit 407/507' numbers it generated are synthetic and were confirmed by PHLUX not to exist (removed 2026-06-05). Unit 229 (D2, 3BR/2BA) at $3,950/mo, Oct 7 — retained."
     },
     {
       id: "solana",
@@ -331,35 +330,12 @@
   //   amenities (finder score 0-100), cs_min, cs_mi, hh_min, plan
   // -------------------------------------------------------------------
   var listings = [
-    // ===== ESPERANZA per-unit (current, fresh) =====
-    {
-      id: "esperanza-407", esperanzaUnit: "407", name: "Esperanza — Unit 407", short: "Esperanza 407",
-      address: "1700 Fasana Rd, Duarte, CA 91010", city: "Duarte", type: "Apartment",
-      beds: 3, baths: 3, bedsLabel: "3BR 3BA", bedsBath: "3BD/3BA", sqft: 1174,
-      rent: "$4,100/mo", rentNum: 4100, inBudget: true, budgetStatus: "in",
-      distance: "~0.7 mi", distLabel: "0.7 mi", phone: "(626) 361-4825",
-      url: "https://www.apartments.com/esperanza-at-duarte-station-duarte-ca/4hjhepj/",
-      special: "2 Months Free", freeMonths: 2, tag: "priority",
-      tourTime: "3:00–4:00 PM", tourDate: "Tour Fri 6/5 · 3 PM (photo ID)",
-      notes: "3BR D1 floor plan · Available Now · NEW · in budget · Tour booked Fri 6/5 3PM",
-      img: "https://images1.apartments.com/i2/QpYE8_WDPqlhQLAP7hQF5E07_vqZv9oxQGcetqn7qE0/116/esperanza-at-duarte-station-duarte-ca-building-photo.jpg",
-      hasGym: true, availText: "Now", availType: "now", amenities: 85,
-      cs_min: 5, cs_mi: "0.7 mi", hh_min: 95, plan: "Three Bed D1", isNew: true
-    },
-    {
-      id: "esperanza-507", esperanzaUnit: "507", name: "Esperanza — Unit 507", short: "Esperanza 507",
-      address: "1700 Fasana Rd, Duarte, CA 91010", city: "Duarte", type: "Apartment",
-      beds: 3, baths: 3, bedsLabel: "3BR 3BA", bedsBath: "3BD/3BA", sqft: 1174,
-      rent: "$4,100/mo", rentNum: 4100, inBudget: true, budgetStatus: "in",
-      distance: "~0.7 mi", distLabel: "0.7 mi", phone: "(626) 361-4825",
-      url: "https://www.apartments.com/esperanza-at-duarte-station-duarte-ca/4hjhepj/",
-      special: "2 Months Free", freeMonths: 2, tag: "priority",
-      tourTime: "3:00–4:00 PM", tourDate: "Tour Fri 6/5 · 3 PM (photo ID)",
-      notes: "3BR D1 floor plan · Available Now · NEW · in budget",
-      img: "https://images1.apartments.com/i2/QpYE8_WDPqlhQLAP7hQF5E07_vqZv9oxQGcetqn7qE0/116/esperanza-at-duarte-station-duarte-ca-building-photo.jpg",
-      hasGym: true, availText: "Now", availType: "now", amenities: 85,
-      cs_min: 5, cs_mi: "0.7 mi", hh_min: 95, plan: "Three Bed D1", isNew: true
-    },
+    // ===== ESPERANZA (unit 229 only) =====
+    // NOTE: apartments.com auto-generates synthetic unit numbers (e.g. "407",
+    // "507") from its 3BR availability count. PHLUX confirmed those units do
+    // NOT exist at the property, so they were removed (2026-06-05). Esperanza
+    // is tracked at the floor-plan level going forward — do not re-add
+    // apartments.com's invented unit numbers. Unit 229 (D2) retained per PHLUX.
     {
       id: "esperanza-229", esperanzaUnit: "229", name: "Esperanza — Unit 229", short: "Esperanza 229",
       address: "1700 Fasana Rd, Duarte, CA 91010", city: "Duarte", type: "Apartment",
