@@ -21,8 +21,8 @@
   // META
   // -------------------------------------------------------------------
   var meta = {
-    lastChecked: "June 4, 2026 · 6:10 PM PT",
-    lastCheckedISO: "2026-06-04T18:10:00",
+    lastChecked: "June 5, 2026 · 4:30 PM PT",
+    lastCheckedISO: "2026-06-05T16:30:00",
     budgetMin: 3000,
     budgetMax: 4300,
     budgetLabel: "$3,000–$4,300/mo",
@@ -31,7 +31,7 @@
     homeAddress: "8932 Hollywood Hills Rd, Los Angeles, CA 90046",
     gymSave: GYM_SAVE,
     checkSchedule: "3× daily (8am · 1pm · 6pm PT)",
-    nextCheck: "Friday, June 5, 2026 at 8:00 AM PT"
+    nextCheck: "Friday, June 5, 2026 at 6:00 PM PT"
   };
 
   // -------------------------------------------------------------------
@@ -64,14 +64,14 @@
         amenities: { gym: true, pool: true, rooftop: true, spa: true, pets: true, cowork: true, ev: false, bark: false },
         commCS: "~3 min · 0.7 mi", commHome: "~40–50 min · 31 mi",
         commCSMin: 3, commHomeMin: 45,
-        cardNotes: ["Units 407 & 507: $4,100/mo · Now (NEW)", "Unit 229: $3,950/mo · Oct 7", "Rooftop pool + private cabanas", "0.4 mi to Metro Gold Line"],
+        cardNotes: ["Units 407 & 507: $4,100/mo · Now", "Unit 229: $3,950/mo · Oct 7", "Rooftop pool + private cabanas", "0.4 mi to Metro Gold Line"],
         scores: { p: 65, c: 98, h: 70, a: 95 },
         mapCS: "https://www.google.com/maps/dir/1700+Fasana+Rd,+Duarte,+CA+91010/1401+Highland+Ave,+Duarte,+CA+91010",
         mapHome: "https://www.google.com/maps/dir/8932+Hollywood+Hills+Rd,+Los+Angeles,+CA/1700+Fasana+Rd,+Duarte,+CA+91010"
       },
       units: [
-        { unit: "407", plan: "Three Bedroom D1", beds: 3, baths: 3, sqft: 1174, rent: "$4,100/mo", rentNum: 4100, available: "Now", isNew: true, inBudget: true, budgetStatus: "in" },
-        { unit: "507", plan: "Three Bedroom D1", beds: 3, baths: 3, sqft: 1174, rent: "$4,100/mo", rentNum: 4100, available: "Now", isNew: true, inBudget: true, budgetStatus: "in" },
+        { unit: "407", plan: "Three Bedroom D1", beds: 3, baths: 3, sqft: 1174, rent: "$4,100/mo", rentNum: 4100, available: "Now", isNew: false, inBudget: true, budgetStatus: "in" },
+        { unit: "507", plan: "Three Bedroom D1", beds: 3, baths: 3, sqft: 1174, rent: "$4,100/mo", rentNum: 4100, available: "Now", isNew: false, inBudget: true, budgetStatus: "in" },
         { unit: "229", plan: "Three Bedroom D2", beds: 3, baths: 2, sqft: 1098, rent: "$3,950/mo", rentNum: 3950, available: "Oct 7", isNew: false, inBudget: true, budgetStatus: "in" }
       ],
       note: "6pm check 2026-06-01: D1 plan now has TWO available units 407 & 507 at $4,100/mo, available Now, both in budget. Unit 229 dropped to $3,950, now Oct 7. Previously-tracked Unit 211 is gone."

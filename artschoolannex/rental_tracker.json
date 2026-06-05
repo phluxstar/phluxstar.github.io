@@ -1,6 +1,6 @@
 {
-  "last_checked": "2026-06-04T18:10:00",
-  "last_check_result": "6pm run 2026-06-04: No new units or nearby finds vs prior snapshot. Esperanza verified unit-level on apartments.com property page: D1 units 407 & 507 ($4,100, Now, in budget) and D2 unit 229 ($3,950, Oct 7) all still listed (D3 'Call for Rent / Not Available'; 2BR Lofts C1L/C2L 'Not Available'). Solana 3BR plans C1 (1,899sf) / C1-M (2,237sf) still 'Available Soon / Call for Rent' — no live units; special '8 Weeks Free on Base Rent'. Avalon SI-FL4 ($5,200) & SI-FL1 ($5,910) confirmed still active via both Monrovia + Duarte 3BR list pages. All nearby_finds still present; nothing new within ~3mi of CS Arts. New-to-list area results this run (11744 Hallwood Dr El Monte $3,750, 380 Churchill Rd Sierra Madre $8,000, 555 S Azusa Ave $2,900, plus Azusa/Covina/West Covina/Baldwin Park complexes & houses) all beyond ~3mi range and/or out of budget — not flagged. No email sent (signal-not-noise rule).",
+  "last_checked": "2026-06-05T16:30:00",
+  "last_check_result": "4:30pm run 2026-06-05: No new units or nearby finds vs prior snapshot. Esperanza verified unit-level on apartments.com: D1 units 407 & 507 ($4,100, Now, in budget) and D2 unit 229 ($3,950, Oct 7) all still listed; 2BR Lofts & studio lofts 'Not Available'. Solana 3BR plans C1 (1,899sf) & C1-M (2,237sf) still 'Available Soon / Call for Rent' \u2014 no live units; special '8 Weeks Free on Base Rent'. Avalon SI-FL4 ($5,200) & SI-FL1 ($5,910) confirmed still active via both Monrovia + Duarte 3BR list pages. All nearby_finds still present; nothing new within ~3mi of CS Arts. New-to-list area results this run (380 Churchill Rd Sierra Madre $8,000, 555 S Azusa Ave $2,900, 11744 Hallwood Dr El Monte $3,750, plus Azusa/Covina/West Covina/Baldwin Park complexes) all beyond ~3mi and/or out of budget \u2014 not flagged. No email sent (signal-not-noise rule).",
   "direct_portal_verified": "2026-05-30",
   "properties": {
     "esperanza": {
@@ -11,12 +11,54 @@
       "apartments_url": "https://www.apartments.com/esperanza-at-duarte-station-duarte-ca/4hjhepj/",
       "zillow_url": "https://www.zillow.com/apartments/duarte-ca/esperanza-at-duarte-station/CkBB3B/",
       "last_known_3br": [
-        { "unit": "407", "plan": "Three Bedroom D1", "beds": 3, "baths": 3, "sqft": 1174, "rent": "$4,100/mo", "available": "Now", "sources": ["apartments.com"], "first_seen": "2026-06-01", "last_seen": "2026-06-04", "notes": "NEW 2026-06-01 6pm check. In budget. Email alert sent." },
-        { "unit": "507", "plan": "Three Bedroom D1", "beds": 3, "baths": 3, "sqft": 1174, "rent": "$4,100/mo", "available": "Now", "sources": ["apartments.com"], "first_seen": "2026-06-01", "last_seen": "2026-06-04", "notes": "NEW 2026-06-01 6pm check. In budget. Email alert sent." },
-        { "unit": "229", "plan": "Three Bedroom D2", "beds": 3, "baths": 2, "sqft": 1098, "rent": "$3,950/mo", "available": "Oct 7", "sources": ["apartments.com"], "first_seen": "2026-05-28", "last_seen": "2026-06-04", "notes": "Price dropped from $4,183 to $3,950; availability moved from Now to Oct 7." }
+        {
+          "unit": "407",
+          "plan": "Three Bedroom D1",
+          "beds": 3,
+          "baths": 3,
+          "sqft": 1174,
+          "rent": "$4,100/mo",
+          "available": "Now",
+          "sources": [
+            "apartments.com"
+          ],
+          "first_seen": "2026-06-01",
+          "last_seen": "2026-06-05",
+          "notes": "NEW 2026-06-01 6pm check. In budget. Email alert sent."
+        },
+        {
+          "unit": "507",
+          "plan": "Three Bedroom D1",
+          "beds": 3,
+          "baths": 3,
+          "sqft": 1174,
+          "rent": "$4,100/mo",
+          "available": "Now",
+          "sources": [
+            "apartments.com"
+          ],
+          "first_seen": "2026-06-01",
+          "last_seen": "2026-06-05",
+          "notes": "NEW 2026-06-01 6pm check. In budget. Email alert sent."
+        },
+        {
+          "unit": "229",
+          "plan": "Three Bedroom D2",
+          "beds": 3,
+          "baths": 2,
+          "sqft": 1098,
+          "rent": "$3,950/mo",
+          "available": "Oct 7",
+          "sources": [
+            "apartments.com"
+          ],
+          "first_seen": "2026-05-28",
+          "last_seen": "2026-06-05",
+          "notes": "Price dropped from $4,183 to $3,950; availability moved from Now to Oct 7."
+        }
       ],
       "last_known_2br_loft": [],
-      "notes": "6pm check 2026-06-01 (apartments.com property page, unit-level): D1 plan now has TWO available units 407 & 507 at $4,100/mo, available Now, both in budget — NEW, email sent. Unit 229 (D2) still listed but price dropped to $3,950 and availability moved to Oct 7. Previously-tracked Unit 211 ($4,478, D1, Jul 28) is GONE. Special: 2 Months Free."
+      "notes": "6pm check 2026-06-01 (apartments.com property page, unit-level): D1 plan now has TWO available units 407 & 507 at $4,100/mo, available Now, both in budget \u2014 NEW, email sent. Unit 229 (D2) still listed but price dropped to $3,950 and availability moved to Oct 7. Previously-tracked Unit 211 ($4,478, D1, Jul 28) is GONE. Special: 2 Months Free."
     },
     "solana": {
       "name": "Solana at Duarte Station",
@@ -29,7 +71,7 @@
       "current_specials": "8 Weeks Free on Base Rent (previously '2 Months Free')",
       "last_known_3br": [],
       "last_known_2br_loft": [],
-      "notes": "3BR floor plans C1 (1,899 sqft, 3BD/3BA) and C1-M (2,237 sqft, 3BD/3BA) exist but show 'Available Soon' with Call for Rent — no units currently available. Price range $2,296–$4,179 (studio–2BR priced). Updated 2026-06-01 from Apartments.com full page. Special updated to '8 Weeks Free on Base Rent' (same value as prior '2 Months Free')."
+      "notes": "3BR floor plans C1 (1,899 sqft, 3BD/3BA) and C1-M (2,237 sqft, 3BD/3BA) exist but show 'Available Soon' with Call for Rent \u2014 no units currently available. Price range $2,296\u2013$4,179 (studio\u20132BR priced). Updated 2026-06-01 from Apartments.com full page. Special updated to '8 Weeks Free on Base Rent' (same value as prior '2 Months Free')."
     },
     "avalon": {
       "name": "Avalon Monrovia",
@@ -39,11 +81,43 @@
       "apartments_url": "https://www.apartments.com/avalon-monrovia-monrovia-ca/y1zwvrv/",
       "zillow_url": "https://www.zillow.com/apartments/monrovia-ca/avalon-monrovia/9V4Lzh/",
       "last_known_3br": [
-        { "unit": "SI-FL4", "plan": "3BR Signature/Floor 4", "beds": 3, "baths": null, "sqft": null, "rent": "$5,200/mo", "available": "Now", "sources": ["apartments.com"], "url": "https://www.apartments.com/825-s-myrtle-ave-monrovia-ca-unit-si-fl4-id11896a/hj58v42/", "phone": "(626) 415-0730", "first_seen": "2026-05-31", "last_seen": "2026-06-04", "notes": "Above budget. Likely premium/furnished unit." },
-        { "unit": "SI-FL1", "plan": "3BR Signature/Floor 1", "beds": 3, "baths": null, "sqft": null, "rent": "$5,910/mo", "available": "Now", "sources": ["apartments.com"], "url": "https://www.apartments.com/825-s-myrtle-ave-monrovia-ca-unit-si-fl1-id11906a/zvb5fdw/", "phone": "(626) 415-0547", "first_seen": "2026-05-31", "last_seen": "2026-06-04", "notes": "Above budget. Likely premium/furnished unit." }
+        {
+          "unit": "SI-FL4",
+          "plan": "3BR Signature/Floor 4",
+          "beds": 3,
+          "baths": null,
+          "sqft": null,
+          "rent": "$5,200/mo",
+          "available": "Now",
+          "sources": [
+            "apartments.com"
+          ],
+          "url": "https://www.apartments.com/825-s-myrtle-ave-monrovia-ca-unit-si-fl4-id11896a/hj58v42/",
+          "phone": "(626) 415-0730",
+          "first_seen": "2026-05-31",
+          "last_seen": "2026-06-05",
+          "notes": "Above budget. Likely premium/furnished unit."
+        },
+        {
+          "unit": "SI-FL1",
+          "plan": "3BR Signature/Floor 1",
+          "beds": 3,
+          "baths": null,
+          "sqft": null,
+          "rent": "$5,910/mo",
+          "available": "Now",
+          "sources": [
+            "apartments.com"
+          ],
+          "url": "https://www.apartments.com/825-s-myrtle-ave-monrovia-ca-unit-si-fl1-id11906a/zvb5fdw/",
+          "phone": "(626) 415-0547",
+          "first_seen": "2026-05-31",
+          "last_seen": "2026-06-05",
+          "notes": "Above budget. Likely premium/furnished unit."
+        }
       ],
       "last_known_2br_loft": [],
-      "notes": "Two individual 3BR unit listings at 825 S Myrtle Ave confirmed still active 2026-06-01: SI-FL4 at $5,200/mo and SI-FL1 at $5,910/mo — both above budget, likely furnished/premium. Direct portal is React SPA, not accessible via web_fetch. Property range $2,880–$1,370 sqft per meta."
+      "notes": "Two individual 3BR unit listings at 825 S Myrtle Ave confirmed still active 2026-06-01: SI-FL4 at $5,200/mo and SI-FL1 at $5,910/mo \u2014 both above budget, likely furnished/premium. Direct portal is React SPA, not accessible via web_fetch. Property range $2,880\u2013$1,370 sqft per meta."
     }
   },
   "zillow_saves": [
@@ -51,7 +125,10 @@
       "name": "149 N Ivy Ave",
       "address": "149 N Ivy Ave, Monrovia, CA 91016",
       "type": "House for rent",
-      "beds": "3BR 2BA", "sqft": 1300, "rent": "$4,300/mo", "in_budget": true,
+      "beds": "3BR 2BA",
+      "sqft": 1300,
+      "rent": "$4,300/mo",
+      "in_budget": true,
       "zillow_url": "https://www.zillow.com/homedetails/149-N-Ivy-Ave-Monrovia-CA-91016/21584700_zpid/",
       "first_saved": "2026-05-30"
     },
@@ -59,7 +136,10 @@
       "name": "303 S Alta Vista Ave",
       "address": "303 S Alta Vista Ave, Monrovia, CA 91016",
       "type": "Apartment for rent",
-      "beds": "3BR 2.5BA", "sqft": 1475, "rent": "$3,350/mo", "in_budget": true,
+      "beds": "3BR 2.5BA",
+      "sqft": 1475,
+      "rent": "$3,350/mo",
+      "in_budget": true,
       "zillow_url": "https://www.zillow.com/homedetails/303-S-Alta-Vista-Ave-Monrovia-CA-91016/446762845_zpid/",
       "first_saved": "2026-05-30"
     },
@@ -67,7 +147,10 @@
       "name": "134 Peppertree Ln",
       "address": "134 Peppertree Ln, Monrovia, CA 91016",
       "type": "Townhouse for rent",
-      "beds": "3BR 3BA", "sqft": 1440, "rent": "$3,485/mo", "in_budget": true,
+      "beds": "3BR 3BA",
+      "sqft": 1440,
+      "rent": "$3,485/mo",
+      "in_budget": true,
       "zillow_url": "https://www.zillow.com/homedetails/134-Peppertree-Ln-Monrovia-CA-91016/54669236_zpid/",
       "first_saved": "2026-05-30"
     },
@@ -75,8 +158,11 @@
       "name": "303-1 S Alta Vista Ave",
       "address": "303-1 S Alta Vista Ave, Monrovia, CA 91016",
       "type": "Apartment for rent",
-      "beds": "3BR 2BA", "sqft": 1235, "rent": "$2,950/mo", "in_budget": true,
-      "notes": "Slightly under $3K budget minimum but close — worth a call",
+      "beds": "3BR 2BA",
+      "sqft": 1235,
+      "rent": "$2,950/mo",
+      "in_budget": true,
+      "notes": "Slightly under $3K budget minimum but close \u2014 worth a call",
       "first_saved": "2026-05-30"
     }
   ],
@@ -87,12 +173,12 @@
       "phone": "(626) 415-3989",
       "url": "https://www.apartments.com/the-monroe-monrovia-ca/ngbxn5m/",
       "type": "apartment_complex",
-      "beds": "Studio–3BR",
-      "rent_range": "$2,434–$5,409/mo",
+      "beds": "Studio\u20133BR",
+      "rent_range": "$2,434\u2013$5,409/mo",
       "specials": "2 Months Free",
       "distance_to_cs_arts": "~0.3 miles",
       "first_seen": "2026-05-30",
-      "last_seen": "2026-06-04",
+      "last_seen": "2026-06-05",
       "notes": "Right in Old Town Monrovia. 3BR price call-for-rent. Very close to CS Arts."
     },
     {
@@ -101,12 +187,12 @@
       "phone": "(626) 415-0624",
       "url": "https://www.apartments.com/alexan-marmont-monrovia-ca/35espcg/",
       "type": "apartment_complex",
-      "beds": "Studio–3BR",
-      "rent_range": "$2,376–$5,243/mo",
+      "beds": "Studio\u20133BR",
+      "rent_range": "$2,376\u2013$5,243/mo",
       "specials": "2 Months Free",
       "distance_to_cs_arts": "~0.5 miles",
       "first_seen": "2026-05-30",
-      "last_seen": "2026-06-04",
+      "last_seen": "2026-06-05",
       "notes": "Luxury complex in Monrovia. 3BR price call-for-rent. Pool, fitness, hardwood floors."
     },
     {
@@ -119,7 +205,7 @@
       "rent": "$3,018/mo",
       "in_budget": true,
       "first_seen": "2026-05-30",
-      "last_seen": "2026-06-04"
+      "last_seen": "2026-06-05"
     },
     {
       "name": "2423 S Myrtle Ave",
@@ -132,8 +218,8 @@
       "rent": "$3,280/mo",
       "in_budget": true,
       "first_seen": "2026-05-30",
-      "last_seen": "2026-06-04",
-      "notes": "On Myrtle Ave — same street as CS Arts (201 N Myrtle). ~1 mile south."
+      "last_seen": "2026-06-05",
+      "notes": "On Myrtle Ave \u2014 same street as CS Arts (201 N Myrtle). ~1 mile south."
     },
     {
       "name": "708 W Duarte Rd",
@@ -146,7 +232,7 @@
       "rent": "$3,395/mo",
       "in_budget": true,
       "first_seen": "2026-05-30",
-      "last_seen": "2026-06-04"
+      "last_seen": "2026-06-05"
     },
     {
       "name": "908 W Foothill Blvd Unit C",
@@ -158,7 +244,7 @@
       "rent": "$3,500/mo",
       "in_budget": true,
       "first_seen": "2026-05-30",
-      "last_seen": "2026-06-04",
+      "last_seen": "2026-06-05",
       "notes": "12-month lease"
     },
     {
@@ -172,7 +258,7 @@
       "rent": "$3,775/mo",
       "in_budget": true,
       "first_seen": "2026-05-30",
-      "last_seen": "2026-06-04"
+      "last_seen": "2026-06-05"
     },
     {
       "name": "232 May Ave",
@@ -185,7 +271,7 @@
       "rent": "$3,800/mo",
       "in_budget": true,
       "first_seen": "2026-05-30",
-      "last_seen": "2026-06-04"
+      "last_seen": "2026-06-05"
     },
     {
       "name": "1907 Graydon Ave",
@@ -198,7 +284,7 @@
       "rent": "$4,200/mo",
       "in_budget": true,
       "first_seen": "2026-05-30",
-      "last_seen": "2026-06-04"
+      "last_seen": "2026-06-05"
     },
     {
       "name": "1676 3rd St",
@@ -210,7 +296,7 @@
       "rent": "$3,950/mo",
       "in_budget": true,
       "first_seen": "2026-05-30",
-      "last_seen": "2026-06-04",
+      "last_seen": "2026-06-05",
       "notes": "Near Esperanza and Solana in Duarte"
     },
     {
@@ -225,7 +311,7 @@
       "in_budget": true,
       "distance_to_cs_arts": "~2 miles",
       "first_seen": "2026-05-30",
-      "last_seen": "2026-06-04",
+      "last_seen": "2026-06-05",
       "notes": "3-story condo, hardwood floors, remodeled kitchen, 2-car garage, fireplace. Available Now. No pets."
     },
     {
@@ -240,7 +326,7 @@
       "in_budget": true,
       "distance_to_cs_arts": "~2 miles",
       "first_seen": "2026-05-31",
-      "last_seen": "2026-06-04"
+      "last_seen": "2026-06-05"
     },
     {
       "name": "605 S 2nd Ave Unit A",
@@ -253,7 +339,7 @@
       "in_budget": true,
       "distance_to_cs_arts": "~2 miles",
       "first_seen": "2026-05-31",
-      "last_seen": "2026-06-04"
+      "last_seen": "2026-06-05"
     },
     {
       "name": "909 N Santa Anita Ave Unit Main",
@@ -267,7 +353,7 @@
       "in_budget": true,
       "distance_to_cs_arts": "~2.5 miles",
       "first_seen": "2026-05-31",
-      "last_seen": "2026-06-04",
+      "last_seen": "2026-06-05",
       "notes": "12-month lease."
     },
     {
@@ -282,7 +368,7 @@
       "in_budget": true,
       "distance_to_cs_arts": "~2 miles",
       "first_seen": "2026-05-31",
-      "last_seen": "2026-06-04"
+      "last_seen": "2026-06-05"
     },
     {
       "name": "1014 Junipero Dr",
@@ -296,8 +382,8 @@
       "in_budget": false,
       "distance_to_cs_arts": "~2.5 miles",
       "first_seen": "2026-05-31",
-      "last_seen": "2026-06-04",
-      "notes": "Slightly under $3K budget minimum — worth a call."
+      "last_seen": "2026-06-05",
+      "notes": "Slightly under $3K budget minimum \u2014 worth a call."
     },
     {
       "name": "2018 S 2nd Ave",
@@ -310,8 +396,8 @@
       "in_budget": true,
       "distance_to_cs_arts": "~2 miles",
       "first_seen": "2026-05-31",
-      "last_seen": "2026-06-04",
-      "notes": "Also appears as separate listing at /0g3h503/ (3BR/2BA/1,700 sqft, 12-month lease, same $4,200 price — possible duplicate or different unit)."
+      "last_seen": "2026-06-05",
+      "notes": "Also appears as separate listing at /0g3h503/ (3BR/2BA/1,700 sqft, 12-month lease, same $4,200 price \u2014 possible duplicate or different unit)."
     },
     {
       "name": "2319 El Capitan Ave",
@@ -325,7 +411,7 @@
       "in_budget": true,
       "distance_to_cs_arts": "~2 miles",
       "first_seen": "2026-05-31",
-      "last_seen": "2026-06-04",
+      "last_seen": "2026-06-05",
       "notes": "At budget ceiling of $4,300/mo."
     },
     {
@@ -340,7 +426,7 @@
       "in_budget": false,
       "distance_to_cs_arts": "~2 miles",
       "first_seen": "2026-05-31",
-      "last_seen": "2026-06-04",
+      "last_seen": "2026-06-05",
       "notes": "$50 over budget but 2,200 sqft. 12-month lease."
     },
     {
@@ -355,7 +441,7 @@
       "in_budget": false,
       "distance_to_cs_arts": "~2 miles",
       "first_seen": "2026-06-01",
-      "last_seen": "2026-06-04",
+      "last_seen": "2026-06-05",
       "notes": "NEW 2026-06-01 afternoon check. $200 over budget at $4,500/mo but large 3BR/3BA at 1,960 sqft. Email alert sent."
     },
     {
@@ -370,7 +456,7 @@
       "in_budget": false,
       "distance_to_cs_arts": "~2 miles",
       "first_seen": "2026-06-01",
-      "last_seen": "2026-06-04",
+      "last_seen": "2026-06-05",
       "notes": "NEW 2026-06-01 afternoon check. Well over budget at $7,500/mo. Norumbega neighborhood (foothills). Tracked for completeness, no email alert sent."
     },
     {
@@ -385,7 +471,7 @@
       "in_budget": false,
       "distance_to_cs_arts": "~2.5 miles",
       "first_seen": "2026-06-01",
-      "last_seen": "2026-06-04",
+      "last_seen": "2026-06-05",
       "notes": "NEW 2026-06-01 (1pm check). Well over budget at $6,600/mo (large 2,418 sqft home). Tracked for completeness, no email alert sent (consistent with well-over-budget rule)."
     },
     {
@@ -399,10 +485,14 @@
       "in_budget": false,
       "distance_to_cs_arts": "~2 miles",
       "first_seen": "2026-06-01",
-      "last_seen": "2026-06-04",
-      "notes": "NEW 2026-06-01 (1pm check). Separate townhome listing at same address as already-tracked/emailed 503 N Santa Anita house ($4,500, /g6wextz/). $250 over budget. No new email sent — address already known to user."
+      "last_seen": "2026-06-05",
+      "notes": "NEW 2026-06-01 (1pm check). Separate townhome listing at same address as already-tracked/emailed 503 N Santa Anita house ($4,500, /g6wextz/). $250 over budget. No new email sent \u2014 address already known to user."
     }
   ],
-  "user_budget": "$3,000–$4,300/month",
-  "priority_order": ["esperanza", "solana", "avalon"]
+  "user_budget": "$3,000\u2013$4,300/month",
+  "priority_order": [
+    "esperanza",
+    "solana",
+    "avalon"
+  ]
 }
