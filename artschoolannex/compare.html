@@ -258,7 +258,15 @@ function saveAll() {
   const msg = document.getElementById('saveMsg');
   msg.style.display = 'inline';
   setTimeout(() => { msg.style.display = 'none'; }, 2500);
-  updateSummary();
+  // Re-render so the listings reorder to match the rankings you just saved.
+  // If you're sorted by anything other than "My Ranking", snap to rank order
+  // so saving always reflects your ranking.
+  if (currentSort !== 'rank') {
+    currentSort = 'rank';
+    const sortSel = document.getElementById('sortBy');
+    if (sortSel) sortSel.value = 'rank';
+  }
+  renderTable();
 }
 
 function resetAll() {
