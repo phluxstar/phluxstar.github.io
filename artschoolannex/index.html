@@ -3,555 +3,337 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>New Chapter — Property Comparison</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>New Chapter — Move-In Plan · Esperanza #229</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --navy:#0f1f3d;
-  --navy2:#1a2f5e;
-  --gold:#c9a84c;
-  --gold-lt:#f5e4a8;
-  --cream:#f9f7f2;
-  --white:#fff;
-  --g100:#f4f3ef;
-  --g200:#e5e4e0;
-  --g400:#9a9893;
-  --g700:#3c3b38;
-  --green:#1e6b45;
-  --green-lt:#e8f5ee;
-  --red:#b93232;
-  --red-lt:#fdecea;
-  --amber:#b86a00;
-  --amber-lt:#fff3dc;
-  --radius:18px;
-  --rsm:10px;
-  --sh1:0 2px 10px rgba(0,0,0,.07);
-  --sh2:0 6px 24px rgba(0,0,0,.11);
-  --sh3:0 12px 48px rgba(0,0,0,.16)
+  --navy:#0f1f3d;--navy2:#1a2f5e;--gold:#c9a84c;--gold-lt:#f5e4a8;
+  --cream:#f9f7f2;--white:#fff;--g100:#f4f3ef;--g200:#e5e4e0;--g400:#9a9893;
+  --g600:#615f5a;--g700:#3c3b38;--green:#1e6b45;--green-lt:#e8f5ee;
+  --red:#b93232;--red-lt:#fdecea;--amber:#b86a00;--amber-lt:#fff3dc;
+  --blue:#26508c;--blue-lt:#eaf1fb;
+  --radius:18px;--rsm:11px;--sh1:0 2px 10px rgba(0,0,0,.07);
+  --sh2:0 6px 24px rgba(0,0,0,.11);--sh3:0 12px 48px rgba(0,0,0,.16)
 }
-body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--navy);min-height:100vh;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--navy);min-height:100vh;overflow-x:hidden;line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
 
-/* ── HEADER ── */
-header{background:linear-gradient(150deg,var(--navy) 0%,var(--navy2) 60%,#253a7a 100%);color:#fff;padding:40px 20px 32px;text-align:center;position:relative;overflow:hidden}
-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,168,76,.18) 0%,transparent 70%);pointer-events:none}
-.header-inner{max-width:860px;margin:0 auto;position:relative}
-header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,42px);font-weight:700;letter-spacing:-.5px;margin-bottom:6px}
+/* HEADER */
+header{background:linear-gradient(150deg,var(--navy) 0%,var(--navy2) 60%,#253a7a 100%);color:#fff;padding:42px 20px 120px;text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,168,76,.20) 0%,transparent 70%);pointer-events:none}
+.kicker{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:10px}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,46px);font-weight:700;letter-spacing:-.5px;margin-bottom:8px}
 header h1 span{color:var(--gold)}
-header .sub{font-size:14px;opacity:.75;margin-bottom:20px;letter-spacing:.3px}
-.pill-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:7px 16px;font-size:12px;font-weight:500;backdrop-filter:blur(4px)}
-.pill span{color:var(--gold-lt)}
+.addr{font-size:clamp(15px,2.2vw,18px);color:#dfe5f1;font-weight:300}
+.addr b{font-weight:600;color:#fff}
 
-/* ── LAYOUT ── */
-.wrap{max-width:1360px;margin:0 auto;padding:0 16px}
-section{padding:28px 0}
-.section-head{font-family:'Playfair Display',serif;font-size:21px;color:var(--navy);margin-bottom:20px;display:flex;align-items:center;gap:12px}
-.section-head::after{content:'';flex:1;height:1px;background:var(--g200)}
+/* COUNTDOWN */
+.countdown{display:flex;justify-content:center;gap:14px;margin-top:24px;flex-wrap:wrap}
+.cd-box{background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.4);border-radius:14px;padding:12px 18px;min-width:78px;backdrop-filter:blur(6px)}
+.cd-num{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--gold-lt);line-height:1}
+.cd-lbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#cdd4e3;margin-top:5px}
+.deadline-pill{display:inline-block;margin-top:20px;background:rgba(185,50,50,.22);border:1px solid rgba(255,160,160,.5);color:#ffd9d9;font-size:13px;font-weight:600;padding:7px 16px;border-radius:30px}
 
-/* ── CONTROLS ── */
-.controls{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--sh1);margin:24px 0 0}
-.controls-label{font-size:13px;font-weight:600;color:var(--g700);margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.sliders{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
-.sl-group{display:flex;flex-direction:column;gap:7px}
-.sl-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:500}
-.sl-top .badge{background:var(--navy);color:#fff;border-radius:100px;padding:2px 10px;font-size:11px;min-width:42px;text-align:center;font-weight:600}
-input[type=range]{width:100%;height:5px;border-radius:3px;appearance:none;background:var(--g200);cursor:pointer;outline:none}
-input[type=range]::-webkit-slider-thumb{appearance:none;width:17px;height:17px;border-radius:50%;background:var(--navy);cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.22)}
+/* NAV */
+nav{position:sticky;top:0;z-index:30;background:rgba(249,247,242,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--g200);box-shadow:var(--sh1)}
+.nav-inner{max-width:1080px;margin:0 auto;display:flex;gap:6px;padding:10px 14px;overflow-x:auto}
+nav a{flex:0 0 auto;text-decoration:none;color:var(--g700);font-size:13.5px;font-weight:600;padding:8px 14px;border-radius:30px;transition:.18s;white-space:nowrap}
+nav a:hover{background:var(--g100);color:var(--navy)}
+nav a.active{background:var(--navy);color:#fff}
 
-/* ── REC BANNER ── */
-.rec{background:linear-gradient(130deg,var(--green) 0%,#27a96a 100%);color:#fff;border-radius:var(--radius);padding:18px 24px;display:flex;align-items:center;gap:16px;margin-bottom:4px;box-shadow:var(--sh2);animation:slideIn .4s ease}
-@keyframes slideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-.rec-icon{font-size:34px;flex-shrink:0}
-.rec h3{font-size:15px;font-weight:700;margin-bottom:3px}
-.rec p{font-size:12px;opacity:.9;line-height:1.5}
+/* PROGRESS */
+.prog-card{margin:-86px auto 30px;position:relative;z-index:5;background:#fff;border-radius:var(--radius);box-shadow:var(--sh3);padding:22px 26px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;border:1px solid var(--g200)}
+.prog-ring{--p:0;width:84px;height:84px;border-radius:50%;flex:0 0 auto;background:conic-gradient(var(--gold) calc(var(--p)*1%),var(--g200) 0);display:grid;place-items:center;position:relative}
+.prog-ring::after{content:'';position:absolute;inset:8px;background:#fff;border-radius:50%}
+.prog-ring span{position:relative;z-index:1;font-weight:700;font-size:20px;color:var(--navy)}
+.prog-txt h3{font-family:'Playfair Display',serif;font-size:21px;margin-bottom:3px}
+.prog-txt p{color:var(--g600);font-size:14px}
+.prog-reset{margin-left:auto;background:none;border:1px solid var(--g200);color:var(--g600);font-size:12px;padding:7px 12px;border-radius:20px;cursor:pointer;font-family:inherit}
+.prog-reset:hover{background:var(--g100)}
 
-/* ── CARDS GRID ── */
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
+section{padding:30px 0 10px;scroll-margin-top:64px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,30px);font-weight:700}
+.sec-head .tag{font-size:12px;font-weight:600;color:var(--g400);letter-spacing:1px;text-transform:uppercase}
+.sec-sub{color:var(--g600);font-size:14.5px;margin-bottom:20px;max-width:680px}
 
-.card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--sh1);transition:transform .25s,box-shadow .25s;border:2px solid transparent;position:relative}
-.card:hover{transform:translateY(-5px);box-shadow:var(--sh3)}
-.card.winner{border-color:var(--gold)}
+/* MUST-HAVES */
+.must-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.must{background:#fff;border-radius:var(--rsm);box-shadow:var(--sh1);border:1px solid var(--g200);border-left:5px solid var(--gold);padding:16px 18px;display:flex;gap:14px;transition:.18s}
+.must.urgent{border-left-color:var(--red)}
+.must:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+.must.done{opacity:.55;border-left-color:var(--green)}
+.ck{flex:0 0 auto;width:26px;height:26px;border:2px solid var(--g400);border-radius:8px;cursor:pointer;display:grid;place-items:center;margin-top:2px;transition:.15s;background:#fff}
+.ck:hover{border-color:var(--gold)}
+.must.done .ck{background:var(--green);border-color:var(--green)}
+.ck svg{opacity:0;transition:.15s}
+.must.done .ck svg{opacity:1}
+.must-body{flex:1}
+.must-body .t{font-weight:700;font-size:15.5px;margin-bottom:4px}
+.must.done .t{text-decoration:line-through}
+.must-body .d{font-size:13px;color:var(--g600);margin-bottom:8px}
+.must-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:20px;background:var(--g100);color:var(--g700)}
+.chip.due{background:var(--amber-lt);color:var(--amber)}
+.chip.act{background:var(--blue-lt);color:var(--blue)}
+.chip.req{background:var(--red-lt);color:var(--red)}
 
-.ribbon{position:absolute;top:14px;right:-2px;background:var(--gold);color:var(--navy);font-size:10px;font-weight:800;padding:4px 14px 4px 10px;border-radius:4px 0 0 4px;text-transform:uppercase;letter-spacing:.6px;display:none;box-shadow:var(--sh1);z-index:5}
-.card.winner .ribbon{display:block}
+/* TIMELINE */
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.phase{background:#fff;border-radius:var(--rsm);box-shadow:var(--sh1);border:1px solid var(--g200);overflow:hidden}
+.phase-hd{padding:14px 16px;color:#fff}
+.phase-hd .lbl{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.85}
+.phase-hd .h{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;margin-top:2px}
+.tone-urgent .phase-hd{background:linear-gradient(135deg,#9e2a2a,#c14040)}
+.tone-warn .phase-hd{background:linear-gradient(135deg,#a86a00,#c98a1e)}
+.tone-go .phase-hd{background:linear-gradient(135deg,#155e3a,#1e7d4d)}
+.tone-calm .phase-hd{background:linear-gradient(135deg,var(--navy),var(--navy2))}
+.phase ul{list-style:none;padding:12px 16px}
+.phase li{font-size:13.5px;color:var(--g700);padding:7px 0 7px 22px;position:relative;border-bottom:1px solid var(--g100)}
+.phase li:last-child{border-bottom:none}
+.phase li::before{content:'';position:absolute;left:2px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
 
-/* card image banner */
-.c-img{height:155px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.c-img-emoji{font-size:52px;z-index:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
-.score-ring{position:absolute;bottom:-22px;right:18px;width:58px;height:58px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:var(--sh2);z-index:2;transition:background .3s}
-.score-ring .sn{font-size:20px;font-weight:800;line-height:1}
-.score-ring .sl{font-size:8px;font-weight:600;text-transform:uppercase;opacity:.85}
+/* ACCOUNTS */
+.acct-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.acct{background:#fff;border-radius:var(--rsm);box-shadow:var(--sh1);border:1px solid var(--g200);padding:16px 18px}
+.acct .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.acct .nm{font-weight:700;font-size:15px}
+.acct .badge{font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:3px 8px;border-radius:6px;flex:0 0 auto}
+.badge.r{background:var(--red-lt);color:var(--red)}
+.badge.o{background:var(--g100);color:var(--g400)}
+.acct .ct{font-size:13px;color:var(--navy);font-weight:600;margin-bottom:6px}
+.acct .nt{font-size:12.5px;color:var(--g600);margin-bottom:10px}
+.acct a.btn{display:inline-block;font-size:12.5px;font-weight:600;color:#fff;background:var(--navy);padding:6px 13px;border-radius:8px;text-decoration:none}
+.acct a.btn:hover{background:var(--navy2)}
 
-.c-body{padding:30px 18px 18px}
-.c-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;line-height:1.2;margin-bottom:3px}
-.c-addr{font-size:11px;color:var(--g400);margin-bottom:14px;display:flex;align-items:center;gap:4px}
+/* DAY-OF */
+.bring{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:var(--radius);padding:24px 26px;box-shadow:var(--sh2);margin-bottom:16px}
+.bring h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold-lt);margin-bottom:14px}
+.bring-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.bring-item{display:flex;gap:11px;align-items:flex-start;font-size:14px}
+.bring-item .ic{flex:0 0 auto;width:30px;height:30px;border-radius:8px;background:rgba(201,168,76,.18);display:grid;place-items:center;font-size:15px}
+.bring-item b{display:block;font-weight:600}
+.bring-item small{color:#cdd4e3;font-size:12px}
 
-/* alerts inside card */
-.c-alert{display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:var(--rsm);font-size:11px;font-weight:500;margin-bottom:10px}
-.c-alert.special{background:var(--amber-lt);color:var(--amber);border:1px solid #f5c842}
-.c-alert.warning{background:var(--red-lt);color:var(--red);border:1px solid #f5c6c6}
+/* ESSENTIALS */
+.ess-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.ess{background:#fff;border-radius:var(--rsm);box-shadow:var(--sh1);border:1px solid var(--g200);overflow:hidden}
+.ess-hd{padding:13px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100);background:var(--g100)}
+.ess-hd.pri{background:linear-gradient(135deg,#fbf3d8,#f7ead0)}
+.ess-hd .em{font-size:20px}
+.ess-hd .nm{font-weight:700;font-size:15px}
+.ess-hd .pri-tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--amber);background:#fff;padding:3px 8px;border-radius:6px}
+.ess ul{list-style:none;padding:8px 10px}
+.ess li{display:flex;gap:10px;align-items:flex-start;padding:6px 6px;border-radius:7px;cursor:pointer;font-size:13.5px;color:var(--g700);transition:.12s}
+.ess li:hover{background:var(--g100)}
+.ess li .b{flex:0 0 auto;width:18px;height:18px;border:2px solid var(--g400);border-radius:5px;margin-top:1px;display:grid;place-items:center;transition:.15s}
+.ess li.on .b{background:var(--green);border-color:var(--green)}
+.ess li .b svg{opacity:0}
+.ess li.on .b svg{opacity:1}
+.ess li.on span{text-decoration:line-through;color:var(--g400)}
 
-/* price block */
-.price-block{background:var(--g100);border-radius:var(--rsm);padding:12px;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-.pb-left .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.6px;color:var(--g400);margin-bottom:2px}
-.pb-left .amt{font-size:22px;font-weight:800;line-height:1}
-.pb-left .unit{font-size:10px;color:var(--g400);margin-top:2px}
-.pb-right{text-align:right}
-.pb-right .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.6px;color:var(--green);margin-bottom:2px}
-.pb-right .amt{font-size:15px;font-weight:700;color:var(--green)}
-.gym-tag{display:inline-block;background:var(--green-lt);color:var(--green);font-size:9px;font-weight:600;padding:2px 7px;border-radius:4px;margin-top:3px}
+/* CALLOUT */
+.note{background:var(--amber-lt);border:1px solid #f0d9a8;border-radius:var(--rsm);padding:14px 18px;font-size:13.5px;color:#7a4f00;margin-bottom:20px;display:flex;gap:10px}
+.note b{color:#5e3d00}
 
-/* stats 2-col */
-.stats2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
-.stat{background:var(--g100);border-radius:var(--rsm);padding:10px;text-align:center}
-.stat .si{font-size:18px;margin-bottom:2px}
-.stat .sv{font-size:12px;font-weight:700;line-height:1.2}
-.stat .sk{font-size:9px;color:var(--g400);margin-top:2px}
-
-/* amenity chips */
-.chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
-.chip{display:inline-flex;align-items:center;gap:3px;padding:4px 9px;border-radius:100px;font-size:10px;font-weight:600}
-.chip.y{background:var(--green-lt);color:var(--green)}
-.chip.n{background:var(--g100);color:var(--g400);text-decoration:line-through}
-
-/* sub-scores inside card */
-.sub-scores{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
-.ss{font-size:10px;color:var(--g400)}
-.ss strong{font-weight:700}
-
-/* action buttons */
-.c-actions{display:flex;gap:8px}
-.btn{flex:1;padding:9px 4px;border-radius:var(--rsm);font-size:12px;font-weight:700;text-align:center;text-decoration:none;cursor:pointer;border:none;transition:all .18s;display:inline-block;letter-spacing:.2px}
-.btn-p{background:var(--navy);color:#fff}
-.btn-p:hover{background:var(--navy2);transform:scale(1.02)}
-.btn-o{background:transparent;border:2px solid var(--navy);color:var(--navy)}
-.btn-o:hover{background:var(--g100)}
-
-/* ── COST TABLE ── */
-.tbl-wrap{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--sh1)}
-table{width:100%;border-collapse:collapse}
-thead th{background:var(--navy);color:#fff;padding:13px 16px;font-size:12px;font-weight:600;text-align:left;white-space:nowrap}
-tbody td{padding:12px 16px;font-size:12px;border-bottom:1px solid var(--g200)}
-tbody tr:last-child td{border-bottom:none}
-tbody tr:nth-child(even) td{background:var(--g100)}
-.best{color:var(--green);font-weight:800}
-.worst{color:var(--red)}
-.note-box{background:#fff;border-radius:var(--radius);padding:18px 20px;box-shadow:var(--sh1);font-size:12px;color:var(--g700);line-height:1.7;margin-top:14px}
-.note-box strong{color:var(--navy)}
-
-/* ── SCORE BARS ── */
-.bars-wrap{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--sh1)}
-.bar-row{margin-bottom:20px}
-.bar-row:last-child{margin-bottom:0}
-.bar-top{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:5px}
-.bar-sub{display:flex;gap:14px;margin-top:6px;flex-wrap:wrap}
-.bar-sub span{font-size:10px;color:var(--g400)}
-.bar-track{height:10px;background:var(--g200);border-radius:5px;overflow:hidden}
-.bar-fill{height:100%;border-radius:5px;transition:width .6s cubic-bezier(.4,0,.2,1)}
-
-/* ── TOUR NOTES ── */
-.notes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
-.note-card{background:#fff;border-radius:var(--radius);padding:20px;box-shadow:var(--sh1)}
-.note-card h4{font-size:14px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.note-card textarea{width:100%;border:1.5px solid var(--g200);border-radius:var(--rsm);padding:10px;font-size:12px;font-family:'Inter',sans-serif;color:var(--g700);resize:vertical;min-height:90px;outline:none;transition:border-color .2s}
-.note-card textarea:focus{border-color:var(--navy)}
-.star-rating{display:flex;gap:4px;margin-bottom:8px}
-.star{font-size:20px;cursor:pointer;color:var(--g200);transition:color .15s;user-select:none}
-.star.on{color:var(--gold)}
-
-/* ── LEGEND ── */
-.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--g700);margin-bottom:16px}
-.leg{display:flex;align-items:center;gap:5px}
-.leg-dot{width:10px;height:10px;border-radius:50%}
-
-/* ── FOOTER ── */
-footer{background:var(--navy);color:rgba(255,255,255,.55);text-align:center;padding:24px 16px;font-size:11px;margin-top:40px}
-footer a{color:rgba(255,255,255,.6);text-decoration:none}
-
-/* ── RESPONSIVE ── */
-@media(max-width:600px){
-  .sliders{grid-template-columns:1fr 1fr}
-  .cards{grid-template-columns:1fr}
-  table{font-size:11px}
-  thead th,tbody td{padding:10px 10px}
+footer{text-align:center;padding:40px 20px;color:var(--g400);font-size:12.5px}
+footer b{color:var(--g600)}
+@media(max-width:560px){
+  .prog-card{margin-top:-70px;padding:18px}
+  .countdown{gap:10px}.cd-box{min-width:64px;padding:10px 12px}.cd-num{font-size:26px}
 }
-
-/* ── NAV ── */
-nav{background:#1a3a6b;padding:0 24px;display:flex}
-nav a{color:rgba(255,255,255,0.7);text-decoration:none;padding:11px 16px;font-size:13px;font-weight:500;border-bottom:3px solid transparent;display:block}
-nav a.active{color:#fff;border-bottom-color:#f6c343}
-nav a:hover{color:#fff}
 </style>
 </head>
 <body>
-
-<nav>
-  <a href="index.html" class="active">&#127968; Dashboard</a>
-  <a href="tracker.html">&#128202; Tracker &amp; Data</a>
-  <a href="compare.html">&#128203; Compare &amp; Rank</a>
-  <a href="finder.html">&#10024; Finder</a>
-  <a href="route.html">&#128506; Route Map</a>
-</nav>
-
-<!-- HEADER -->
 <header>
-  <div class="header-inner">
-    <h1>Your <span>New Chapter</span> Finder</h1>
-    <p class="sub">Smart comparison · Duarte &amp; Monrovia · Built for CS Arts families</p>
-    <div class="pill-row">
-      <div class="pill">💰 Budget <span>$3,000 – $4,300/mo</span></div>
-      <div class="pill">🎓 CS Arts <span>1401 Highland Ave, Duarte</span></div>
-      <div class="pill">🏡 Home <span>8932 Hollywood Hills Rd, LA</span></div>
-      <div class="pill">💪 Gym saves <span>$275/mo</span></div>
-    </div>
-  </div>
+  <div class="kicker">New Chapter · Move-In Project Plan</div>
+  <h1>Welcome <span>Home</span></h1>
+  <p class="addr" id="addr"></p>
+  <div class="countdown" id="countdown"></div>
+  <div class="deadline-pill" id="deadline"></div>
 </header>
 
-<div class="wrap">
+<nav><div class="nav-inner">
+  <a href="#must" class="active">Get Keys</a>
+  <a href="#timeline">Timeline</a>
+  <a href="#accounts">Accounts</a>
+  <a href="#dayof">Move-In Day</a>
+  <a href="#essentials">Essentials</a>
+</div></nav>
 
-  <!-- CONTROLS -->
-  <div class="controls">
-    <div class="controls-label">🎛️ Adjust What Matters Most — Cards re-rank instantly</div>
-    <div class="sliders">
-      <div class="sl-group">
-        <div class="sl-top"><span>💰 Price / Value</span><span class="badge" id="lp">30%</span></div>
-        <input type="range" id="wp" min="0" max="50" value="30" oninput="go()">
-      </div>
-      <div class="sl-group">
-        <div class="sl-top"><span>🎓 Commute → CS Arts</span><span class="badge" id="lc">35%</span></div>
-        <input type="range" id="wc" min="0" max="50" value="35" oninput="go()">
-      </div>
-      <div class="sl-group">
-        <div class="sl-top"><span>🏡 Commute → Home</span><span class="badge" id="lh">20%</span></div>
-        <input type="range" id="wh" min="0" max="50" value="20" oninput="go()">
-      </div>
-      <div class="sl-group">
-        <div class="sl-top"><span>🏊 Amenities</span><span class="badge" id="la">15%</span></div>
-        <input type="range" id="wa" min="0" max="50" value="15" oninput="go()">
-      </div>
+<div class="wrap">
+  <div class="prog-card">
+    <div class="prog-ring" id="ring"><span id="ringPct">0%</span></div>
+    <div class="prog-txt">
+      <h3 id="progTitle">Critical path to keys</h3>
+      <p id="progSub">Check items off as you complete them — progress saves on this device.</p>
     </div>
+    <button class="prog-reset" id="resetBtn">Reset checklist</button>
   </div>
 
-  <!-- RECOMMENDATION BANNER -->
-  <section style="padding-top:20px;padding-bottom:0">
-    <div class="rec" id="rec-banner">
-      <div class="rec-icon">🏆</div>
-      <div>
-        <h3 id="rec-title">Loading top pick…</h3>
-        <p id="rec-desc"></p>
+  <section id="must">
+    <div class="sec-head"><h2>Required to Get Keys</h2><span class="tag">Do these first</span></div>
+    <p class="sec-sub">The leasing office will not release keys to Unit 229 if any of these are missing. Both leaseholders (Michael &amp; Heather) must be present on move-in day, and everything below must be done on or before June 27.</p>
+    <div class="must-grid" id="mustGrid"></div>
+  </section>
+
+  <section id="timeline">
+    <div class="sec-head"><h2>The Plan, Week by Week</h2><span class="tag">Timeline</span></div>
+    <p class="sec-sub">You don't have to move everything in on the 27th — just enough to live comfortably. Here's the sequence from today through settling in.</p>
+    <div class="phases" id="phases"></div>
+  </section>
+
+  <section id="accounts">
+    <div class="sec-head"><h2>Accounts &amp; Utilities</h2><span class="tag">Set up</span></div>
+    <p class="sec-sub">Contacts and links for everything you need to activate. Red badge = required for move-in.</p>
+    <div class="acct-grid" id="acctGrid"></div>
+  </section>
+
+  <section id="dayof">
+    <div class="sec-head"><h2>Move-In Day · Sat June 27</h2><span class="tag">Before 5 PM</span></div>
+    <p class="sec-sub">Arrive early — parking is open and first-come, so an early spot makes unloading far easier.</p>
+    <div class="bring">
+      <h3>Bring to the leasing office</h3>
+      <div class="bring-list">
+        <div class="bring-item"><div class="ic">🪪</div><div><b>Photo IDs</b><small>Government-issued, every leaseholder</small></div></div>
+        <div class="bring-item"><div class="ic">💵</div><div><b>Cashier's check $5,361</b><small>Payable to HLD APT Esperanza LLC</small></div></div>
+        <div class="bring-item"><div class="ic">📄</div><div><b>Proof of insurance</b><small>Declaration page (if not already emailed)</small></div></div>
+        <div class="bring-item"><div class="ic">✍️</div><div><b>Both leaseholders</b><small>Present in person, lease pre-signed</small></div></div>
       </div>
     </div>
   </section>
 
-  <!-- PROPERTY CARDS -->
-  <section>
-    <div class="section-head">🏘️ Properties</div>
-    <div class="cards" id="cards-wrap"></div>
+  <section id="essentials">
+    <div class="sec-head"><h2>Essentials to Live Comfortably</h2><span class="tag">Shopping list</span></div>
+    <p class="sec-sub">For Heather, Mike, and your daughter (14). Gold-highlighted rooms are the priority for night one; the rest can follow over the first weeks. Tap any item to check it off.</p>
+    <div class="ess-grid" id="essGrid"></div>
   </section>
-
-  <!-- COST BREAKDOWN -->
-  <section>
-    <div class="section-head">💰 Full Cost Breakdown</div>
-    <div class="tbl-wrap">
-      <table id="cost-tbl"></table>
-    </div>
-    <div class="note-box">
-      <strong>💪 Gym Savings:</strong> All three communities include a fitness center — saving you <strong>$275/mo vs. a standalone membership</strong>. Over 12 months that's <strong>$3,300 back in your pocket</strong> — essentially one month of free rent. This is baked into the "Effective Cost" column.<br><br>
-      <strong>🎁 Esperanza Special:</strong> 2 Months Free. Units 407 & 507 (1,174 sf, 3BR D1) are $4,100/mo available now (NEW); unit 229 (1,098 sf, 3BR D2) is $3,950/mo available Oct 7.<br><br>
-      <strong>🎁 Solana Special:</strong> 8 Weeks Free on base rent — but <strong>no 3BR is available right now</strong>. Plans C1 and C1-M show "Available Soon." We're monitoring daily.<br><br>
-      <strong>⚠️ Budget check:</strong> Esperanza's in-budget 3BR units now run $3,950–$4,100/mo — inside your $4,300 ceiling, and even lower after the $275 gym offset. Avalon's only 3BR units ($5,200–$5,910) are well over budget.
-    </div>
-  </section>
-
-  <!-- SCORE BARS -->
-  <section>
-    <div class="section-head">📊 Score Comparison</div>
-    <div class="legend">
-      <div class="leg"><div class="leg-dot" style="background:var(--green)"></div> 80–100 Excellent</div>
-      <div class="leg"><div class="leg-dot" style="background:var(--amber)"></div> 60–79 Good</div>
-      <div class="leg"><div class="leg-dot" style="background:var(--red)"></div> &lt;60 Fair</div>
-    </div>
-    <div class="bars-wrap" id="bars-wrap"></div>
-  </section>
-
-  <!-- TOUR NOTES -->
-  <section>
-    <div class="section-head">📝 Tour Notes — Fill In After Each Visit</div>
-    <div class="notes-grid" id="notes-wrap"></div>
-  </section>
-
-  <!-- KEY FACTS -->
-  <section>
-    <div class="section-head">📋 Need-to-Know Facts</div>
-    <div class="note-box" style="line-height:1.9">
-      <strong>🗓️ Tours booked:</strong> <span id="facts-tours"></span><br>
-      <strong>📍 CS Arts distance:</strong> Esperanza &amp; Solana are about 0.7 miles from school — your student could bike or walk. Avalon is a ~9 min drive via the 210.<br>
-      <strong>🚂 Metro bonus:</strong> Both Duarte Station properties are 0.4 mi from the Gold Line — ideal if you want a car-free commute day for the kids.<br>
-      <strong>🏠 From Hollywood Hills:</strong> All properties are roughly the same distance (~30 mi via I-5 → I-210). Factor 40–55 min for peak traffic, 35 min off-peak.<br>
-      <strong>🏊 Pools at every community:</strong> Esperanza has a rooftop pool + ground pool &amp; spa. Avalon adds a hot tub and rooftop grill deck.<br>
-      <strong>⚠️ Availability:</strong> Solana has no 3BR right now and Avalon's 3BR units are over budget — Esperanza is the only priority community with an in-range 3BR. Inventory moves fast, so confirm at your tour.
-    </div>
-  </section>
-
-</div><!-- /wrap -->
+</div>
 
 <footer>
-  <div>Data current as of June 1, 2026 · Always confirm pricing directly with each property · Commute times are estimates, confirm via Google Maps</div>
-  <div style="margin-top:6px">CS Arts SGV: 1401 Highland Ave, Duarte CA 91010 · Home: 8932 Hollywood Hills Rd, Los Angeles CA</div>
-  <div style="margin-top:6px;opacity:.5">Built for Phlux · New Chapter Search · 2026</div>
+  <b>Esperanza at Duarte Station · Unit 229</b><br>
+  Leasing office (626) 775-2882 · esperanza@hollandpartnergroup.com<br>
+  Move-in plan · last updated June 15, 2026
 </footer>
 
-<script src="site_data.js?v=20260604-1"></script>
+<script src="site_data.js"></script>
 <script>
-// Derive the dashboard `props` array from the single source of truth.
-// Each priority community → one dashboard card.
-const props = window.RENTAL_DATA.priorityProperties.map(pp => {
-  const d = pp.display || {};
-  const a = d.amenities || {};
-  return {
-    id: pp.id,
-    name: pp.name,
-    short: pp.short,
-    addr: pp.address,
-    emoji: d.emoji || '🏠',
-    bg: d.bg || 'linear-gradient(145deg,#0f1f3d 0%,#1a3060 100%)',
-    web: (pp.urls && pp.urls.apartments) || (pp.urls && pp.urls.website) || '#',
-    tour: (pp.urls && pp.urls.apartments) || (pp.urls && pp.urls.website) || '#',
-    mapCS: d.mapCS || '#',
-    mapHome: d.mapHome || '#',
-    price3: d.price3 != null ? d.price3 : null,
-    units: d.unitsLabel || '—',
-    special: pp.specials || null,
-    tourBooked: pp.tourBooked || null,
-    warning: d.warning || null,
-    gym: !!a.gym, pool: !!a.pool, rooftop: !!a.rooftop, spa: !!a.spa,
-    pets: !!a.pets, cowork: !!a.cowork, ev: !!a.ev, bark: !!a.bark,
-    commCS: d.commCS || '—',
-    commHome: d.commHome || '—',
-    commCSMin: d.commCSMin, commHomeMin: d.commHomeMin,
-    notes: d.cardNotes || [],
-    pScore: (d.scores && d.scores.p) || 0,
-    cScore: (d.scores && d.scores.c) || 0,
-    hScore: (d.scores && d.scores.h) || 0,
-    aScore: (d.scores && d.scores.a) || 0
-  };
+const D = window.MOVEIN_DATA;
+const CK = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const store = {
+  get(k){ try{return JSON.parse(localStorage.getItem('movein_'+k)||'{}')}catch(e){return {}} },
+  set(k,v){ try{localStorage.setItem('movein_'+k,JSON.stringify(v))}catch(e){} }
+};
+
+/* ---- header ---- */
+document.getElementById('addr').innerHTML =
+  D.meta.community + ' · <b>'+D.meta.unit+'</b><br>'+D.meta.address;
+document.getElementById('deadline').textContent = '⏱  '+D.meta.moveInDeadline;
+
+function renderCountdown(){
+  const target = new Date(D.meta.moveInISO);
+  const now = new Date();
+  let diff = Math.max(0, target - now);
+  const days = Math.floor(diff/86400000); diff -= days*86400000;
+  const hrs = Math.floor(diff/3600000); diff -= hrs*3600000;
+  const mins = Math.floor(diff/60000);
+  const parts = [[days,'Days'],[hrs,'Hours'],[mins,'Minutes']];
+  document.getElementById('countdown').innerHTML =
+    '<div class="cd-box" style="border-color:rgba(201,168,76,.6)"><div class="cd-num">'+(target>now?'✦':'✓')+'</div><div class="cd-lbl">'+D.meta.moveInLabel.split(',')[0]+'</div></div>'+
+    parts.map(p=>'<div class="cd-box"><div class="cd-num">'+p[0]+'</div><div class="cd-lbl">'+p[1]+'</div></div>').join('');
+}
+renderCountdown(); setInterval(renderCountdown,60000);
+
+/* ---- must-haves ---- */
+const mustState = store.get('must');
+const mg = document.getElementById('mustGrid');
+function renderMust(){
+  mg.innerHTML = D.mustHaves.map(m=>{
+    const done = !!mustState[m.id];
+    return '<div class="must'+(m.urgent?' urgent':'')+(done?' done':'')+'" data-id="'+m.id+'">'+
+      '<div class="ck">'+CK+'</div>'+
+      '<div class="must-body"><div class="t">'+m.title+'</div>'+
+      '<div class="d">'+m.detail+'</div>'+
+      '<div class="must-meta">'+
+        '<span class="chip due">⏱ '+m.due+'</span>'+
+        (m.action?'<span class="chip act">'+m.action+'</span>':'')+
+        (m.urgent?'<span class="chip req">Required</span>':'')+
+      '</div></div></div>';
+  }).join('');
+  mg.querySelectorAll('.must').forEach(el=>{
+    el.querySelector('.ck').addEventListener('click',()=>{
+      const id=el.dataset.id; mustState[id]=!mustState[id];
+      store.set('must',mustState); renderMust(); updateProgress();
+    });
+  });
+}
+function updateProgress(){
+  const total=D.mustHaves.length;
+  const done=D.mustHaves.filter(m=>mustState[m.id]).length;
+  const pct=Math.round(done/total*100);
+  const ring=document.getElementById('ring');
+  ring.style.setProperty('--p',pct);
+  document.getElementById('ringPct').textContent=pct+'%';
+  document.getElementById('progSub').textContent=
+    done+' of '+total+' move-in requirements complete · saves on this device';
+}
+renderMust(); updateProgress();
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  if(confirm('Reset all checkmarks?')){
+    Object.keys(mustState).forEach(k=>delete mustState[k]);
+    store.set('must',mustState);
+    Object.keys(essState).forEach(k=>delete essState[k]);
+    store.set('ess',essState);
+    renderMust(); updateProgress(); renderEss();
+  }
 });
 
-function eff(p){ return p.price3 ? p.price3 - (p.gym?275:0) : null }
-function clr(s){ return s>=80?'#1e6b45':s>=60?'#b86a00':'#b93232' }
+/* ---- phases ---- */
+document.getElementById('phases').innerHTML = D.phases.map(p=>
+  '<div class="phase tone-'+p.tone+'"><div class="phase-hd"><div class="lbl">'+p.label+'</div><div class="h">'+p.heading+'</div></div>'+
+  '<ul>'+p.tasks.map(t=>'<li>'+t+'</li>').join('')+'</ul></div>'
+).join('');
 
-function score(p){
-  const wp=+document.getElementById('wp').value;
-  const wc=+document.getElementById('wc').value;
-  const wh=+document.getElementById('wh').value;
-  const wa=+document.getElementById('wa').value;
-  const t=wp+wc+wh+wa||1;
-  return Math.round((p.pScore*wp + p.cScore*wc + p.hScore*wh + p.aScore*wa)/t);
-}
+/* ---- accounts ---- */
+document.getElementById('acctGrid').innerHTML = D.accounts.map(a=>
+  '<div class="acct"><div class="top"><div class="nm">'+a.name+'</div>'+
+  '<span class="badge '+(a.required?'r':'o')+'">'+(a.required?'Required':'Optional')+'</span></div>'+
+  (a.contact&&a.contact!=='—'?'<div class="ct">'+a.contact+'</div>':'')+
+  '<div class="nt">'+a.notes+'</div>'+
+  (a.url?'<a class="btn" href="'+a.url+'" target="_blank" rel="noopener">Open →</a>':'')+
+  '</div>'
+).join('');
 
-function renderCards(){
-  const sorted=[...props].sort((a,b)=>score(b)-score(a));
-  const wrap=document.getElementById('cards-wrap');
-  wrap.innerHTML=sorted.map((p,i)=>{
-    const s=score(p), ef=eff(p), topPick=i===0;
-    const base=p.price3;
-    const amenities=[
-      {l:'🏋️ Gym',v:p.gym},{l:'🏊 Pool',v:p.pool},{l:'♨️ Spa',v:p.spa},
-      {l:'🏙️ Rooftop',v:p.rooftop},{l:'🐾 Pets',v:p.pets},{l:'💻 Co-work',v:p.cowork},
-      {l:'⚡ EV',v:p.ev},{l:'🐕 Bark Park',v:p.bark}
-    ];
-    return `
-    <div class="card${topPick?' winner':''}" id="card-${p.id}">
-      <div class="ribbon">⭐ Top Pick</div>
-      <div class="c-img" style="background:${p.bg}">
-        <div class="c-img-emoji">${p.emoji}</div>
-        <div class="score-ring" style="background:${clr(s)};color:#fff">
-          <span class="sn">${s}</span><span class="sl">Score</span>
-        </div>
-      </div>
-      <div class="c-body">
-        <div class="c-name">${p.name}</div>
-        <div class="c-addr">📍 ${p.addr}</div>
-        ${p.tourBooked?`<div class="c-alert" style="background:#faf5ff;color:#553c9a;border:1px solid #d6bcfa">🗓️ ${p.tourBooked}</div>`:''}
-        ${p.special?`<div class="c-alert special">🎁 ${p.special}</div>`:''}
-        ${p.warning?`<div class="c-alert warning">⚠️ ${p.warning}</div>`:''}
-        <div class="price-block">
-          <div class="pb-left">
-            <div class="lbl">Monthly Rent</div>
-            <div class="amt">${base?`$${base.toLocaleString()}`:'—'}<span style="font-size:12px;font-weight:400;color:#9a9893">${base?'/mo':''}</span></div>
-            <div class="unit">${p.units}</div>
-          </div>
-          <div class="pb-right">
-            <div class="lbl">Effective Cost</div>
-            <div class="amt">${ef?`$${ef.toLocaleString()}/mo`:'N/A'}</div>
-            ${p.gym&&ef?'<div class="gym-tag">−$275 gym saved</div>':''}
-          </div>
-        </div>
-        <div class="stats2">
-          <div class="stat">
-            <div class="si">🎓</div>
-            <div class="sv">${p.commCS}</div>
-            <div class="sk">to CS Arts</div>
-          </div>
-          <div class="stat">
-            <div class="si">🏡</div>
-            <div class="sv">${p.commHome}</div>
-            <div class="sk">from Hollywood Hills</div>
-          </div>
-        </div>
-        <div class="chips">
-          ${amenities.map(a=>`<span class="chip ${a.v?'y':'n'}">${a.l}</span>`).join('')}
-        </div>
-        <div class="sub-scores">
-          <span class="ss">Price <strong style="color:${clr(p.pScore)}">${p.pScore}</strong></span>
-          <span class="ss">CS Arts <strong style="color:${clr(p.cScore)}">${p.cScore}</strong></span>
-          <span class="ss">Home <strong style="color:${clr(p.hScore)}">${p.hScore}</strong></span>
-          <span class="ss">Amenities <strong style="color:${clr(p.aScore)}">${p.aScore}</strong></span>
-        </div>
-        <div style="font-size:10px;color:var(--g400);margin-bottom:12px;line-height:1.8">
-          ${p.notes.map(n=>`• ${n}`).join('<br>')}
-        </div>
-        <div class="c-actions">
-          <a href="${p.tour}" target="_blank" class="btn btn-p">📅 Book Tour</a>
-          <a href="${p.mapCS}" target="_blank" class="btn btn-o">🗺️ Commute Map</a>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function renderCostTable(){
-  const effs=props.map(p=>eff(p)).filter(e=>e!=null);
-  const minE=Math.min(...effs), maxE=Math.max(...effs);
-  const tbl=document.getElementById('cost-tbl');
-  tbl.innerHTML=`
-    <thead><tr>
-      <th>Property</th><th>Base Rent</th><th>Gym Saving</th>
-      <th>Effective/mo</th><th>Annual Total</th><th>12-mo Gym Saved</th>
-    </tr></thead>
-    <tbody>
-    ${props.map(p=>{
-      const base=p.price3;
-      const ef=eff(p);
-      if(ef==null){
-        return `<tr>
-        <td><strong>${p.emoji} ${p.name}</strong></td>
-        <td colspan="5" style="color:#9a9893;font-style:italic">No 3BR currently available — monitoring</td>
-      </tr>`;
-      }
-      const ann=ef*12;
-      const isBest=ef===minE, isWorst=ef===maxE;
-      return `<tr>
-        <td><strong>${p.emoji} ${p.name}</strong></td>
-        <td>$${base.toLocaleString()}/mo</td>
-        <td class="${p.gym?'best':'worst'}">${p.gym?'−$275 ✓':'—'}</td>
-        <td class="${isBest?'best':isWorst?'worst':''}">${isBest?'🏆 ':''}$${ef.toLocaleString()}/mo</td>
-        <td>$${ann.toLocaleString()}/yr</td>
-        <td class="${p.gym?'best':''}">${p.gym?'$3,300 saved':'—'}</td>
-      </tr>`;
-    }).join('')}
-    </tbody>`;
-}
-
-function renderBars(){
-  const sorted=[...props].sort((a,b)=>score(b)-score(a));
-  document.getElementById('bars-wrap').innerHTML=sorted.map(p=>{
-    const s=score(p);
-    return `
-    <div class="bar-row">
-      <div class="bar-top">
-        <span>${p.emoji} <strong>${p.name}</strong></span>
-        <span style="color:${clr(s)};font-weight:800">${s} / 100</span>
-      </div>
-      <div class="bar-track">
-        <div class="bar-fill" style="width:${s}%;background:${clr(s)}"></div>
-      </div>
-      <div class="bar-sub">
-        <span>Price <strong style="color:${clr(p.pScore)}">${p.pScore}</strong></span>
-        <span>CS Arts Commute <strong style="color:${clr(p.cScore)}">${p.cScore}</strong></span>
-        <span>Home Commute <strong style="color:${clr(p.hScore)}">${p.hScore}</strong></span>
-        <span>Amenities <strong style="color:${clr(p.aScore)}">${p.aScore}</strong></span>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function renderNotes(){
-  const wrap=document.getElementById('notes-wrap');
-  if(wrap.children.length) return; // only render once
-  wrap.innerHTML=props.map(p=>`
-    <div class="note-card">
-      <h4>${p.emoji} ${p.name}</h4>
-      <div class="star-rating" id="stars-${p.id}">
-        ${[1,2,3,4,5].map(i=>`<span class="star" data-prop="${p.id}" data-val="${i}" onclick="setStar('${p.id}',${i})">★</span>`).join('')}
-      </div>
-      <textarea placeholder="Notes after your tour… (layout, vibe, parking, noise, leasing team, etc.)"
-        oninput="saveNote('${p.id}',this.value)">${localStorage.getItem('note_'+p.id)||''}</textarea>
-    </div>`).join('');
-  // restore stars
-  props.forEach(p=>{
-    const v=parseInt(localStorage.getItem('star_'+p.id)||'0');
-    if(v) setStar(p.id,v,true);
+/* ---- essentials ---- */
+const essState = store.get('ess');
+const eg = document.getElementById('essGrid');
+function renderEss(){
+  eg.innerHTML = D.essentials.map((r,ri)=>
+    '<div class="ess"><div class="ess-hd'+(r.priority?' pri':'')+'"><span class="em">'+r.icon+'</span>'+
+    '<span class="nm">'+r.room+'</span>'+(r.priority?'<span class="pri-tag">Priority</span>':'')+'</div>'+
+    '<ul>'+r.items.map((it,ii)=>{
+      const key=ri+'_'+ii; const on=!!essState[key];
+      return '<li class="'+(on?'on':'')+'" data-k="'+key+'"><span class="b">'+CK+'</span><span>'+it+'</span></li>';
+    }).join('')+'</ul></div>'
+  ).join('');
+  eg.querySelectorAll('li').forEach(li=>{
+    li.addEventListener('click',()=>{
+      const k=li.dataset.k; essState[k]=!essState[k];
+      store.set('ess',essState); li.classList.toggle('on');
+    });
   });
 }
+renderEss();
 
-function setStar(id, val, silent){
-  if(!silent) localStorage.setItem('star_'+id, val);
-  document.querySelectorAll(`#stars-${id} .star`).forEach((el,i)=>{
-    el.classList.toggle('on', i<val);
-  });
-}
-function saveNote(id, val){
-  localStorage.setItem('note_'+id, val);
-}
-
-function renderRec(){
-  const sorted=[...props].sort((a,b)=>score(b)-score(a));
-  const top=sorted[0], s=score(top);
-  document.getElementById('rec-title').textContent=`Top Pick: ${top.name} · Score ${s}/100`;
-  document.getElementById('rec-desc').textContent=
-    `${top.commCS} to CS Arts`+
-    (eff(top)?` · Effective cost $${eff(top).toLocaleString()}/mo after gym savings`:'')+
-    (top.special?` · 🎁 ${top.special}`:'');
-}
-
-function updateLabels(){
-  document.getElementById('lp').textContent=document.getElementById('wp').value+'%';
-  document.getElementById('lc').textContent=document.getElementById('wc').value+'%';
-  document.getElementById('lh').textContent=document.getElementById('wh').value+'%';
-  document.getElementById('la').textContent=document.getElementById('wa').value+'%';
-}
-
-function renderFactsTours(){
-  const el = document.getElementById('facts-tours');
-  if(!el) return;
-  const groups = {}, order = [];
-  window.RENTAL_DATA.tours.forEach(t=>{
-    const day = t.day || 'Friday, June 5';
-    if(!(day in groups)){ groups[day] = []; order.push(day); }
-    groups[day].push(t);
-  });
-  el.innerHTML = order.map(day=>{
-    const items = groups[day].map(t=>{
-      const who = t.agent ? ` (${t.agent})` : (t.note ? ` (${t.note})` : '');
-      return `${t.time} ${t.address}${who}`;
-    }).join(' · ');
-    return `<br><strong>${day}:</strong> ${items}`;
-  }).join('');
-}
-
-function go(){
-  updateLabels();
-  renderCards();
-  renderCostTable();
-  renderBars();
-  renderNotes();
-  renderRec();
-}
-
-renderFactsTours();
-go();
+/* ---- nav scrollspy ---- */
+const links=[...document.querySelectorAll('nav a')];
+const secs=links.map(l=>document.querySelector(l.getAttribute('href')));
+window.addEventListener('scroll',()=>{
+  let cur=secs[0].id;
+  secs.forEach(s=>{ if(window.scrollY>=s.offsetTop-80) cur=s.id; });
+  links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+},{passive:true});
 </script>
 </body>
 </html>
