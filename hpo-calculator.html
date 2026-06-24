@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Body Ops Price Calculator - RFQ W50S8H-26-Q-0016</title>
+<style>
+  :root{--navy:#1F3864;--blue:#2E75B6;--grey:#555;--line:#d0d7e5;--good:#1a7f37;--bad:#b00000;--bg:#f6f8fc;}
+  *{box-sizing:border-box;}
+  body{font-family:Arial,Helvetica,sans-serif;color:#13203a;margin:0;background:var(--bg);padding:24px;}
+  .wrap{max-width:980px;margin:0 auto;}
+  h1{color:var(--navy);font-size:22px;margin:0 0 2px;}
+  .sub{color:var(--blue);font-weight:bold;font-size:14px;margin:0 0 4px;}
+  .note{color:var(--grey);font-size:12px;margin:0 0 18px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
+  .card h2{font-size:14px;color:var(--navy);margin:0 0 10px;border-bottom:2px solid var(--line);padding-bottom:6px;}
+  label{display:block;font-size:12px;color:var(--grey);margin:8px 0 2px;}
+  input,select{width:100%;padding:7px 8px;border:1px solid #c3ccdd;border-radius:6px;font-size:14px;}
+  .fixed{font-size:12px;color:var(--grey);margin-top:6px;}
+  table{width:100%;border-collapse:collapse;margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  th,td{padding:9px 12px;text-align:right;font-size:13px;border-bottom:1px solid #e8edf5;}
+  th:first-child,td:first-child{text-align:left;}
+  thead th{background:var(--navy);color:#fff;font-size:12px;}
+  tbody tr:nth-child(even){background:#f4f7fc;}
+  .tot{font-weight:bold;background:#eaf0fa !important;}
+  .pos{color:var(--good);font-weight:bold;} .neg{color:var(--bad);font-weight:bold;}
+  .flag{background:#fff6f6;border:1px solid #f0c9c9;color:#7a1f1f;font-size:12px;padding:8px 10px;border-radius:8px;margin-top:10px;}
+  .twoyr{margin-top:8px;font-size:15px;color:var(--navy);font-weight:bold;text-align:right;}
+  .hd{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;}
+  .opt{font-size:12px;color:var(--grey);}
+  @media(max-width:760px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hd">
+    <div>
+      <h1>Body Ops - HPO Price &amp; Margin Calculator</h1>
+      <div class="sub">RFQ W50S8H-26-Q-0016 - 274th ASOS, New York Air National Guard</div>
+    </div>
+  </div>
+  <p class="note">Enter your numbers below. All values are examples until you replace them. Hours are fixed by the solicitation (S&amp;C 2,080/yr, PT 512/yr, app 12 months). Confirm the S&amp;C loaded cost meets Wage Determination 2015-4163 Rev 32 (Onondaga County) for the mapped SCA labor category.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>CLIN 0001/1001 - S&amp;C Specialist</h2>
+      <label>Your loaded cost ($/hr) - wage + fringe + burden</label>
+      <input id="scCost" type="number" value="38" step="0.50">
+      <label>Your quoted price to Gov ($/hr)</label>
+      <input id="scQuote" type="number" value="60" step="0.50">
+      <div class="fixed">Hours: 2,080 / year (fixed)</div>
+    </div>
+    <div class="card">
+      <h2>CLIN 0002/1002 - Physical Therapist</h2>
+      <label>Teaming partner rate to you ($/hr)</label>
+      <input id="ptCost" type="number" value="80" step="0.50">
+      <label>Your quoted price to Gov ($/hr)</label>
+      <input id="ptQuote" type="number" value="100" step="0.50">
+      <div class="fixed">Hours: 512 / year (fixed). PT needs DPT + ABPTS O/SCS board cert (premium rate).</div>
+    </div>
+    <div class="card">
+      <h2>CLIN 0003/1003 - Remote App</h2>
+      <label>App billing basis (pending CO answer)</label>
+      <select id="appBasis">
+        <option value="flat">Flat monthly, covers ALL DSG (12 months)</option>
+        <option value="seat">12 user-licenses (one-time 12 seats)</option>
+      </select>
+      <label>Your per-client app fee ($/client/month)</label>
+      <input id="appFee" type="number" value="8" step="0.50">
+      <label>Estimated DSG count (pending CO)</label>
+      <input id="dsg" type="number" value="50" step="1">
+      <label>Your quoted price to Gov ($/month)</label>
+      <input id="appQuote" type="number" value="1200" step="25">
+    </div>
+  </div>
+
+  <div style="margin-top:12px" class="opt">
+    Option-year escalation on quoted prices:
+    <input id="esc" type="number" value="0" step="0.5" style="width:80px;display:inline-block"> %
+    &nbsp; (applies to your quoted prices in the option year; costs held flat unless you change them)
+  </div>
+
+  <table id="out">
+    <thead>
+      <tr><th>Line Item (per year)</th><th>Revenue</th><th>Your Cost</th><th>Margin $</th><th>Margin %</th></tr>
+    </thead>
+    <tbody id="base"></tbody>
+  </table>
+  <div id="flag"></div>
+
+  <table id="out2" style="margin-top:16px">
+    <thead>
+      <tr><th>Summary</th><th>Base Year</th><th>Option Year</th><th>2-Year Total</th><th></th></tr>
+    </thead>
+    <tbody id="summary"></tbody>
+  </table>
+  <div class="twoyr" id="grand"></div>
+  <p class="note" style="margin-top:14px">App cost note: if the basis is "flat monthly," your app expense scales with the DSG count (fee x DSG x 12). If the CO confirms 12 user-licenses, app cost is just fee x 12. That is exactly the question sent to the CO; flip the dropdown to see both.</p>
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const ids = ['scCost','scQuote','ptCost','ptQuote','appBasis','appFee','dsg','appQuote','esc'];
+  const money = n => (n<0?'-$':'$') + Math.abs(n).toLocaleString(undefined,{maximumFractionDigits:0});
+  const pct = (m,r) => r===0?'-':(100*m/r).toFixed(1)+'%';
+  function appCost(){ const fee=+$('appFee').value, dsg=+$('dsg').value; return $('appBasis').value==='flat' ? fee*dsg*12 : fee*12; }
+  function rows(escFactor){
+    const scR=(+$('scQuote').value)*escFactor*2080, scC=(+$('scCost').value)*2080;
+    const ptR=(+$('ptQuote').value)*escFactor*512, ptC=(+$('ptCost').value)*512;
+    const apR=(+$('appQuote').value)*escFactor*12, apC=appCost();
+    return [
+      ['CLIN 0001/1001 - S&C Specialist (2,080 hrs)', scR, scC],
+      ['CLIN 0002/1002 - Physical Therapist (512 hrs)', ptR, ptC],
+      ['CLIN 0003/1003 - Remote App (12 mo)', apR, apC],
+    ];
+  }
+  function render(){
+    const esc = 1 + (+$('esc').value)/100;
+    const base = rows(1), opt = rows(esc);
+    // base detail table
+    let tb=''; let bR=0,bC=0;
+    base.forEach(r=>{ const m=r[1]-r[2]; bR+=r[1]; bC+=r[2];
+      tb+=`<tr><td>${r[0]}</td><td>${money(r[1])}</td><td>${money(r[2])}</td><td class="${m>=0?'pos':'neg'}">${money(m)}</td><td>${pct(m,r[1])}</td></tr>`;});
+    const bM=bR-bC;
+    tb+=`<tr class="tot"><td>Base Year Total</td><td>${money(bR)}</td><td>${money(bC)}</td><td class="${bM>=0?'pos':'neg'}">${money(bM)}</td><td>${pct(bM,bR)}</td></tr>`;
+    $('base').innerHTML=tb;
+    // option totals
+    let oR=0,oC=0; opt.forEach(r=>{oR+=r[1];oC+=r[2];}); const oM=oR-oC;
+    // summary
+    const sm = bR-bC, gM=bM+oM, gR=bR+oR, gC=bC+oC;
+    $('summary').innerHTML =
+      `<tr><td>Revenue</td><td>${money(bR)}</td><td>${money(oR)}</td><td>${money(gR)}</td><td></td></tr>`+
+      `<tr><td>Your Cost</td><td>${money(bC)}</td><td>${money(oC)}</td><td>${money(gC)}</td><td></td></tr>`+
+      `<tr class="tot"><td>Margin</td><td class="${bM>=0?'pos':'neg'}">${money(bM)}</td><td class="${oM>=0?'pos':'neg'}">${money(oM)}</td><td class="${gM>=0?'pos':'neg'}">${money(gM)}</td><td>${pct(gM,gR)}</td></tr>`;
+    $('grand').textContent = `Total 2-year margin: ${money(gM)}  (${pct(gM,gR)})`;
+    // flag negative margins
+    let f='';
+    base.forEach(r=>{ if(r[1]-r[2]<0) f+=`<div class="flag">${r[0]}: quoted price is below your cost - raise the quote or lower cost.</div>`;});
+    $('flag').innerHTML=f;
+  }
+  ids.forEach(id=>$(id).addEventListener('input',render));
+  render();
+</script>
+</body>
+</html>
