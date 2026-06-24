@@ -139,36 +139,28 @@
     base.forEach(r=>{ if(r[1]-r[2]<0) f+=`<div class="flag">${r[0]}: quoted price is below your cost - raise the quote or lower cost.</div>`;});
     $('flag').innerHTML=f;
   }
-  // --- Send my numbers button (no backend; opens a pre-filled email) ---
-  function summaryText(){
-    const g=id=>$(id).value;
-    const basis=$('appBasis').selectedOptions[0].text;
-    const esc=1+(+$('esc').value)/100;
-    const b=rows(1); let bR=0,bC=0; b.forEach(x=>{bR+=x[1];bC+=x[2];}); const bM=bR-bC;
-    const o=rows(esc); let oR=0,oC=0; o.forEach(x=>{oR+=x[1];oC+=x[2];}); const oM=oR-oC;
-    return [
-      'Body Ops HPO Calculator - my numbers (RFQ W50S8H-26-Q-0016)','',
-      'S&C Specialist: loaded cost $'+g('scCost')+'/hr, quoted $'+g('scQuote')+'/hr',
-      'Physical Therapist: partner rate $'+g('ptCost')+'/hr, quoted $'+g('ptQuote')+'/hr',
-      'Remote App: '+basis+'; per-client fee $'+g('appFee')+'; DSG '+g('dsg')+'; quoted $'+g('appQuote')+'/month',
-      'Option-year escalation: '+g('esc')+'%','',
-      'Base year margin: '+money(bM)+' ('+pct(bM,bR)+')',
-      'Two-year margin: '+money(bM+oM)+' ('+pct(bM+oM,bR+oR)+')'
-    ].join('\n');
-  }
+  // --- Save: keep the entered values in the page link and on this device (survives reload) ---
+  const FIELDS=['scCost','scQuote','ptCost','ptQuote','appBasis','appFee','dsg','appQuote','esc'];
+  (function restore(){
+    try{
+      const p=new URLSearchParams(location.search);
+      if(p.has('scCost')){FIELDS.forEach(f=>{const v=p.get(f); if(v!==null && v!=='')$(f).value=v;});return;}
+      const ls=localStorage.getItem('hpoCalc');
+      if(ls){const o=JSON.parse(ls); FIELDS.forEach(f=>{if(o[f]!=null)$(f).value=o[f];});}
+    }catch(e){}
+  })();
   const bar=document.createElement('div');
   bar.style.cssText='margin:16px 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center';
-  bar.innerHTML='<button id="sendBtn" style="background:#1F3864;color:#fff;border:none;border-radius:8px;padding:12px 20px;font-size:15px;font-weight:bold;cursor:pointer">Send my numbers to Heather</button>'+
-    '<button id="copyBtn" style="background:#fff;color:#1F3864;border:1px solid #1F3864;border-radius:8px;padding:12px 18px;font-size:15px;cursor:pointer">Copy my numbers</button>'+
-    '<span id="sendMsg" style="font-size:13px;color:#1a7f37;font-weight:bold"></span>';
+  bar.innerHTML='<button id="saveBtn" style="background:#1F3864;color:#fff;border:none;border-radius:8px;padding:12px 24px;font-size:15px;font-weight:bold;cursor:pointer">Save</button>'+
+    '<span id="saveMsg" style="font-size:13px;color:#1a7f37;font-weight:bold"></span>';
   const anchor=document.querySelector('.opt');
   if(anchor){anchor.insertAdjacentElement('afterend',bar);} else {document.querySelector('.wrap').appendChild(bar);}
-  $('sendBtn').addEventListener('click',()=>{
-    window.location.href='mailto:bodyopspartners@gmail.com?subject='+encodeURIComponent('Body Ops HPO Calculator - my numbers (W50S8H-26-Q-0016)')+'&body='+encodeURIComponent(summaryText());
-  });
-  $('copyBtn').addEventListener('click',async()=>{
-    try{await navigator.clipboard.writeText(summaryText());$('sendMsg').textContent='Copied. Paste it into a text or email to Heather.';}
-    catch(e){$('sendMsg').textContent='Copy failed - use the Send button instead.';}
+  $('saveBtn').addEventListener('click',()=>{
+    const o={}; FIELDS.forEach(f=>o[f]=$(f).value);
+    try{localStorage.setItem('hpoCalc',JSON.stringify(o));}catch(e){}
+    history.replaceState(null,'',location.pathname+'?'+new URLSearchParams(o).toString());
+    $('saveMsg').textContent='Saved. Your numbers are kept in this page (and its link).';
+    setTimeout(()=>{$('saveMsg').textContent='';},6000);
   });
 
   ids.forEach(id=>$(id).addEventListener('input',render));
